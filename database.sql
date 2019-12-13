@@ -7,6 +7,7 @@
 
 --Create Database named "unprison"
 
+
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
   "username" VARCHAR(100) UNIQUE NOT NULL,
