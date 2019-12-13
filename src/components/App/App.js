@@ -10,11 +10,13 @@ import {connect} from 'react-redux';
 
 import Nav from '../Nav/Nav';
 
+import VenueDetails from '../VenueDetails/VenueDetails';
+import EventDetails from '../EventDetails/EventDetails';
 import VenueList from '../VenueList/VenueList';
 import EventList from '../EventList/EventList';
 import Admin from '../Admin/Admin';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import './App.css';
 
@@ -33,7 +35,7 @@ class App extends Component {
             <Redirect exact from="/" to="/home" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
-            <Route
+            <ProtectedRoute
               exact
               path="/event-list"
               component={EventList}
@@ -53,6 +55,14 @@ class App extends Component {
               exact
               path="/admin"
               component={Admin}
+            />
+            <ProtectedRoute
+            path="/event-details"
+            component={EventDetails}
+            />
+             <ProtectedRoute
+            path="/venue-details"
+            component={VenueDetails}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
