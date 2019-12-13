@@ -7,6 +7,15 @@
 
 --Create Database named "unprison"
 
+
+--you need to add these to the user table, the username, hashed password, and isAdmin.
+
+--username: admin
+--hashed password in database: $2b$10$iYJnw61JpnFPllPvdqRPQOc7iGdrLFBmgGiCAGqwFqdAevlIRlMDC
+--isAdmin: true
+
+--plain text password: password
+
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
   "username" VARCHAR(100) UNIQUE NOT NULL,
