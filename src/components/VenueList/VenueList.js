@@ -17,7 +17,7 @@ class VenueList extends Component {
             <option value="school">School</option>
             <option value="other">Other</option>
           </select>
-          
+
           <select>
             {/* Use a sort table function? */}
             <option>Order By</option>
@@ -29,6 +29,26 @@ class VenueList extends Component {
           <button>Create Venue</button>
         </div>
 
+        <div className="listVenues"></div>
+
+        <table>
+ <tbody>
+  <tr>
+    <td>St. Cloud Pen
+      <br />Primary Contact: Sarah Smith
+    </td>
+    <td>Phone: 123-456-7890</td>
+    <td>Address: 1000 maple st.</td>
+  </tr>
+  <tr>
+  <td>Ramsey County Prison
+      <br />Primary Contact: Benjamin Brown
+    </td>
+    <td>Phone: 123-456-7890</td>
+    <td>Address: 4300 maple st.</td>
+  </tr>
+  </tbody>
+</table>
       </div>
     )
   }
