@@ -26,98 +26,35 @@ class EventDetails extends Component {
             backgroundColor: 'gray',
         },
     }
+  
+    // Function that takes in two paramaters related to local state properties, called on click of inner window tab
+    // Sets the value of the tab that was clicked to true in local state, backgroundColor to 'antiquewhite', and all other booleans and backgroundColors to false and gray respectively
+    handleTabClick = (propertyName, styleName) => {
 
-    // Conditionally renders VenueGeneral component in tabWindow
-    // Sets background color of general tab to white and events tab to gray
-    handleGeneralTabClick = () => {
-        this.setState({
-            general: true,
-            travel: false,
-            financials: false,
-            programs: false,
-
-            generalStyle: {
-                backgroundColor: 'antiquewhite',
-            },
-            travelStyle: {
-                backgroundColor: 'gray',
-            },
-            financialsStyle: {
-                backgroundColor: 'gray',
-            },
-            programsStyle: {
-                backgroundColor: 'gray',
-            },
+        Object.keys(this.state).forEach(property => {
+            if (property === propertyName) {
+                this.setState({
+                    [propertyName]: true,
+                })
+            } else if (property === styleName) {
+                this.setState({
+                    [styleName]: {
+                        backgroundColor: 'antiquewhite',
+                    },
+                })
+            } else if (property.includes('Style')) {
+                this.setState({
+                    [property]: {
+                        backgroundColor: 'gray',
+                    },
+                })
+            } else {
+                this.setState({
+                    [property]: false,
+                })
+            }
         });
-    } // End handleGeneralTabClick
-
-    // Conditionally renders VenueEvents component in tabWindow
-    // Sets background color of events tab to white and general tab to gray
-    handleTravelTabClick = () => {
-        this.setState({
-            general: false,
-            travel: true,
-            financials: false,
-            programs: false,
-
-            generalStyle: {
-                backgroundColor: 'gray',
-            },
-            travelStyle: {
-                backgroundColor: 'antiquewhite',
-            },
-            financialsStyle: {
-                backgroundColor: 'gray',
-            },
-            programsStyle: {
-                backgroundColor: 'gray',
-            },
-        });
-    } // End handleEventsTabClick
-
-    handleFinancialsTabClick = () => {
-        this.setState({
-            general: false,
-            travel: false,
-            financials: true,
-            programs: false,
-
-            generalStyle: {
-                backgroundColor: 'gray',
-            },
-            travelStyle: {
-                backgroundColor: 'gray',
-            },
-            financialsStyle: {
-                backgroundColor: 'antiquewhite',
-            },
-            programsStyle: {
-                backgroundColor: 'gray',
-            },
-        });
-    }
-
-    handleProgramsTabClick = () => {
-        this.setState({
-            general: false,
-            travel: false,
-            financials: false,
-            programs: true,
-
-            generalStyle: {
-                backgroundColor: 'gray',
-            },
-            travelStyle: {
-                backgroundColor: 'gray',
-            },
-            financialsStyle: {
-                backgroundColor: 'gray',
-            },
-            programsStyle: {
-                backgroundColor: 'antiquewhite',
-            },
-        });
-    }
+    } // End handleTabClick function
 
     render() {
         return (
@@ -127,18 +64,18 @@ class EventDetails extends Component {
                 </div>
                 <div className="mainWindow">
                     <div className="mainInfo">
-                        <h3>Area for event info</h3>
+                        <h3>When?</h3>
                     </div>
-                    <div className="generalTab" onClick={this.handleGeneralTabClick} style={this.state.generalStyle}>
+                    <div className="generalTab" onClick={() => this.handleTabClick('general', 'generalStyle')} style={this.state.generalStyle}>
                         General
                     </div>
-                    <div className="travelTab" onClick={this.handleTravelTabClick} style={this.state.travelStyle}>
+                    <div className="travelTab" onClick={() => this.handleTabClick('travel', 'travelStyle')} style={this.state.travelStyle}>
                         Travel
                     </div>
-                    <div className="financialsTab" onClick={this.handleFinancialsTabClick} style={this.state.financialsStyle}>
+                    <div className="financialsTab" onClick={() => this.handleTabClick('financials', 'financialsStyle')} style={this.state.financialsStyle}>
                         Finanacials
                     </div>
-                    <div className="programsTab" onClick={this.handleProgramsTabClick} style={this.state.programsStyle}>
+                    <div className="programsTab" onClick={() => this.handleTabClick('programs', 'programsStyle')} style={this.state.programsStyle}>
                         Programs
                     </div>
                     {this.state.general &&
