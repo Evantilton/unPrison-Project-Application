@@ -1,0 +1,41 @@
+.header {
+    margin-left: 50px;
+}
+
+.mainWindow {
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: gray;
+    display: grid;
+    justify-items: stretch;
+    height: 600px;
+    grid-template-rows: 5% 10% 5% 75% 5%;
+    grid-auto-columns: 5% 15% 15% 60% 5%;
+    grid-template-areas: 
+    ". . . . ."
+    ". main main main ."
+    ". general events . ."
+    ". tab tab tab ."
+    ;
+}
+
+.tabWindow {
+    background-color: antiquewhite;
+    grid-area: tab;
+}
+
+.mainInfo {
+    grid-area: main;
+}
+
+.eventsTab {
+    grid-area: events;
+    border: 2px solid black;
+}
+
+.generalTab {
+    grid-area: general;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
