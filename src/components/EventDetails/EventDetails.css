@@ -1,0 +1,55 @@
+.header {
+    margin-left: 50px;
+}
+
+.mainWindow {
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: gray;
+    display: grid;
+    height: 600px;
+    grid-template-rows: 5% 10% 5% 75% 5%;
+    grid-template-columns: 5% 15% 15% 15% 15% 30% 5%;
+    grid-template-areas: 
+    ". . . . . . ."
+    ". main main main main main ."
+    ". general travel financials programs . ."
+    ". tab tab tab tab tab ."
+    ". . . . . . ."
+    ;
+}
+
+.tabWindow {
+    background-color: antiquewhite;
+    grid-area: tab;
+}
+
+.mainInfo {
+    grid-area: main;
+}
+
+.generalTab {
+    grid-area: general;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.travelTab {
+    grid-area: travel;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.financialsTab {
+    grid-area: financials;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.programsTab {
+    grid-area: programs;
+    border: 2px solid black;
+}
