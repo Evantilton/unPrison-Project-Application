@@ -17,7 +17,7 @@ class VenueList extends Component {
             <option value="school">School</option>
             <option value="other">Other</option>
           </select>
-          <button>Create Venue</button>
+          
           <select>
             {/* Use a sort table function? */}
             <option>Order By</option>
