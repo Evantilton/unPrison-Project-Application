@@ -22,6 +22,7 @@
 .tabWindow {
     background-color: antiquewhite;
     grid-area: tab;
+    overflow-y: auto;
 }
 
 .mainInfo {
@@ -52,4 +53,8 @@
 .programsTab {
     grid-area: programs;
     border: 2px solid black;
+}
+
+.nobull {
+        list-style-type: none;
 }
