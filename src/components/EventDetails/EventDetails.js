@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Financials from './Finanacials/Financials';
+import Financials from './Financials/Financials';
 import General from './General/General';
 import Programs from './Programs/Programs';
 import Travel from './Travel/Travel';
