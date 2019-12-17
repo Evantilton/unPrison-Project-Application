@@ -1,39 +1,47 @@
-.header {
+.venueHeader {
     margin-left: 50px;
 }
 
-.mainWindow {
+.venueMainWindow {
     margin-left: 50px;
     margin-right: 50px;
     background-color: gray;
     display: grid;
-    justify-items: stretch;
     height: 600px;
-    grid-template-rows: 5% 10% 5% 75% 5%;
-    grid-auto-columns: 5% 15% 15% 60% 5%;
+    grid-template-rows: 15% 5% 75% 5%;
+    grid-template-columns: 5% 15% 15% 15% 15% 15% 15% 5%;
     grid-template-areas: 
-    ". . . . ."
-    ". main main main ."
-    ". general events . ."
-    ". tab tab tab ."
+    ". contactName contactName primaryPhone primaryPhone primaryEmail primaryEmail ."
+    ". general event . . . . ."
+    ". tab tab tab tab tab tab ."
+    ". . . . . . . ."
     ;
 }
 
-.tabWindow {
+.venueTabWindow {
     background-color: antiquewhite;
     grid-area: tab;
+    overflow-y: auto;
 }
 
-.mainInfo {
-    grid-area: main;
+.primaryName {
+    grid-area: contactName;
 }
 
-.eventsTab {
-    grid-area: events;
+.primaryPhone {
+    grid-area: primaryPhone;
+}
+
+.primaryEmail {
+    grid-area: primaryEmail;
+}
+
+.venueEventsTab {
+    grid-area: event;
     border: 2px solid black;
 }
 
-.generalTab {
+.venueGeneralTab {
     grid-area: general;
     border-left: 2px solid black;
     border-top: 2px solid black;
