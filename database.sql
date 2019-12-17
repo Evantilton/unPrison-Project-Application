@@ -40,6 +40,7 @@ CREATE TABLE "contacts" (
   "contact_name" VARCHAR(255),
   "contact_phone" VARCHAR(255),
   "contact_email" VARCHAR(255),
+  "position" VARCHAR(100),
   "is_primary" BOOLEAN
 );
 
