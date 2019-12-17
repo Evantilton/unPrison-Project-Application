@@ -2,6 +2,7 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
+import eventsSaga from './eventsSaga';
 
 import getUsersSaga from './getUsersSaga';
 
@@ -21,9 +22,13 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
 
+    eventsSaga(),
+
+
     getUsersSaga(),
 
     venueSaga(),
+
 
   ]);
 }

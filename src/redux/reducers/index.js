@@ -3,7 +3,11 @@ import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
 
+
 import venueReducer from './venueReducer';
+
+import eventsReducer from './eventsReducer';
+
 
 
 import allUsers from './allUsers';
@@ -19,7 +23,11 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
 
+
   venueReducer,
+
+  eventsReducer, // data from events table in database
+
 
   allUsers, // this is all the users
 

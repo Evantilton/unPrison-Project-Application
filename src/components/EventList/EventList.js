@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import EventListItem from './EventListItem/EventListItem';
 
 class EventList extends Component {
+
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_EVENTS' }); // makes dispatch call to eventsSaga.js to fetch all events from database
+  }
+
   render() {
     return (
       <div className="eventContainer">
@@ -14,17 +21,31 @@ class EventList extends Component {
         </div>
 
         <div className="listEvents"></div>
-        
+
         <table border="1">
-          <tbody>
+          <thead>
             <tr>
-              <td>When: 12/30/2019
-      <br />Time: 8:00am
-      <br /><button>See Details</button>
-              </td>
-              <td>Location: St. Cloud Pen</td>
-              <td>Contact: Sarah Smith</td>
+              <th>
+                Event Date
+            </th>
+              <th>
+                Event Time
+            </th>
+              <th>
+                Event Location
+            </th>
+              <th>
+                Primary Contact
+            </th>
             </tr>
+          </thead>
+          <tbody>
+            {this.props.reduxState.eventsReducer.map((event) => {
+              return (
+                <EventListItem key={event.id} event={event} />
+              );
+            })
+            }
             <tr>
               <td>When: 02/10/2020
       <br />Time: 10:00am
@@ -32,7 +53,7 @@ class EventList extends Component {
               </td>
               <td>Location: Ramsey County Prison</td>
               <td>Contact: Benjamin Brown</td>
-              
+
             </tr>
           </tbody>
         </table>
@@ -43,4 +64,8 @@ class EventList extends Component {
   }
 }
 
-export default EventList;
+const mapStateToProps = reduxState => ({
+  reduxState,
+});
+
+export default connect(mapStateToProps)(EventList);
