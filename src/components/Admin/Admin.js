@@ -3,12 +3,27 @@ import { connect } from 'react-redux';
 import './Admin.css';
 
 class Admin extends Component {
+
   state = {
     username: '',
     password: '',
   };
 
+  componentDidMount = () => {
+    this.getUsers();
+  }
+
+  getUsers = () => {
+    console.log("getting users")
+    this.props.dispatch({ type: 'GET_USERS' });
+  }
+
+  handleDelete = () => {
+
+  }
+
   registerUser = (event) => {
+    console.log("registering user")
     event.preventDefault();
 
     if (this.state.username && this.state.password) {
@@ -30,6 +45,8 @@ class Admin extends Component {
     });
   }
 
+ 
+
   render() {
     return (
       <div>
@@ -44,39 +61,33 @@ class Admin extends Component {
 
 
         {/* <form onSubmit={this.registerUser}> */}
-          <p>Register New User</p>
-          <div>
-            <label htmlFor="username">
-              Username:
+        <p>Register New User</p>
+        <div>
+          <label htmlFor="username">
+            Username:
               <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
+              type="text"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleInputChangeFor('username')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="password">
+            Password:
               <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
-          </div>
-          <div>
-            <button onClick={this.registerUser}> submit </button>
-            {/* <input
-              className="register"
-              type="submit"
-              name="submit"
-              value="Register"
-            /> */}
-          </div>
-        {/* </form> */}
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleInputChangeFor('password')}
+            />
+          </label>
+        </div>
+        <div>
+          <button onClick={this.registerUser}> submit </button>
+        </div>
+
         <table>
           <thead>
             <tr>
@@ -86,21 +97,20 @@ class Admin extends Component {
 
             </tr>
           </thead>
-          <tbody>
-          <tr>
-            <td>2</td>
-            <td>Fred</td>
-            <td><button>delete</button></td>
-          </tr>
-          
-          <tr>
-            <td>3</td>
-            <td>Bob</td>
-            <td><button>delete</button></td>
-          </tr>
+          <tbody> 
+            {this.props.allUsers.map((users) => {
+              return (
+                <tr key={users.id}>
+                  <td key={users}>{users.id}</td>
+                  <td key={users.username}>{users.username}</td>
+                  <td key={users.id}><button key={users.id} onClick={() => this.handleDelete}> delete </button></td>
+                </tr>
+              )
+            })
+          }
           </tbody>
         </table>
-      </div>
+      </div >
     );
   }
 }
@@ -108,8 +118,8 @@ class Admin extends Component {
 // Instead of taking everything from state, we just want the error messages.
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({errors}) => ({ errors });
-const mapStateToProps = state => ({
-  errors: state.errors,
-});
+const mapReduxStateToProps = (reduxState) => {
+  return reduxState;
+}
 
-export default connect(mapStateToProps)(Admin);
+export default connect(mapReduxStateToProps)(Admin);
