@@ -49,24 +49,33 @@ class VenueDetails extends Component {
     render() {
         return (
             <>
-                <div className="header">
-                    <h1>Venue Details Component</h1>
+                <div className="venueHeader">
+                    <h1>St. Cloud Penitentiary</h1>
                 </div>
-                <div className="mainWindow">
-                    <div className="mainInfo">
-                        <p>Area for venue name + address and primary contact info</p>
+                <div className="venueMainWindow">
+                    <div className="primaryName">
+                    <h3>Primary Contact:</h3>
+                    <p>Sally Smith</p>
                     </div>
-                    <div className="generalTab" onClick={this.handleGeneralTabClick} style={this.state.generalStyle}>
+                    <div className="primaryPhone">
+                    <h3>Phone:</h3>
+                    <p>651-500-0875</p>
+                    </div>
+                    <div className="primaryEmail">
+                    <h3>Primary Email:</h3>
+                    <p>chris@ferbers.us</p>
+                    </div>
+                    <div className="venueGeneralTab" onClick={this.handleGeneralTabClick} style={this.state.generalStyle}>
                         General
                     </div>
-                    <div className="eventsTab" onClick={this.handleEventsTabClick} style={this.state.eventsStyle}>
+                    <div className="venueEventsTab" onClick={this.handleEventsTabClick} style={this.state.eventsStyle}>
                         Events
                     </div>
                     {this.state.events ?
-                        <div className="tabWindow">
+                        <div className="venueTabWindow">
                             <VenueEvents />
                         </div> :
-                        <div className="tabWindow">
+                        <div className="venueTabWindow">
                             <VenueGeneral />
                         </div>
                     }
