@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
 
 
+
 class VenueList extends Component {
 
   state = {
@@ -33,7 +34,7 @@ class VenueList extends Component {
     // when Create Venue button is clicked, removes conditionally rendered inputs and buttons from the DOM
     // will add new Venue to database
     console.log('Creating venue');
-    // this.props.dispatch({ type: 'POST_VENUE', payload: this.state.venue })
+    this.props.dispatch({ type: 'POST_VENUE', payload: this.state })
     // this.props.dispatch({ type: 'POST_CONTACT', payload: this.state.contact })
     this.setState({
       addVenueButton: false
