@@ -18,8 +18,9 @@ class Admin extends Component {
     this.props.dispatch({ type: 'GET_USERS' });
   }
 
-  handleDelete = () => {
-
+  handleDelete = (id) => {
+    console.log("delete click", "this is id", id)
+    this.props.dispatch({ type: 'DELETE_USERS', payload: id});
   }
 
   registerUser = (event) => {
@@ -101,9 +102,9 @@ class Admin extends Component {
             {this.props.allUsers.map((users) => {
               return (
                 <tr key={users.id}>
-                  <td key={users}>{users.id}</td>
-                  <td key={users.username}>{users.username}</td>
-                  <td key={users.id}><button key={users.id} onClick={() => this.handleDelete}> delete </button></td>
+                  <td>{users.id}</td>
+                  <td>{users.username}</td>
+                  <td><button key={users.id} onClick={() => { if (window.confirm('Are you sure you wish to delete this user? This cannot be undone.')) this.handleDelete(users.id) }}> delete </button></td>
                 </tr>
               )
             })
