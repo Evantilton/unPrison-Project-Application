@@ -7,6 +7,7 @@ import user from './userReducer';
 import venueReducer from './venueReducer';
 
 import eventsReducer from './eventsReducer';
+import venueDetailsReducer from './venueDetailsReducer';
 
 
 
@@ -25,7 +26,7 @@ const rootReducer = combineReducers({
 
 
   venueReducer,
-
+  venueDetailsReducer,
   eventsReducer, // data from events table in database
 
 

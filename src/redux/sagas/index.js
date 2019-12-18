@@ -7,6 +7,7 @@ import eventsSaga from './eventsSaga';
 import getUsersSaga from './getUsersSaga';
 
 import venueSaga from './venueSaga';
+import venueDetailsSaga from './venueDetailsSaga';
 
 
 // rootSaga is the primary saga.
@@ -28,7 +29,7 @@ export default function* rootSaga() {
     getUsersSaga(),
 
     venueSaga(),
-
+    venueDetailsSaga(),
 
   ]);
 }

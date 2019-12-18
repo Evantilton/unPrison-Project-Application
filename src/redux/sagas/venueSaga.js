@@ -4,7 +4,6 @@ import axios from 'axios';
 function* venueSaga() {
     yield takeLatest('POST_VENUE', createVenue);
     yield takeEvery('GET_VENUES', getVenues)
-   
 }
 
 function* createVenue(action){
