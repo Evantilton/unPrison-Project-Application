@@ -18,7 +18,15 @@ router.get('/', (req, res) => {
     });
 });
 
-
+router.delete('/delete/:id', (req, res) => {
+  console.log("console log", req.params.id)
+  pool.query('DELETE FROM "user" WHERE "id"= $1', [req.params.id]).then((result) => {
+      res.sendStatus(200);
+  }).catch((error) => {
+      console.log('Error DELETE route of users', error);
+      res.sendStatus(500);
+  })
+});
 
 /**
  * POST route template

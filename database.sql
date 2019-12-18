@@ -26,12 +26,12 @@ CREATE TABLE "user" (
 CREATE TABLE "venue" (
   "id" SERIAL PRIMARY KEY,
   "name" VARCHAR(255) NOT NULL,
-  "is_prison" BOOLEAN,
   "street_address" VARCHAR(255),
   "city" VARCHAR(255),
   "state" VARCHAR(255),
   "country" VARCHAR(255),
-  "zip" VARCHAR(255)
+  "zip" VARCHAR(255),
+  "venue_type" VARCHAR (100),
 );
 
 CREATE TABLE "contacts" (
