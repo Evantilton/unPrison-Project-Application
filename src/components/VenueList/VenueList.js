@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
+import VenueListItem from './VenueListItem/VenueListItem';
 
 
 
@@ -125,28 +126,11 @@ class VenueList extends Component {
             </tr>
             </thead>
             <tbody>
-            {this.props.reduxState.venueReducer.map((venue) => (
-              <tr key={venue.id}>
-                <td>{venue.name}</td>
-                <td>{venue.street_address}</td>
-                <td>{venue.contact_name}</td>
-                <td>{venue.contact_phone}</td>
-              </tr>
-            ))}
-            <tr>
-              <td>St. Cloud Pen
-      <br />Primary Contact: Sarah Smith
-              </td>
-              <td>Phone: 123-456-7890</td>
-              <td>Address: 1000 maple st.</td>
-            </tr>
-            <tr>
-              <td>Ramsey County Prison
-      <br />Primary Contact: Benjamin Brown
-              </td>
-              <td>Phone: 321-456-7890</td>
-              <td>Address: 4300 maple st.</td>
-            </tr>
+            {this.props.reduxState.venueReducer.map((venue) => {
+              return (
+                <VenueListItem key={venue.id} venue={venue} />
+              );
+              })}
           </tbody>
         </table>
       </div>

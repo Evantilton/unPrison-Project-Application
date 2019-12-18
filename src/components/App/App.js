@@ -61,7 +61,7 @@ class App extends Component {
             component={EventDetails}
             />
              <ProtectedRoute
-            path="/venue-details"
+            path="/venue-details/:id"
             component={VenueDetails}
             />
             {/* If none of the other routes matched, we will show a 404. */}

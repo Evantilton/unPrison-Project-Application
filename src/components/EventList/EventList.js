@@ -46,15 +46,6 @@ class EventList extends Component {
               );
             })
             }
-            <tr>
-              <td>When: 02/10/2020
-      <br />Time: 10:00am
-      <br /><button>See Details</button>
-              </td>
-              <td>Location: Ramsey County Prison</td>
-              <td>Contact: Benjamin Brown</td>
-
-            </tr>
           </tbody>
         </table>
       </div>
