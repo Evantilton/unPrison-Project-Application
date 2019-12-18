@@ -5,9 +5,6 @@ class VenueGeneral extends Component {
         return (
             <div>
                 <h3>Venue Details</h3>
-                {/* Remember to add position value in database to contacts table 
-                Also, do we want city, state, country, zip etc in addition to street address of venue? or do we want to just 
-                string together those specific inputed values everywhere where we display full address? or vice versa?*/}
                     <ul className="nobull">
                         <li>
                             <label>Venue Type:</label>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
+
 
 
 class VenueList extends Component {
@@ -13,6 +15,11 @@ class VenueList extends Component {
     contact: {
       contact_name: "",
     }
+  }
+
+  componentDidMount() {
+    // on ready function
+    this.props.dispatch({ type: 'GET_VENUES'})
   }
 
   createVenue = () => {
@@ -109,7 +116,23 @@ class VenueList extends Component {
         <div className="listVenues"></div>
         {/* Using table without headers for potential sort system and thinking we can style it to look like what we want. */}
         <table border="1">
-          <tbody>
+          <thead>
+            <tr>
+              <th>Venue</th>
+              <th>Venue Address</th>
+              <th>Primary Contact</th>
+              <th>Primary Contact Phone Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            {this.props.reduxState.venueReducer.map((venue) => (
+              <tr key={venue.id}>
+                <td>{venue.name}</td>
+                <td>{venue.street_address}</td>
+                <td>{venue.contact_name}</td>
+                <td>{venue.contact_phone}</td>
+              </tr>
+            ))}
             <tr>
               <td>St. Cloud Pen
       <br />Primary Contact: Sarah Smith
@@ -131,8 +154,8 @@ class VenueList extends Component {
   }
 }
 
-const mapStateToProps = reduxState => ({
-  reduxState,
-})
+const mapReduxStateToProps = reduxState => ({
+  reduxState
+});
 
-export default connect(mapStateToProps)(VenueList);
+export default connect(mapReduxStateToProps)(withRouter(VenueList));
