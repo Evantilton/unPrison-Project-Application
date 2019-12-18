@@ -11,6 +11,7 @@ function* createVenue(action){
     //sends inputted user value to server side post route
     try {
         yield axios.post('/api/venue', action.payload);
+        yield put({ type: 'GET_VENUES', payload: action.payload })
     } catch (error) {
         console.log('error posting venue', error);  
     }
