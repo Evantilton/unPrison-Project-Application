@@ -16,7 +16,8 @@ class Travel extends Component {
         return (
             <div>
                 <h3>Travel Component</h3>
-                <ul class="nobull">
+                <ul class="nobullet">
+                <li><button className="tabButtonPosition">Save Changes</button></li>
                         <li >
                             <label>Nearest Airport:</label>
                             <input type="text" value={this.props.reduxState.eventsTravelReducer.nearest_airport} onChange={(event) => this.handleInputChange(event, 'nearest_airport')}></input>

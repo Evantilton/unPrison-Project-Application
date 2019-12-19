@@ -39,6 +39,9 @@ class VenueEvents extends Component {
                 <td>
                     Primary Contact
                 </td>
+                <td>
+                    <button>See Details</button>
+                </td>
             </tr>
               {/* }) */}
               {/* } */}

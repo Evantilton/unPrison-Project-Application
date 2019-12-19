@@ -55,6 +55,14 @@
     border: 2px solid black;
 }
 
-.nobull {
+.nobullet {
         list-style-type: none;
+}
+
+.tabButtonPosition {
+    position: sticky;
+    top: 500;
+    float: right;
+    margin-right: 2%;
+    
 }
