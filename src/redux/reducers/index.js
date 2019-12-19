@@ -5,6 +5,7 @@ import user from './userReducer';
 import eventsTravelReducer from './eventsTravelReducer';
 
 import venueReducer from './venueReducer';
+import eventDetailsReducer from './eventDetailsReducer';
 
 import eventsReducer from './eventsReducer';
 import venueDetailsReducer from './venueDetailsReducer';
@@ -24,7 +25,7 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
   eventsTravelReducer,
-
+  eventDetailsReducer,
   venueReducer,
   venueDetailsReducer,
   eventsReducer, // data from events table in database

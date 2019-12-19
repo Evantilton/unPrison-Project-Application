@@ -16,4 +16,17 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         })
 }) // end fetch events query
 
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+    const queryText = `SELECT * FROM "event"
+    WHERE "id" = $1`;
+    console.log('get single event req.params.id:', req.params.id);
+    pool.query(queryText, [req.params.id])
+        .then((result) => {
+            res.send(result.rows)
+        })
+        .catch(() => {
+            res.sendStatus(500);
+        })
+}) // end fetch events query
+
 module.exports = router;

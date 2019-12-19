@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Financials from './Financials/Financials';
 import General from './General/General';
 import Programs from './Programs/Programs';
@@ -108,4 +109,8 @@ class EventDetails extends Component {
     }
 } // End VenueDetails component
 
-export default EventDetails;
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
+
+export default connect(mapStateToProps)(EventDetails);
