@@ -13,6 +13,7 @@ const userRouter = require('./routes/user.router');
 const eventsRouter = require('./routes/events.router');
 const usersRouter = require('./routes/users.router');
 const venueRouter = require('./routes/venue.router');
+const eventsTravelRouter = require('./routes/eventsTravel.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,7 +29,8 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/events', eventsRouter);
-app.use('/users',  usersRouter)
+app.use('/api/events-travel', eventsTravelRouter);
+app.use('/users',  usersRouter);
 app.use('/api/venue', venueRouter);
 
 // Serve static files

@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+// import {withRouter} from 'react-router';
+import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
 import VenueGeneral from './General/General';
 import VenueEvents from './Events/Events';
 import './VenueDetails.css';
@@ -15,6 +18,11 @@ class VenueDetails extends Component {
             backgroundColor: 'gray',
         },
     }
+
+    componentDidMount() {
+        this.props.dispatch({ type: 'GET_ONE_VENUE', payload: this.props.match.params.id })
+    }
+
 
     // Conditionally renders VenueGeneral component in tabWindow
     // Sets background color of general tab to white and events tab to gray
@@ -47,23 +55,24 @@ class VenueDetails extends Component {
     } // End handleEventsTabClick
 
     render() {
+
         return (
             <>
                 <div className="venueHeader">
-                    <h1>St. Cloud Penitentiary</h1>
+                    <h1>{this.props.reduxState.venueDetailsReducer.name}</h1>
                 </div>
                 <div className="venueMainWindow">
                     <div className="primaryName">
-                    <h3>Primary Contact:</h3>
-                    <p>Sally Smith</p>
+                        <h3>Primary Contact:</h3>
+                        <p>{this.props.reduxState.venueDetailsReducer.contact_name}</p>
                     </div>
                     <div className="primaryPhone">
-                    <h3>Phone:</h3>
-                    <p>651-500-0875</p>
+                        <h3>Phone:</h3>
+                        <p>{this.props.reduxState.venueDetailsReducer.contact_phone}</p>
                     </div>
                     <div className="primaryEmail">
-                    <h3>Primary Email:</h3>
-                    <p>chris@ferbers.us</p>
+                        <h3>Primary Email:</h3>
+                        <p>{this.props.reduxState.venueDetailsReducer.contact_email}</p>
                     </div>
                     <div className="venueGeneralTab" onClick={this.handleGeneralTabClick} style={this.state.generalStyle}>
                         General
@@ -85,4 +94,8 @@ class VenueDetails extends Component {
     }
 } // End VenueDetails component
 
-export default VenueDetails;
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
+
+export default withRouter(connect(mapStateToProps)(VenueDetails));

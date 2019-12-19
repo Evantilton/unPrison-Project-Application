@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Financials from './Financials/Financials';
 import General from './General/General';
 import Programs from './Programs/Programs';
@@ -6,6 +7,10 @@ import Travel from './Travel/Travel';
 import './EventDetails.css';
 
 class EventDetails extends Component {
+
+    componentDidMount() {
+        this.props.dispatch({ type:'FETCH_CURRENT_EVENT', payload: this.props.match.params.id })
+    }
 
     state = {
         general: true,
@@ -73,7 +78,7 @@ class EventDetails extends Component {
                         Travel
                     </div>
                     <div className="financialsTab" onClick={() => this.handleTabClick('financials', 'financialsStyle')} style={this.state.financialsStyle}>
-                        Finanacials
+                        Financials
                     </div>
                     <div className="programsTab" onClick={() => this.handleTabClick('programs', 'programsStyle')} style={this.state.programsStyle}>
                         Programs
@@ -95,7 +100,7 @@ class EventDetails extends Component {
                     }
                     {this.state.travel &&
                         <div className="tabWindow">
-                            <Travel />
+                            <Travel eventId={this.props.match.params.id}/>
                         </div>
                     }
                 </div>
@@ -104,4 +109,8 @@ class EventDetails extends Component {
     }
 } // End VenueDetails component
 
-export default EventDetails;
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
+
+export default connect(mapStateToProps)(EventDetails);

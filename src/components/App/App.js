@@ -57,7 +57,7 @@ class App extends Component {
               component={Admin}
             />
             <ProtectedRoute
-            path="/event-details"
+            path="/event-details/:id"
             component={EventDetails}
             />
              <ProtectedRoute

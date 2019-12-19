@@ -17,6 +17,27 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
+
+// get venue that matches param of venue-details page
+router.get('/:id', (req, res) => {
+    console.log('venue details', req.params);
+    const queryText = `
+                SELECT * FROM venue 
+                JOIN "contacts" ON "contacts"."venue_id" = "venue"."id"
+                WHERE venue.id=$1;`;
+    pool.query(queryText, [req.params.id])
+        .then((result) => {
+            // console.log('get route details', result);
+            
+            res.send(result.rows);
+            console.log(result.rows);
+            
+        }). catch((error) => {
+            console.log('Error in GET venue details', error);
+            res.sendStatus(500);
+        })
+})
+
 router.post('/', rejectUnauthenticated, async (req, res) => {
     // takes user inputted data from venue component and adds to venue table in database, 
     // then returns venue id and adds it to contacts table plus the second user inputted information
