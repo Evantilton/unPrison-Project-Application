@@ -4,6 +4,10 @@ import EventListItem from './EventListItem/EventListItem';
 
 class EventList extends Component {
 
+  state = {
+    venue_id:"",
+  }
+
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_EVENTS' }); // makes dispatch call to eventsSaga.js to fetch all events from database
     this.getVenues();
