@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class Travel extends Component {
+
+    handleInputChange = (columnName, event) => {
+        this.props.dispatch({ type:'EDIT_TRAVEL_TABLE', payload: [columnName, event.target.value] })
+    }
+
     render() {
         return (
             <div>
@@ -8,7 +13,7 @@ class Travel extends Component {
                 <ul class="nobull">
                         <li >
                             <label>Nearest Airport:</label>
-                            <input type="text"></input>
+                            <input type="text" value={() => this.handleInputChange('nearest_airport')}></input>
                         </li>
                         <li >
                             <label>Airport Code:</label>

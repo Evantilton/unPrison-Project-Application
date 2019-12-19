@@ -3,6 +3,7 @@ import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import eventsSaga from './eventsSaga';
+import eventsTravelSaga from './eventsTravelSaga';
 
 import getUsersSaga from './getUsersSaga';
 
@@ -24,6 +25,7 @@ export default function* rootSaga() {
     eventsSaga(),
     getUsersSaga(),
     venueSaga(),
-    deleteUsersSaga()
+    deleteUsersSaga(),
+    eventsTravelSaga()
   ]);
 }
