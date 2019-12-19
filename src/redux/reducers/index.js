@@ -2,9 +2,10 @@ import { combineReducers } from 'redux';
 import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
-
+import eventsTravelReducer from './eventsTravelReducer';
 
 import venueReducer from './venueReducer';
+import eventDetailsReducer from './eventDetailsReducer';
 
 import eventsReducer from './eventsReducer';
 import venueDetailsReducer from './venueDetailsReducer';
@@ -23,8 +24,8 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
-
-
+  eventsTravelReducer,
+  eventDetailsReducer,
   venueReducer,
   venueDetailsReducer,
   eventsReducer, // data from events table in database

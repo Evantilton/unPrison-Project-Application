@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router';
 import moment from 'moment'; // imports moment.js to format dates correctly
 
 class EventListItem extends Component {
+
+    goToEventDetails = () => {
+        this.props.history.push(`event-details/${this.props.event.id}`);
+    }
+
     render() {
         return (
             <tr>
@@ -17,7 +23,7 @@ class EventListItem extends Component {
                     {this.props.event.venue_id}
                 </td>
                 <td>
-                    Primary Contact
+                    <button onClick={this.goToEventDetails}>See Details</button>
                 </td>
             </tr>
         );
@@ -29,4 +35,4 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
-export default connect(mapStateToProps)(EventListItem);
+export default withRouter(connect(mapStateToProps)(EventListItem));
