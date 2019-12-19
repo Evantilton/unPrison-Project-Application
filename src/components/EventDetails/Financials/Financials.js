@@ -5,7 +5,8 @@ class Financials extends Component {
         return (
             <div>
                 <h3>Financials</h3>
-                <ul class="nobull">
+                <ul class="nobullet">
+                <li><button className="tabButtonPosition">Save Changes</button></li>
                     <h1>Contributions</h1>
                         <li >
                             <label>Prison Contribution:</label>

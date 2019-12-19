@@ -5,7 +5,8 @@ class General extends Component {
         return (
             <div>
                 <h3>General Component</h3>
-                    <ul class="nobull">
+                    <ul class="nobullet">
+                        <li><button className="tabButtonPosition">Delete Event</button><button className="tabButtonPosition">Save Changes</button></li>
                         <li >
                             <label>Date Last Contacted:</label>
                             <input type="date"></input>

@@ -5,7 +5,10 @@ class VenueGeneral extends Component {
         return (
             <div>
                 <h3>Venue Details</h3>
-                    <ul className="nobull">
+                    <ul className="nobullet">
+                        <li>
+                        <button className="tabButtonPosition">Delete Venue</button><button className="tabButtonPosition">Save Changes</button>
+                        </li>
                         <li>
                             <label>Venue Type:</label>
                             <select name="venueType" defaultValue="prison">
