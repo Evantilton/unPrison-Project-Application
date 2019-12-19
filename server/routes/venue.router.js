@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 });
 
 // get venue that matches param of venue-details page
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     console.log('venue details', req.params);
     const queryText = `
                 SELECT * FROM venue 
