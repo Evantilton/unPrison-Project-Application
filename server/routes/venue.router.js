@@ -25,7 +25,10 @@ router.get('/', (req, res) => {
 // get venue that matches param of venue-details page
 router.get('/:id', (req, res) => {
     console.log('venue details', req.params);
-    const queryText = `SELECT * FROM venue WHERE id=$1;`;
+    const queryText = `
+                SELECT * FROM venue 
+                JOIN "contacts" ON "contacts"."venue_id" = "venue"."id"
+                WHERE venue.id=$1;`;
     pool.query(queryText, [req.params.id])
         .then((result) => {
             // console.log('get route details', result);
