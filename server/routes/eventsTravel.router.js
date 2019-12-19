@@ -16,6 +16,26 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         })
 }) // end fetch travel query
 
+router.put('/edit', rejectUnauthenticated, (req, res) => {
+    const queryText = `UPDATE "travel"
+    SET $1 = $2
+    WHERE "event_id" = $3`
+    const queryValues = [
+        req.body[0],
+        req.body[1],
+        req.body[2]
+    ]
+    pool.query(queryText, queryValues)
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error in PUT route in eventsTravel.router:', error);
+            res.sendStatus(500);
+        })
+
+})
+
 
 
 

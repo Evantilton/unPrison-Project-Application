@@ -1,9 +1,9 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* editTravelTable() {
+function* editTravelTable(action) {
     try {
-        const response = yield axios.put('/api/events-travel');
+        const response = yield axios.put('/api/events-travel/edit', action.payload );
         yield put({ type:'FETCH_TRAVEL_TABLE', payload: response.data });
     } catch (error) {
         console.log('error fetching venues', error);

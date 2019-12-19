@@ -9,7 +9,7 @@ class Travel extends Component {
     }
 
     handleInputChange = (columnName, event) => {
-        this.props.dispatch({ type:'EDIT_TRAVEL_TABLE', payload: [columnName, event.target.value, this.props.eventId ] })
+        this.props.dispatch({ type:'EDIT_TRAVEL_TABLE', payload: [columnName, event.target, this.props.eventId ] })
     }
 
     render() {
@@ -19,7 +19,7 @@ class Travel extends Component {
                 <ul class="nobull">
                         <li >
                             <label>Nearest Airport:</label>
-                            <input type="text" value={this.props.reduxState.eventsTravelReducer.nearest_airport} onChange={() => this.handleInputChange('nearest_airport')}></input>
+                            <input type="text" value={this.props.reduxState.eventsTravelReducer.nearest_airport} onChange={(event) => this.handleInputChange(event, 'nearest_airport')}></input>
                         </li>
                         <li >
                             <label>Airport Code:</label>
