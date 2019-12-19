@@ -8,8 +8,8 @@ class Travel extends Component {
         this.props.dispatch({ type: 'FETCH_TRAVEL_TABLE', payload: this.props.eventId });
     }
 
-    handleInputChange = (columnName, event) => {
-        this.props.dispatch({ type:'EDIT_TRAVEL_TABLE', payload: [columnName, event.target, this.props.eventId ] })
+    handleInputChange = (event) => {
+        this.props.dispatch({ type:'SET_EXISTING_TRAVEL', payload: { value: event.target.value, property: event.target.name } })
     }
 
     render() {
@@ -20,11 +20,11 @@ class Travel extends Component {
                 <li><button className="tabButtonPosition">Save Changes</button></li>
                         <li >
                             <label>Nearest Airport:</label>
-                            <input type="text" value={this.props.reduxState.eventsTravelReducer.nearest_airport} onChange={(event) => this.handleInputChange(event, 'nearest_airport')}></input>
+                            <input type="text" name='nearest_airport' value={this.props.reduxState.eventsTravelReducer.nearest_airport} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Airport Code:</label>
-                            <input type="text" value={this.props.reduxState.eventsTravelReducer.airport_code} onChange={() => this.handleInputChange('nearest_airport')}></input>
+                            <input type="text" name='airport_code' value={this.props.reduxState.eventsTravelReducer.airport_code} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Flights Booked:</label>
