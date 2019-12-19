@@ -78,7 +78,7 @@ class EventDetails extends Component {
                         Travel
                     </div>
                     <div className="financialsTab" onClick={() => this.handleTabClick('financials', 'financialsStyle')} style={this.state.financialsStyle}>
-                        Finanacials
+                        Financials
                     </div>
                     <div className="programsTab" onClick={() => this.handleTabClick('programs', 'programsStyle')} style={this.state.programsStyle}>
                         Programs
@@ -100,7 +100,7 @@ class EventDetails extends Component {
                     }
                     {this.state.travel &&
                         <div className="tabWindow">
-                            <Travel />
+                            <Travel eventId={this.props.match.params.id}/>
                         </div>
                     }
                 </div>

@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 
 class Travel extends Component {
 
-    // componentDidMount() {
-    //     this.props.dispatch({ type: 'FETCH_TRAVEL_TABLE' });
-    // }
+    componentDidMount() {
+        console.log('this.props.eventId is:',this.props.eventId)
+        this.props.dispatch({ type: 'FETCH_TRAVEL_TABLE', payload: this.props.eventId });
+    }
 
     handleInputChange = (columnName, event) => {
-        this.props.dispatch({ type:'EDIT_TRAVEL_TABLE', payload: [columnName, event.target.value ] })
+        this.props.dispatch({ type:'EDIT_TRAVEL_TABLE', payload: [columnName, event.target.value, this.props.eventId ] })
     }
 
     render() {

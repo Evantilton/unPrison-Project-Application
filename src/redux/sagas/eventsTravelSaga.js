@@ -12,8 +12,8 @@ function* editTravelTable() {
 
 function* fetchTravelTable(action) {
     try{
-        yield axios.get(`/api/events-travel/${action.payload}`);
-        yield put({ type:'SET_TRAVEL_TABLE' });
+        const response = yield axios.get(`/api/events-travel/${action.payload}`);
+        yield put({ type:'SET_TRAVEL_TABLE', payload: response.data[0] });
     } catch (error) {
         console.log('error fetching travel table', error);
     }
