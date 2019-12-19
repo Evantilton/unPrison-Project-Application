@@ -11,7 +11,7 @@ class EventListItem extends Component {
                 <td>No Confirmed Date</td>
     }
                 <td>
-                    {this.props.best_times}
+                    {this.props.event.best_times}
                 </td>
                 <td>
                     {this.props.event.venue_id}

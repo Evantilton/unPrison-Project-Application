@@ -20,21 +20,8 @@ class VenueDetails extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch({type: 'GET_ONE_VENUE', payload: this.props.match.params.id})
-        // this.props.dispatch({type:'GET_VENUES'});
-        // this.setCurrentVenue();
+        this.props.dispatch({ type: 'GET_ONE_VENUE', payload: this.props.match.params.id })
     }
-
-    // setCurrentVenue = () => {
-    //     this.props.reduxState.venueReducer.forEach(venue => {
-    //         if (venue.id == this.props.match.params.id) {
-    //             this.props.dispatch({ type: 'SET_CURRENT_VENUE', payload: venue })
-    //         } else {
-    //             console.log('this venue was not a match:', venue);
-    //         }
-            
-    //     });
-    // }
 
 
     // Conditionally renders VenueGeneral component in tabWindow
@@ -77,15 +64,15 @@ class VenueDetails extends Component {
                 <div className="venueMainWindow">
                     <div className="primaryName">
                         <h3>Primary Contact:</h3>
-                        <p>Sally Smith</p>
+                        <p>{this.props.reduxState.venueDetailsReducer.contact_name}</p>
                     </div>
                     <div className="primaryPhone">
                         <h3>Phone:</h3>
-                        <p>651-500-0875</p>
+                        <p>{this.props.reduxState.venueDetailsReducer.contact_phone}</p>
                     </div>
                     <div className="primaryEmail">
                         <h3>Primary Email:</h3>
-                        <p>chris@ferbers.us</p>
+                        <p>{this.props.reduxState.venueDetailsReducer.contact_email}</p>
                     </div>
                     <div className="venueGeneralTab" onClick={this.handleGeneralTabClick} style={this.state.generalStyle}>
                         General
