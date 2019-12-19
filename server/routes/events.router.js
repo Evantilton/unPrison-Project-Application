@@ -6,7 +6,6 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 // Database query to fetch all data from 'event' table
 router.get('/', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT * FROM "event"`;
-
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows)
@@ -15,5 +14,22 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         })
 }) // end fetch events query
+
+router.post('/', rejectUnauthenticated, (req, res) => {
+    // adds the venue id, from drop down list in events component, to event table in database
+    
+    const newEvent = req.body;
+    const queryText = `INSERT INTO event ("venue_id")
+                      VALUES ($1)`;
+    const queryValues = [
+        newEvent.venue_id, 
+    ];
+    pool.query(queryText, queryValues)
+        .then(() => { res.sendStatus(201); })
+        .catch((err) => {
+            console.log('Error completing INSERT event query', err);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;

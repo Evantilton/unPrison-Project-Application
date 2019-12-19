@@ -3,11 +3,8 @@ import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import eventsSaga from './eventsSaga';
-
 import getUsersSaga from './getUsersSaga';
-
 import venueSaga from './venueSaga';
-
 import deleteUsersSaga from './deleteUsersSaga'
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
