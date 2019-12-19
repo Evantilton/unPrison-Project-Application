@@ -4,14 +4,27 @@ import EventListItem from './EventListItem/EventListItem';
 
 class EventList extends Component {
 
-
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_EVENTS' }); // makes dispatch call to eventsSaga.js to fetch all events from database
     this.getVenues();
   }
 
   getVenues = () => {
-    this.props.dispatch({ type: 'GET_VENUES'})
+    this.props.dispatch({ type: 'GET_VENUES' })
+  }
+
+  createEventButton = () =>{
+    this.props.dispatch({ type: 'POST_EVENTS', payload: this.state})
+  }
+
+  handleChangeForVenue = propertyName => (event) => {
+    console.log(event.target.value);
+    this.setState({
+        state: {
+          ...this.state,
+            [propertyName]: event.target.value,
+        }
+    });
   }
 
   render() {
@@ -19,7 +32,8 @@ class EventList extends Component {
       <div className="eventContainer">
         <h1>Event List</h1>
         <div className="listOptions">
-          <select >
+          <select onChange={this.handleChangeForVenue('venue_id')}
+          >
             {/* Brings in names of venues previously created and their ids to use in event creation */}
           {this.props.reduxState.venueReducer.map((location) => {
                                 return (
@@ -29,7 +43,7 @@ class EventList extends Component {
             </select>
 
         
-            <button>Create Event</button>
+            <button onClick={this.createEventButton}>Create Event</button>
 
         </div>
 

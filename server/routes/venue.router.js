@@ -3,17 +3,12 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-/**
- * GET route template
- */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     // SQL Query to return all venues
     const query = `SELECT * FROM venue
     JOIN "contacts" ON "contacts"."venue_id" = "venue"."id"`;
-
     pool.query(query)
         .then((response) => {
-            console.log('SELECT ALL venues reponse', response);
             res.send(response.rows)
         })
         .catch((error) => {
@@ -21,6 +16,7 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         })
 });
+
 
 // get venue that matches param of venue-details page
 router.get('/:id', (req, res) => {
@@ -42,15 +38,12 @@ router.get('/:id', (req, res) => {
         })
 })
 
-/**
- * POST route template
- */
 router.post('/', rejectUnauthenticated, async (req, res) => {
+    // takes user inputted data from venue component and adds to venue table in database, 
+    // then returns venue id and adds it to contacts table plus the second user inputted information
     const connection = await pool.connect();
     let result;
     const newVenue = req.body;
-    
-    console.log('new venue', req.body);
     const queryText = `INSERT INTO venue ("name", "venue_type")
                       VALUES ($1, $2) RETURNING "id"`;
     const queryValues = [
@@ -59,7 +52,6 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     ];
     const queryTextContact = `INSERT INTO contacts ("venue_id", "contact_name")
                             VALUES ($1, $2)`
-
     try {
         await connection.query('BEGIN;');
         result = await connection.query(queryText,queryValues)

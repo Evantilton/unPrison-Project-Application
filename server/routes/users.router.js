@@ -2,12 +2,6 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
-// router.get('/', (req, res) => {
-
-// });
 router.get('/', (req, res) => {
   const queryText = 'SELECT "id","username" FROM "user" WHERE "is_admin" = $1';
   pool.query(queryText, [false])
@@ -19,7 +13,6 @@ router.get('/', (req, res) => {
 });
 
 router.delete('/delete/:id', (req, res) => {
-  console.log("console log", req.params.id)
   pool.query('DELETE FROM "user" WHERE "id"= $1', [req.params.id]).then((result) => {
       res.sendStatus(200);
   }).catch((error) => {
@@ -27,10 +20,5 @@ router.delete('/delete/:id', (req, res) => {
       res.sendStatus(500);
   })
 });
-
-/**
- * POST route template
- */
-
 
 module.exports = router;
