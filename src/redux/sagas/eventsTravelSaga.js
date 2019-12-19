@@ -3,14 +3,14 @@ import axios from 'axios';
 
 function* editTravelTable() {
     try {
-        yield axios.put('/api/events-travel');
+        const response = yield axios.put('/api/events-travel');
         yield put({ type:'FETCH_TRAVEL_TABLE', payload: response.data });
     } catch (error) {
         console.log('error fetching venues', error);
     }
 }
 
-function* fetchTravelTable() {
+function* fetchTravelTable(action) {
     try{
         yield axios.get(`/api/events-travel/${action.payload}`);
         yield put({ type:'SET_TRAVEL_TABLE' });

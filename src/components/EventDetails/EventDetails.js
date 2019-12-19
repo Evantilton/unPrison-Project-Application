@@ -7,6 +7,10 @@ import './EventDetails.css';
 
 class EventDetails extends Component {
 
+    componentDidMount() {
+        this.props.dispatch({ type:'FETCH_CURRENT_EVENT', payload: this.props.match.params.id })
+    }
+
     state = {
         general: true,
         financials: false,
