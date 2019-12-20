@@ -28,35 +28,35 @@ class Travel extends Component {
                         </li>
                         <li >
                             <label>Flights Booked:</label>
-                            <input type="checkbox" onChange={() => this.handleInputChange('nearest_airport')}></input>
+                            <input type="checkbox" name='flights_booked' checked={this.props.reduxState.eventsTravelReducer.flights_booked} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Flights Information:</label>
-                            <input type="text" value={this.props.reduxState.eventsTravelReducer.airport_code} onChange={() => this.handleInputChange('nearest_airport')}></input>
+                            <input type="text" name='flight_information' value={this.props.reduxState.eventsTravelReducer.flight_information} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Flights Departure:</label>
-                            <input type="date" value={this.props.reduxState.eventsTravelReducer.airport_code} onChange={() => this.handleInputChange('nearest_airport')}></input>
+                            <input type="date" name='flight_departure' value={this.props.reduxState.eventsTravelReducer.flight_departure} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Flights Return:</label>
-                            <input type="date" value={this.props.reduxState.eventsTravelReducer.airport_code} onChange={() => this.handleInputChange('nearest_airport')}></input>
+                            <input type="date" name='flight_return' value={this.props.reduxState.eventsTravelReducer.flight_return} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Hotel Booked:</label>
-                            <input type="checkbox" onChange={() => this.handleInputChange('nearest_airport')}></input>
+                            <input type="checkbox" name='hotel_booked' value={this.props.reduxState.eventsTravelReducer.hotel_booked} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Hotel Information:</label>
-                            <input type="text" value={this.props.reduxState.eventsTravelReducer.airport_code} onChange={() => this.handleInputChange('nearest_airport')}></input>
+                            <input type="text" name='hotel_information' value={this.props.reduxState.eventsTravelReducer.hotel_information} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Car Booked:</label>
-                            <input type="checkbox" onChange={() => this.handleInputChange('nearest_airport')}></input>
+                            <input type="checkbox" name='car_booked' value={this.props.reduxState.eventsTravelReducer.car_booked} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Car Information:</label>
-                            <input type="text" value={this.props.reduxState.eventsTravelReducer.airport_code} onChange={() => this.handleInputChange('nearest_airport')}></input>
+                            <input type="text" name='car_information' value={this.props.reduxState.eventsTravelReducer.car_information} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Travel Notes:</label>
