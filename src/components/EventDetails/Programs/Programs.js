@@ -145,30 +145,31 @@ class Programs extends Component {
                 <h1>Public Event Information (public event only)</h1>
                 <li >
                     <label>Bio Sent: </label>
-                    <select>
+                    <select name='bio_sent' value={this.props.reduxState.eventsProgramsReducer.bio_sent} onChange={(event) => this.handleInputChange(event)}>
                         <option value="false">no</option>
                         <option value="true">yes</option>
                     </select>
                 </li>
                 <li >
                     <label>Date Emailed:</label>
-                    <input type="date"></input>
+                    <input type="date" name='public_event_date_emailed' value={this.props.reduxState.eventsProgramsReducer.public_event_date_emailed} onChange={(event) => this.handleInputChange(event)}></input>
                 </li>
                 <li >
                     <label>Questionnaire Sent:</label>
-                    <input type="date"></input>
+                    <input type="date" name='public_questionnaire_sent' value={this.props.reduxState.eventsProgramsReducer.public_questionnaire_sent} onChange={(event) => this.handleInputChange(event)}></input>
                 </li>
                 <li >
                     <label>Questionnaire Returned:</label>
-                    <input type="date"></input>
+                    <input type="date" name='public_questionnaire_returned' value={this.props.reduxState.eventsProgramsReducer.public_questionnaire_returned onChange={(event) => this.handleInputChange(event)}></input>
                 </li>
                 <li >
                     <label>Other Information:</label>
-                    <input type="text"></input>
+                    <input type="text" name='other_information' value={this.props.reduxState.eventsProgramsReducer.other_information} onChange={(event) => this.handleInputChange(event)}></input>
+
                 </li>
                 <li >
                     <label>Book Signing:</label>
-                    <select>
+                    <select name='other_information' value={this.props.reduxState.eventsProgramsReducer.other_information} onChange={(event) => this.handleInputChange(event)}></input>
                         <option value="false">no</option>
                         <option value="true">yes</option>
                     </select>
