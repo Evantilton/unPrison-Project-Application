@@ -120,7 +120,6 @@ class VenueList extends Component {
           <thead>
             <tr>
               <th>Venue</th>
-              <th>Venue Address</th>
               <th>Primary Contact</th>
               <th>Primary Contact Phone Number</th>
             </tr>
