@@ -35,7 +35,7 @@ class VenueList extends Component {
       contact: {
         contact_name: "",
       }
-    })
+    });
   }
 
   handleVenueInput = (event) => {
@@ -75,7 +75,6 @@ class VenueList extends Component {
         <h1>Venue List</h1>
         <div className="listOptions">
         
-
             <div>
               <input value={this.state.venue.name} onChange={this.handleVenueInput} placeholder="Venue Name" />
               <input value={this.state.contact.contact_name} onChange={this.handleContactInput} placeholder="Contact" />
@@ -91,7 +90,7 @@ class VenueList extends Component {
               <button onClick={this.newVenueAdded}>Create Venue</button>
             </div>
 
-
+<div align="right">
           <select>
             {/* Use a sort table function? */}
             <option>Order By</option>
@@ -100,7 +99,7 @@ class VenueList extends Component {
             <option value="school">School</option>
             <option value="other">Other</option>
           </select>
-
+</div>
 
         </div>
 
