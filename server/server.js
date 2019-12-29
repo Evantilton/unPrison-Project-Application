@@ -14,7 +14,7 @@ const eventsRouter = require('./routes/events.router');
 const usersRouter = require('./routes/users.router');
 const venueRouter = require('./routes/venue.router');
 const eventsTravelRouter = require('./routes/eventsTravel.router');
-
+const eventsFinancialsRouter = require('./routes/eventsFinancials.router');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,6 +30,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/events', eventsRouter);
 app.use('/api/events-travel', eventsTravelRouter);
+app.use('/api/events-financials', eventsFinancialsRouter);
 app.use('/users',  usersRouter);
 app.use('/api/venue', venueRouter);
 

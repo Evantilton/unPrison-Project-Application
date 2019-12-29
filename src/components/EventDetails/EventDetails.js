@@ -85,17 +85,17 @@ class EventDetails extends Component {
                     </div>
                     {this.state.general &&
                         <div className="tabWindow">
-                            <General />
+                            <General eventId={this.props.match.params.id}/>
                         </div>
                     }
                     {this.state.financials &&
                         <div className="tabWindow">
-                            <Financials />
+                            <Financials eventId={this.props.match.params.id}/>
                         </div>
                     }
                     {this.state.programs &&
                         <div className="tabWindow">
-                            <Programs />
+                            <Programs eventId={this.props.match.params.id}/>
                         </div>
                     }
                     {this.state.travel &&

@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import eventsSaga from './eventsSaga';
 import venueSaga from './venueSaga';
 import eventsTravelSaga from './eventsTravelSaga';
+import eventsFinancialsSaga from './eventsFinancialsSaga';
 import getUsersSaga from './getUsersSaga';
 import eventDetailsSaga from './eventDetailsSaga';
 import venueDetailsSaga from './venueDetailsSaga';
@@ -26,6 +27,7 @@ export default function* rootSaga() {
     venueSaga(),
     eventDetailsSaga(),
     eventsTravelSaga(),
+    eventsFinancialsSaga(),
     venueDetailsSaga(),
     deleteUsersSaga()
 

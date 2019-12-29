@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class VenueGeneral extends Component {
+
+    handleDeleteButtonClick = (venueId) => {
+        this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
+    }
+
     render() {
         return (
             <div>
                 <h3>Venue Details</h3>
                     <ul className="nobullet">
                         <li>
-                        <button className="tabButtonPosition">Delete Venue</button><button className="tabButtonPosition">Save Changes</button>
+                        <button className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</button>
+                        <button className="tabButtonPosition">Save Changes</button>
                         </li>
                         <li>
                             <label>Venue Type:</label>
@@ -67,4 +74,8 @@ class VenueGeneral extends Component {
     }
 }
 
-export default VenueGeneral;
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
+
+export default connect(mapStateToProps)(VenueGeneral);
