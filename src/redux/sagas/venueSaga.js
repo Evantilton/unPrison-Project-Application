@@ -19,6 +19,7 @@ function* createVenue(action){
 function* getVenues() {
     try {
         const venuesResponse = yield axios.get('/api/venue');
+        console.log('in getVenues saga, response to GET is:', venuesResponse.data);
         yield put({ type: 'SET_VENUES', payload: venuesResponse.data });
     } catch (error) {
         console.log('error fetching venues', error);

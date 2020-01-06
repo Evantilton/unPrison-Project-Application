@@ -24,10 +24,7 @@ class EventList extends Component {
   handleChangeForVenue = propertyName => (event) => {
     console.log(event.target.value);
     this.setState({
-        state: {
-          ...this.state,
             [propertyName]: event.target.value,
-        }
     });
   }
 

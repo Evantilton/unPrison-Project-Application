@@ -5,6 +5,8 @@ import user from './userReducer';
 import eventsReducer from './eventsReducer';
 import eventsTravelReducer from './eventsTravelReducer';
 import eventsFinancialsReducer from './eventsFinancialsReducer';
+import eventsProgramsReducer from './eventsProgramsReducer';
+import eventsGeneralReducer from './eventsGeneralReducer';
 import venueReducer from './venueReducer';
 import eventDetailsReducer from './eventDetailsReducer';
 import venueDetailsReducer from './venueDetailsReducer';
@@ -23,7 +25,9 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   venueReducer,
   eventsTravelReducer,
+  eventsProgramsReducer,
   eventsFinancialsReducer,
+  eventsGeneralReducer,
   eventDetailsReducer,
   venueReducer,
   venueDetailsReducer,

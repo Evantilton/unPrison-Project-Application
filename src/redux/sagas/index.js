@@ -6,6 +6,8 @@ import eventsSaga from './eventsSaga';
 import venueSaga from './venueSaga';
 import eventsTravelSaga from './eventsTravelSaga';
 import eventsFinancialsSaga from './eventsFinancialsSaga';
+import eventsProgramsSaga from './eventsProgramsSaga';
+import eventsGeneralSaga from './eventsGeneralSaga';
 import getUsersSaga from './getUsersSaga';
 import eventDetailsSaga from './eventDetailsSaga';
 import venueDetailsSaga from './venueDetailsSaga';
@@ -28,10 +30,12 @@ export default function* rootSaga() {
     venueSaga(),
     eventDetailsSaga(),
     eventsTravelSaga(),
+    eventsGeneralSaga(),
+    eventsProgramsSaga(),
     eventsFinancialsSaga(),
     venueDetailsSaga(),
     deleteUsersSaga(),
     eventsListForVenuesTabSaga()
-
+    deleteUsersSaga()
   ]);
 }

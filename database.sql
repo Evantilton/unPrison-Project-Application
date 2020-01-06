@@ -31,7 +31,7 @@ CREATE TABLE "venue" (
   "state" VARCHAR(255),
   "country" VARCHAR(255),
   "zip" VARCHAR(255),
-  "venue_type" VARCHAR (100),
+  "venue_type" VARCHAR (100)
 );
 
 CREATE TABLE "contacts" (
