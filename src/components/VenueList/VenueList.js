@@ -8,7 +8,6 @@ import VenueListItem from './VenueListItem/VenueListItem';
 class VenueList extends Component {
 
   state = {
-    addVenueButton: false,
     venue: {
       name: "",
       venue_type: "",
@@ -23,28 +22,24 @@ class VenueList extends Component {
     this.props.dispatch({ type: 'GET_VENUES'})
   }
 
-  createVenue = () => {
-    // when Add Venue button is clicked, conditionally renders more inputs and buttons onto the DOM
-    console.log('Add New Venue');
-    this.setState({
-      addVenueButton: true
-    })
-  }
-
-  removeFields = () => {
-    // when Create Venue button is clicked, removes conditionally rendered inputs and buttons from the DOM
+  newVenueAdded = () => {
     // will add new Venue to database
     console.log('Creating venue');
     this.props.dispatch({ type: 'POST_VENUE', payload: this.state })
     // this.props.dispatch({ type: 'POST_CONTACT', payload: this.state.contact })
     this.setState({
-      addVenueButton: false
-    })
+      venue: {
+        name: "",
+        venue_type: "",
+      },
+      contact: {
+        contact_name: "",
+      }
+    });
   }
 
   handleVenueInput = (event) => {
     // captures user input for venue name in state
-    console.log('Venue input',  event.target.value);
     this.setState({
       venue: {
         ...this.state.venue,
@@ -55,7 +50,6 @@ class VenueList extends Component {
 
   handleContactInput = (event) => {
     // captures user input for contact name in state
-    console.log('Contact input', event.target.value);
     this.setState({
       contact: {
         ...this.state.contact,
@@ -66,7 +60,6 @@ class VenueList extends Component {
 
   handleDropDown = propertyName => (event) => {
     // captures user input for venue type in state
-    console.log('Drop Down', event.target.value);
     this.setState({
       venue: {
         ...this.state.venue,
@@ -81,8 +74,7 @@ class VenueList extends Component {
       <div className="venueContainer">
         <h1>Venue List</h1>
         <div className="listOptions">
-          {this.state.addVenueButton ?
-
+        
             <div>
               <input value={this.state.venue.name} onChange={this.handleVenueInput} placeholder="Venue Name" />
               <input value={this.state.contact.contact_name} onChange={this.handleContactInput} placeholder="Contact" />
@@ -95,13 +87,10 @@ class VenueList extends Component {
                 <option value="school">School</option>
                 <option value="other">Other</option>
               </select>
-              <button onClick={this.removeFields}>Create Venue</button>
-            </div> :
-            <button onClick={this.createVenue}>Add Venue</button>
-          }
+              <button onClick={this.newVenueAdded}>Create Venue</button>
+            </div>
 
-
-
+<div align="right">
           <select>
             {/* Use a sort table function? */}
             <option>Order By</option>
@@ -110,7 +99,7 @@ class VenueList extends Component {
             <option value="school">School</option>
             <option value="other">Other</option>
           </select>
-
+</div>
 
         </div>
 
@@ -120,7 +109,6 @@ class VenueList extends Component {
           <thead>
             <tr>
               <th>Venue</th>
-              <th>Venue Address</th>
               <th>Primary Contact</th>
               <th>Primary Contact Phone Number</th>
             </tr>
