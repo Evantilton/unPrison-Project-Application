@@ -16,22 +16,50 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 }) // end fetch events query
 
 
-router.post('/', rejectUnauthenticated, (req, res) => {
+router.post('/', rejectUnauthenticated, async (req, res) => {
     // adds the venue id, from drop down list in events component, to event table in database
     
     const newEvent = req.body;
     const queryText = `INSERT INTO event ("venue_id")
-                      VALUES ($1)`;
+                      VALUES ($1)
+                      RETURNING "id"`;
     const queryValues = [
         newEvent.venue_id, 
     ];
-    pool.query(queryText, queryValues)
-        .then(() => { res.sendStatus(201); })
-        .catch((err) => {
-            console.log('Error completing INSERT event query', err);
-            res.sendStatus(500);
-        });
+
+    try {
+        await connection.query('BEGIN;');
+        result = await connection.query(queryText,queryValues);
+        eventId = [result.rows[0]];
+        console.log('eventId in events.router.js post route is:', eventId);
+        travelQueryText = `INSERT INTO "travel" ("event_id")
+        VALUES ($1)`;
+        await connection.query(travelQueryText, eventId);
+        publicEventQueryText = `INSERT INTO "public_event" ("event_id")
+        VALUES ($1)`;
+        await connection.query(publicEventQueryText, eventId);
+        financialsQueryText = `INSERT INTO "financials" ("event_id")
+        VALUES ($1)`;
+        await connection.query(financialsQueryText, eventId);
+        readingGlassesQueryText = `INSERT INTO "reading_glasses" ("event_id")
+        VALUES ($1)`;
+        await connection.query(readingGlassesQueryText, eventId);
+        childrensBooksQueryText = `INSERT INTO "childrens_books" ("event_id")
+        VALUES ($1)`;
+        await connection.query(childrensBooksQueryText, eventId);
+
+        await connection.query('COMMIT;');
+        console.log('reached commit without error');
+        
+        res.sendStatus(201);
+    } catch (error ){
+        await connection.query('ROLLBACK;');
+        res.sendStatus(500);
+    } finally {
+        connection.release();
+    }
 });
+
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT * FROM "event"
