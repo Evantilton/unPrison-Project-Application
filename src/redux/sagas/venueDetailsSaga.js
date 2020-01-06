@@ -10,7 +10,7 @@ function* getDetailsVenue(action){
     console.log('details saga', action);
     
     try {
-        const venueDetailsResponse = yield axios.get(`/api/venue/${action.payload}`);
+        const venueDetailsResponse = yield axios.get(`/api/venue/one/${action.payload}`);
         yield put({type: 'SET_VENUE_DETAILS', payload: venueDetailsResponse.data[0]})
     } catch (error) {
         console.log('error getting venue details', error);  

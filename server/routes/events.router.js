@@ -16,21 +16,21 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 }) // end fetch events query
 
 
-router.post('/', rejectUnauthenticated, async (req, res) => {
+router.post('/add', rejectUnauthenticated, async (req, res) => {
     // adds the venue id, from drop down list in events component, to event table in database
+    console.log('in events.router req.body is:', req.body);
     
-    const newEvent = req.body;
-    const queryText = `INSERT INTO event ("venue_id")
-                      VALUES ($1)
-                      RETURNING "id"`;
-    const queryValues = [
-        newEvent.venue_id, 
-    ];
+    const connection = await pool.connect();
 
     try {
         await connection.query('BEGIN;');
-        result = await connection.query(queryText,queryValues);
-        eventId = [result.rows[0]];
+
+        const queryText = `INSERT INTO event ("venue_id")
+                      VALUES ($1)
+                      RETURNING "id"`;
+
+        result = await connection.query(queryText,[req.body.venue_id]);
+        eventId = [result.rows[0].id];
         console.log('eventId in events.router.js post route is:', eventId);
         travelQueryText = `INSERT INTO "travel" ("event_id")
         VALUES ($1)`;
