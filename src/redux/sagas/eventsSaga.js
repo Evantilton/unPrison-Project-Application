@@ -20,7 +20,8 @@ function* fetchEvents() {
 function* addEvents(action){
     //sends inputted user value from Event component to server side post route
     try {
-        yield axios.post('/api/events', action.payload.state);
+        console.log('action in addEvents Saga:', action);
+        yield axios.post('/api/events/add', action.payload);
         yield put({ type: 'FETCH_EVENTS', payload: action.payload })
     } catch (error) {
         console.log('error posting event', error);  
