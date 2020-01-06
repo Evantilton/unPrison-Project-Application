@@ -35,7 +35,7 @@ export default function* rootSaga() {
     eventsFinancialsSaga(),
     venueDetailsSaga(),
     deleteUsersSaga(),
-    eventsListForVenuesTabSaga()
+    eventsListForVenuesTabSaga(),
     deleteUsersSaga()
   ]);
 }
