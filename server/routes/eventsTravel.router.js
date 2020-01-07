@@ -16,17 +16,34 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         })
 }) // end fetch travel query
 
-router.put('/edit', rejectUnauthenticated, (req, res) => {
+router.put('/save', rejectUnauthenticated, (req, res) => {
     const queryText = `UPDATE "travel"
-    SET $1 = $2
-    WHERE "event_id" = $3`
+    SET "nearest_airport" = $1
+    "airport_code" = $2
+    "flights_booked" = $3
+    "flight_information" = $4
+    "flight_departure" = $5
+    "flight_return" = $6
+    "hotel_booked" = $7
+    "hotel_information" = $8
+    "car_booked" = $9
+    "car_information" = $10
+    WHERE "event_id" = $11`
     const queryValues = [
-        req.body[0],
-        req.body[1],
-        req.body[2]
+        req.body.nearest_airport,
+        req.body.airport_code,
+        req.body.flights_booked,
+        req.body.flight_information,
+        req.body.flight_departure,
+        req.body.flight_return,
+        req.body.hotel_booked,
+        req.body.hotel_information,
+        req.body.car_booked,
+        req.body.car_information,
+        req.body.event_id
     ]
     pool.query(queryText, queryValues)
-        .then((result) => {
+        .then(() => {
             res.sendStatus(200);
         })
         .catch((error) => {
