@@ -34,6 +34,7 @@ const rootReducer = combineReducers({
   eventsReducer, // data from events table in database
   allUsers,
   eventsListForVenuesTabReducer, // this is all the users
+
 });
 
 export default rootReducer;
