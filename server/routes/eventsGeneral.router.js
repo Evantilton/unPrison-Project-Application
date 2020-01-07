@@ -5,7 +5,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT * FROM "event"
-    WHERE "event_id" = $1`;
+    WHERE "id" = $1`;
     console.log('get in eventsPrograms.router was hit, req.params.id:', req.params.id);
     pool.query(queryText, [req.params.id])
         .then((result) => {

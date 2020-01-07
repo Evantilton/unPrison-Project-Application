@@ -136,7 +136,7 @@ CREATE TABLE "financials" (
   "event_id" INT NOT NULL,
   "prison_contribution" NUMERIC,
   "public_event_fee_paid" NUMERIC,
-  "Public_event_donations" NUMERIC,
+  "public_event_donations" NUMERIC,
   "expenses_travel" NUMERIC,
   "expenses_air" NUMERIC,
   "expenses_hotel" NUMERIC,
