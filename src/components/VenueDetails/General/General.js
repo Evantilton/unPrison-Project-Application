@@ -14,13 +14,17 @@ class VenueGeneral extends Component {
         this.props.dispatch({ type:'SET_EXISTING_VENUES_GENERAL', payload: { value: event.target.value, property: event.target.name } })
     }
 
+    handleSaveChangesButtonClick = () => {
+        this.props.dispatch({ type: 'SAVE_VENUES_GENERAL', payload: this.props.reduxState.venueDetailsReducer});
+    }
+
     render() {
         return (
             <div>
                 <h3>Venue Details</h3>
                     <ul className="nobullet">
                         <li>
-                        <button className="tabButtonPosition">Delete Venue</button><button className="tabButtonPosition">Save Changes</button>
+                        <button className="tabButtonPosition">Delete Venue</button><button className="tabButtonPosition" onClick = {this.handleSaveChangesButtonClick}>Save Changes</button>
                         </li>
                         <li>
                             <label>Venue Type:</label>

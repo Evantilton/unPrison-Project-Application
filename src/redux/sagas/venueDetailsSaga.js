@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function* venueDetailsSaga() {
     yield takeLatest('GET_ONE_VENUE', getDetailsVenue);
+    yield takeLatest('SAVE_VENUES_GENERAL', saveVenueDetailsGeneral);
 }
 
 function* getDetailsVenue(action){
@@ -15,6 +16,18 @@ function* getDetailsVenue(action){
     } catch (error) {
         console.log('error getting venue details', error);  
     }
+}
+
+function* saveVenueDetailsGeneral(action) {
+    console.log('save venue details reducer', action);
+
+    try {
+        yield axios.put('/api/venue/save');
+    } catch (error) {
+        console.log('error saving venue details and general tab', error);
+        
+    }
+    
 }
 
 export default venueDetailsSaga;
