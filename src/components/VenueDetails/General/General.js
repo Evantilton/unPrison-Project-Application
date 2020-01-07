@@ -20,7 +20,8 @@ class VenueGeneral extends Component {
                 <h3>Venue Details</h3>
                     <ul className="nobullet">
                         <li>
-                        <button className="tabButtonPosition">Delete Venue</button><button className="tabButtonPosition">Save Changes</button>
+                        <button className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</button>
+                        <button className="tabButtonPosition">Save Changes</button>
                         </li>
                         <li>
                             <label>Venue Type:</label>
@@ -88,4 +89,8 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
+<<<<<<< HEAD
+export default connect(mapStateToProps)(VenueGeneral);
+=======
 export default withRouter(connect(mapStateToProps)(VenueGeneral));
+>>>>>>> master

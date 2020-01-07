@@ -173,3 +173,36 @@ ALTER TABLE "public_event" ADD FOREIGN KEY ("event_id") REFERENCES "event" ("id"
 ALTER TABLE "financials" ADD FOREIGN KEY ("event_id") REFERENCES "event" ("id");
 
 ALTER TABLE "notes" ADD FOREIGN KEY ("event_id") REFERENCES "event" ("id");
+
+ALTER TABLE "public"."childrens_books"
+  DROP CONSTRAINT "childrens_books_event_id_fkey",
+  ADD CONSTRAINT "childrens_books_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
+
+ALTER TABLE "public"."contacts"
+  DROP CONSTRAINT "contacts_venue_id_fkey",
+  ADD CONSTRAINT "contacts_venue_id_fkey" FOREIGN KEY ("venue_id") REFERENCES "public"."venue"("id") ON DELETE CASCADE;
+
+ALTER TABLE "public"."event"
+  DROP CONSTRAINT "event_venue_id_fkey",
+  ADD CONSTRAINT "event_venue_id_fkey" FOREIGN KEY ("venue_id") REFERENCES "public"."venue"("id") ON DELETE CASCADE;
+
+ALTER TABLE "public"."financials"
+  DROP CONSTRAINT "financials_event_id_fkey",
+  ADD CONSTRAINT "financials_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
+
+ALTER TABLE "public"."notes"
+  DROP CONSTRAINT "notes_event_id_fkey",
+  ADD CONSTRAINT "notes_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
+
+ALTER TABLE "public"."public_event"
+  DROP CONSTRAINT "public_event_event_id_fkey",
+  ADD CONSTRAINT "public_event_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
+
+ALTER TABLE "public"."reading_glasses"
+  DROP CONSTRAINT "reading_glasses_event_id_fkey",
+  ADD CONSTRAINT "reading_glasses_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
+
+ALTER TABLE "public"."travel"
+  DROP CONSTRAINT "travel_event_id_fkey",
+  ADD CONSTRAINT "travel_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
+

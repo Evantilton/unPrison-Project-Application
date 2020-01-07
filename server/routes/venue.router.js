@@ -85,4 +85,9 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     }
 });
 
+// router.delete('/delete/:id', rejectUnauthenticated (req, res) => {
+//     const queryText = `DELETE FROM "venue"`
+
+// })
+
 module.exports = router;
