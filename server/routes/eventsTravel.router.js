@@ -17,16 +17,17 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 }) // end fetch travel query
 
 router.put('/save', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in eventsTravel.router /save is:', req.body);
     const queryText = `UPDATE "travel"
-    SET "nearest_airport" = $1
-    "airport_code" = $2
-    "flights_booked" = $3
-    "flight_information" = $4
-    "flight_departure" = $5
-    "flight_return" = $6
-    "hotel_booked" = $7
-    "hotel_information" = $8
-    "car_booked" = $9
+    SET "nearest_airport" = $1,
+    "airport_code" = $2,
+    "flights_booked" = $3,
+    "flight_information" = $4,
+    "flight_departure" = $5,
+    "flight_return" = $6,
+    "hotel_booked" = $7,
+    "hotel_information" = $8,
+    "car_booked" = $9,
     "car_information" = $10
     WHERE "event_id" = $11`
     const queryValues = [
