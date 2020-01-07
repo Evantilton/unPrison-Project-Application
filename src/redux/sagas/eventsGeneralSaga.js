@@ -1,12 +1,11 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* editGeneralTable(action) {
+function* saveGeneralTable(action) {
     try {
-        const response = yield axios.put('/api/events-general/edit', action.payload );
-        yield put({ type:'FETCH_GENERAL_TABLE', payload: response.data });
+        yield axios.put('/api/events-general/save', action.payload );
     } catch (error) {
-        console.log('error fetching general', error);
+        console.log('error saving ', error);
     }
 }
 
@@ -20,7 +19,7 @@ function* fetchGeneralTable(action) {
 }
 
 function* eventsGeneralSaga() {
-    yield takeLatest('EDIT_GENERAL_TABLE', editGeneralTable); 
+    yield takeLatest('SAVE_EVENTS_GENERAL', saveGeneralTable); 
     yield takeLatest('FETCH_GENERAL_TABLE', fetchGeneralTable);
 }
 

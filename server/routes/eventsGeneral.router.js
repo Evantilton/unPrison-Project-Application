@@ -16,17 +16,47 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         })
 }) // end fetch General query
 
-router.put('/edit', rejectUnauthenticated, (req, res) => {
+router.put('/save', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in eventsGeneral.router /save is:', req.body);
     const queryText = `UPDATE "event"
-    SET $1 = $2
-    WHERE "event_id" = $3`
+    SET 
+    "last_date_contacted"=$1,
+    "best_days_week"=$2, 
+    "best_times"=$3, 
+    "proposed_month"=$4, 
+    "proposed_dates"=$5, 
+    "confirmed_date"=$6, 
+    "desired_focus"=$7, 
+    "total_count"=$8, 
+    "expected_attendance"=$9, 
+    "room_location"=$10, 
+    "actual_attendance"=$11, 
+    "demographics"=$12, 
+    "flyer_mailed"=$13, 
+    "flyer_mailed_date"=$14, 
+    "hear_about"=$15 
+
+    WHERE "id" = $16`
     const queryValues = [
-        req.body[0],
-        req.body[1],
-        req.body[2]
+        req.body.last_date_contacted, 
+        req.body.best_days_week,
+        req.body.best_times,
+        req.body.proposed_month,
+        req.body.proposed_dates,
+        req.body.confirmed_date,
+        req.body.desired_focus,
+        req.body.total_count,
+        req.body.expected_attendance,
+        req.body.room_location,
+        req.body.actual_attendance,
+        req.body.demographics,
+        req.body.flyer_mailed,
+        req.body.flyer_mailed_date,
+        req.body.hear_about,
+        req.body.id
     ]
     pool.query(queryText, queryValues)
-        .then((result) => {
+        .then(() => {
             res.sendStatus(200);
         })
         .catch((error) => {
@@ -35,8 +65,5 @@ router.put('/edit', rejectUnauthenticated, (req, res) => {
         })
 
 })
-
-
-
 
 module.exports = router;
