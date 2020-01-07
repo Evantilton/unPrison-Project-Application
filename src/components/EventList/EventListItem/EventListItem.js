@@ -6,7 +6,7 @@ import moment from 'moment'; // imports moment.js to format dates correctly
 class EventListItem extends Component {
 
     goToEventDetails = () => {
-        this.props.history.push(`event-details/${this.props.event.id}`);
+        this.props.history.push(`/event-details/${this.props.event.id}`);
     }
 
     render() {

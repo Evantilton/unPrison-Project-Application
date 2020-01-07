@@ -9,6 +9,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     JOIN "contacts" ON "contacts"."venue_id" = "venue"."id"`;
     pool.query(query)
         .then((response) => {
+            console.log('from venue.router.js response to GET route:', response.rows);
             res.send(response.rows)
         })
         .catch((error) => {
@@ -19,7 +20,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 
 // get venue that matches param of venue-details page
-router.get('/:id', rejectUnauthenticated, (req, res) => {
+router.get('/one/:id', rejectUnauthenticated, (req, res) => {
     console.log('venue details', req.params);
     const queryText = `
                 SELECT * FROM venue 
@@ -34,6 +35,21 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
             
         }). catch((error) => {
             console.log('Error in GET venue details', error);
+            res.sendStatus(500);
+        })
+})
+
+router.get('/events-tab/:id', rejectUnauthenticated, (req, res) => {
+    console.log('events list in venues tab', req.params);
+    const queryText = `
+                SELECT * FROM event
+                WHERE venue_id = $1;`;
+    pool.query(queryText, [req.params.id])
+        .then((result) => {
+            res.send(result.rows);
+            console.log(result.rows);   
+        }).catch((error) => {
+            console.log('Error in GET events for one venue', error);
             res.sendStatus(500);
         })
 })

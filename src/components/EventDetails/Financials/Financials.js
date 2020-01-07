@@ -73,7 +73,7 @@ class Financials extends Component {
                         </li>
                         <li >
                             <label>Staffing/consultants:</label>
-                            <input type="number" name='expenses_staffing_consultants' value={this.props.reduxState.eventsFinancialsReducer.expenses_prep_time_costs} onChange={(event) => this.handleInputChange(event)}></input>
+                            <input type="number" name='expenses_staffing_consultants' value={this.props.reduxState.eventsFinancialsReducer.expenses_staffing_consultants} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
                             <label>Total Other:</label>

@@ -1,12 +1,11 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* editTravelTable(action) {
+function* saveTravelTable(action) {
     try {
-        const response = yield axios.put('/api/events-travel/edit', action.payload );
-        yield put({ type:'FETCH_TRAVEL_TABLE', payload: response.data });
+        yield axios.put('/api/events-travel/save', action.payload );
     } catch (error) {
-        console.log('error fetching venues', error);
+        console.log('error saving ', error);
     }
 }
 
@@ -20,7 +19,7 @@ function* fetchTravelTable(action) {
 }
 
 function* eventsTravelSaga() {
-    yield takeLatest('EDIT_TRAVEL_TABLE', editTravelTable); 
+    yield takeLatest('SAVE_EVENTS_TRAVEL', saveTravelTable); 
     yield takeLatest('FETCH_TRAVEL_TABLE', fetchTravelTable);
 }
 
