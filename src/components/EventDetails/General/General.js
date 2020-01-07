@@ -21,7 +21,7 @@ class General extends Component {
    
                         <li >
                             <label>Date Last Contacted:</label>
-                            <input type="date" name='date_last_contacted' value={this.props.reduxState.eventsGeneralReducer.date_last_contacted} onChange={(event) => this.handleInputChange(event)}></input>
+                            <input type="date" name='last_date_contacted' value={this.props.reduxState.eventsGeneralReducer.last_date_contacted} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li>
                             <label>Best Day of Week:</label>
@@ -67,10 +67,13 @@ class General extends Component {
                             <label>Demographics:</label>
                             <input type="text" name='demographics' value={this.props.reduxState.eventsGeneralReducer.demographics} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
-                        <li>
-                            <label>Flyer Mailed:</label>
-                            <input type="checkbox" name='flyer_mailed' value={this.props.reduxState.eventsGeneralReducer.flyer_mailed} onChange={(event) => this.handleInputChange(event)}></input>
-                        </li>
+                        <li >
+                        <label>Flyer Mailed:</label>
+                        <select name='flyer_mailed' value={this.props.reduxState.eventsGeneralReducer.flyer_mailed} onChange={(event) => this.handleInputChange(event)}>
+                            <option value="false">no</option>
+                            <option value="true">yes</option>
+                        </select>
+                    </li>
                         <li>
                             <label>Flyer Mailed Date:</label>
                             <input type="date" name='flyer_mailed_date' value={this.props.reduxState.eventsGeneralReducer.flyer_mailed_date} onChange={(event) => this.handleInputChange(event)}></input>

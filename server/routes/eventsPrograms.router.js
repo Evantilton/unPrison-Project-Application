@@ -4,8 +4,59 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware'); // Sends user 403 status if they are not logged in
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-    const queryText = `SELECT * FROM "childrens_books"
-    WHERE "event_id" = $1`;
+    const queryText = 
+    // `SELECT * FROM "childrens_books"
+    // WHERE "event_id" = $1`;
+
+    `SELECT
+    "public_event"."event_id",
+    "public_event"."id",
+    "public_event"."bio_sent",
+    "public_event"."public_event_date_emailed",
+    "public_event"."public_questionnaire_sent",
+    "public_event"."date_questionaire_sent",
+    "public_event"."date_questionaire_returned",
+    "public_event"."other_information",
+    "public_event"."book_signing", 
+    "public_event"."book_sales",
+    "public_event"."total_prison_baby_needed",
+    "public_event"."who_orders_books", 
+    "public_event"."books_carryon", 
+    "public_event"."books_shipped",
+    
+    "reading_glasses"."glasses_participating", 
+    "reading_glasses"."est_number_partipating",
+    "reading_glasses"."est_population_over_forty", 
+    "reading_glasses"."number_glasses_donated", 
+    "reading_glasses"."number_glasses_shipped", 
+    "reading_glasses"."number_glasses_delivered", 
+    "reading_glasses"."date_glasses_shipped", 
+    "reading_glasses"."date_glasses_delivered",
+    "reading_glasses"."received_form", 
+    "reading_glasses"."glasses_one_half",
+    "reading_glasses"."glasses_two", 
+    "reading_glasses"."glasses_two_half", 
+    "reading_glasses"."glasses_three",
+    
+    
+    "childrens_books"."books_participating", 
+    "childrens_books"."average_age_range", 
+    "childrens_books"."child_form_sent", 
+    "childrens_books"."child_form_date_emailed", 
+    "childrens_books"."child_form_date_returned", 
+    "childrens_books"."total_mothers_participating", 
+    "childrens_books"."total_children_participating", 
+    "childrens_books"."total_books_needed", 
+    "childrens_books"."books_carryon", 
+    "childrens_books"."books_shipped", 
+    "childrens_books"."program_completed",
+    "childrens_books"."prison_prison_baby_donation" 
+      
+       
+     FROM "public_event"
+            INNER JOIN "reading_glasses" ON "reading_glasses"."event_id" = 1
+            INNER JOIN "childrens_books" ON "childrens_books"."event_id" = 1
+            WHERE "public_event"."event_id" = $1;`
     console.log('get in eventsPrograms.router was hit, req.params.id:', req.params.id);
     pool.query(queryText, [req.params.id])
         .then((result) => {
