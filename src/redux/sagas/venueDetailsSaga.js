@@ -20,9 +20,9 @@ function* getDetailsVenue(action){
 
 function* saveVenueDetailsGeneral(action) {
     console.log('save venue details reducer', action);
-
     try {
-        yield axios.put('/api/venue/save');
+        yield axios.put('/api/venue/save-contacts', action.payload);
+        yield axios.put('/api/venue/save-venue', action.payload);
     } catch (error) {
         console.log('error saving venue details and general tab', error);
         
