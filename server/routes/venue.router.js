@@ -143,4 +143,10 @@ router.put('/save-venue', rejectUnauthenticated, (req, res) => {
     })
 })
 
+// router.delete('/delete/:id', rejectUnauthenticated (req, res) => {
+//     const queryText = `DELETE FROM "venue"`
+
+// })
+
+
 module.exports = router;
