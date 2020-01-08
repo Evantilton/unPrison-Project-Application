@@ -52,12 +52,13 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
       
        
      FROM "public_event"
-            INNER JOIN "reading_glasses" ON "reading_glasses"."event_id" = 1
-            INNER JOIN "childrens_books" ON "childrens_books"."event_id" = 1
+            INNER JOIN "reading_glasses" ON "reading_glasses"."event_id" = $1
+            INNER JOIN "childrens_books" ON "childrens_books"."event_id" = $1
             WHERE "public_event"."event_id" = $1;`
     console.log('get in eventsPrograms.router was hit, req.params.id:', req.params.id);
     pool.query(queryText, [req.params.id])
         .then((result) => {
+            console.log(result.rows)
             res.send(result.rows)
         })
         .catch(() => {
@@ -68,7 +69,8 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 router.put('/reading_glasses', rejectUnauthenticated, (req, res) => {
     console.log('req.body in eventsPrograms.router /reading_glasses is:', req.body);
     const queryText = `UPDATE "reading_glasses"
-    SET "glasses_participating"= $1,
+    SET 
+    "glasses_participating"= $1,
     "est_number_partipating"= $2,
     "est_population_over_forty"= $3,
     "number_glasses_donated"= $4,
@@ -84,23 +86,24 @@ router.put('/reading_glasses', rejectUnauthenticated, (req, res) => {
     
     WHERE "event_id"= $14`
     const queryValues = [
-        req.body.glasses_participating,
-        req.body.est_number_partipating,
-        req.body.est_population_over_forty,
-        req.body.number_glasses_donated,
-        req.body.number_glasses_shipped,
-        req.body.number_glasses_delivered,
-        req.body.date_glasses_shipped,
-        req.body.date_glasses_delivered,
-        req.body.received_form,
-        req.body.glasses_one_half,
-        req.body.glasses_two,
-        req.body.glasses_two_half,
-        req.body.glasses_three,
-        req.body.event_id
+    req.body.glasses_participating,
+    req.body.est_number_partipating,
+    req.body.est_population_over_forty,
+    req.body.number_glasses_donated,
+    req.body.number_glasses_shipped,
+    req.body.number_glasses_delivered,
+    req.body.date_glasses_shipped,
+    req.body.date_glasses_delivered,
+    req.body.received_form,
+    req.body.glasses_one_half,
+    req.body.glasses_two,
+    req.body.glasses_two_half,
+    req.body.glasses_three,
+    req.body.event_id
     ]
     pool.query(queryText, queryValues)
         .then(() => {
+            console.log("no errors reading glasses update")
             res.sendStatus(200);
         })
         .catch((error) => {

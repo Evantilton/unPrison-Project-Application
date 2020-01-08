@@ -25,23 +25,24 @@ router.put('/public_event', rejectUnauthenticated, (req, res) => {
     
     WHERE "event_id"= $13`
     const queryValues = [
-        req.body.bio_sent,
-        req.body.public_event_date_emailed,
-        req.body.public_questionnaire_sent,
-        req.body.date_questionaire_sent,
-        req.body.date_questionaire_returned,
-        req.body.other_information,
-        req.body.book_signing,
-        req.body.book_sales,
-        req.body.total_prison_baby_needed,
-        req.body.who_orders_books,
-        req.body.books_carryon,
-        req.body.books_shipped,
+    req.body.bio_sent,
+    req.body.public_event_date_emailed,
+    req.body.public_questionnaire_sent,
+    req.body.date_questionaire_sent,
+    req.body.date_questionaire_returned,
+    req.body.other_information,
+    req.body.book_signing,
+    req.body.book_sales,
+    req.body.total_prison_baby_needed,
+    req.body.who_orders_books,
+    req.body.books_carryon,
+    req.body.books_shipped,
 
-        req.body.event_id
+    req.body.event_id
     ]
     pool.query(queryText, queryValues)
         .then(() => {
+            console.log("no errors in public events update")
             res.sendStatus(200);
         })
         .catch((error) => {

@@ -3,9 +3,6 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware'); // Sends user 403 status if they are not logged in
 
-
-
-
 router.put('/childrens_books', rejectUnauthenticated, (req, res) => {
     console.log('req.body in eventsPrograms.router /childrens_books is:', req.body);
     const queryText = `UPDATE "childrens_books"
@@ -42,10 +39,11 @@ router.put('/childrens_books', rejectUnauthenticated, (req, res) => {
     ]
     pool.query(queryText, queryValues)
         .then(() => {
+            console.log("no errors in Childrens' Book update")
             res.sendStatus(200);
         })
         .catch((error) => {
-            console.log('error in PUT route in eventsTravel.router:', error);
+            console.log('error in PUT route in Childrens Books update', error);
             res.sendStatus(500);
         })
 

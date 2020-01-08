@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import moment from 'moment';
 class Programs extends Component {
     componentDidMount() {
         console.log('this.props.eventId is:', this.props.eventId)
@@ -43,13 +43,12 @@ class Programs extends Component {
                     
                     <li >
                         <label>Date Emailed: </label>
-                        <input type="date" name='child_form_date_emailed' value={this.props.reduxState.eventsProgramsReducer.child_form_date_emailed} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="date" name='child_form_date_emailed' value={moment(this.props.reduxState.eventsProgramsReducer.child_form_date_emailed).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
-
 
                     <li>
                         <label>Date Returned: </label>
-                        <input type="date" name='child_form_date_returned' value={this.props.reduxState.eventsProgramsReducer.child_form_date_returned} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="date" name='child_form_date_returned' value={moment(this.props.reduxState.eventsProgramsReducer.child_form_date_returned).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
 
 
@@ -80,11 +79,11 @@ class Programs extends Component {
                     </li>
                     <li >
                         <label>Books Shipped: </label>
-                        <input type="date" name='books_shipped' value={this.props.reduxState.eventsProgramsReducer.books_shipped} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="date" name='books_shipped' value={moment(this.props.reduxState.eventsProgramsReducer.books_shipped).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <li >
                         <label>Program Completed:  </label>
-                        <input type="date" name='program_completed' value={this.props.reduxState.eventsProgramsReducer.program_completed} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="date" name='program_completed' value={moment(this.props.reduxState.eventsProgramsReducer.program_completed).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <li >
                         <label>Prison Baby Donation:   </label>
@@ -100,7 +99,7 @@ class Programs extends Component {
                     </li>
                     <li >
                         <label>Estimated Number Participating:  </label>
-                        <input name='est_number_partipating' value={this.props.reduxState.eventsProgramsReducer.est_number_partipating} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="number" name='est_number_partipating' value={this.props.reduxState.eventsProgramsReducer.est_number_partipating} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <li >
                         <label>Estimated Population Over Forty:  </label>
@@ -120,11 +119,11 @@ class Programs extends Component {
                     </li>
                     <li >
                         <label>Date Glasses Shipped:    </label>
-                        <input type="date" name='date_glasses_shipped' value={this.props.reduxState.eventsProgramsReducer.date_glasses_shipped} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="date" name='date_glasses_shipped' value={moment(this.props.reduxState.eventsProgramsReducer.date_glasses_shipped).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <li >
                         <label>Date Glasses Delivered:   </label>
-                        <input type="date" name='date_glasses_delivered' value={this.props.reduxState.eventsProgramsReducer.date_glasses_delivered} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="date" name='date_glasses_delivered' value={moment(this.props.reduxState.eventsProgramsReducer.date_glasses_delivered).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <li >
                         <label>Received Form:   </label>
@@ -160,15 +159,22 @@ class Programs extends Component {
                     </li>
                     <li >
                         <label>Date Emailed:</label>
-                        <input type="date" name='public_event_date_emailed' value={this.props.reduxState.eventsProgramsReducer.public_event_date_emailed} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="date" name='public_event_date_emailed' value={moment(this.props.reduxState.eventsProgramsReducer.public_event_date_emailed).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <li >
-                        <label>Questionnaire Sent:</label>
-                        <input type="date" name='date_questionnaire_sent' value={this.props.reduxState.eventsProgramsReducer.date_questionaire_sent} onChange={(event) => this.handleInputChange(event)}></input>
+                        <label>Public Questionnaire Sent:</label>
+                        <select name='public_questionnaire_sent' value={this.props.reduxState.eventsProgramsReducer.public_questionnaire_sent} onChange={(event) => this.handleInputChange(event)}>
+                            <option value="false">no</option>
+                            <option value="true">yes</option>
+                        </select>
                     </li>
                     <li >
-                        <label>Questionnaire Returned:</label>
-                        <input type="date" name='date_questionnaire_returned' value={this.props.reduxState.eventsProgramsReducer.date_questionaire_returned} onChange={(event) => this.handleInputChange(event)}></input>
+                        <label>Date Questionaire Sent:</label>
+                        <input type="date" name='date_questionaire_sent' value={moment(this.props.reduxState.eventsProgramsReducer.date_questionaire_sent).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
+                    </li>
+                    <li >
+                        <label>Date Questionaire Returned:</label>
+                        <input type="date" name='date_questionaire_returned' value={moment(this.props.reduxState.eventsProgramsReducer.date_questionaire_returned).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <li >
                         <label>Other Information:</label>
@@ -199,14 +205,14 @@ class Programs extends Component {
                     </li>
                     <li >
                         <label>Books Carry-On</label>
-                        <select name='book_carryon' value={this.props.reduxState.eventsProgramsReducer.book_carryon} onChange={(event) => this.handleInputChange(event)}>
+                        <select name='books_carryon' value={this.props.reduxState.eventsProgramsReducer.books_carryon} onChange={(event) => this.handleInputChange(event)}>
                             <option value="false">no</option>
                             <option value="true">yes</option>
                         </select>
                     </li >
                     <li >
                         <label>Books Shipped:</label>
-                        <input type="date" name='who_orders_books' value={this.props.reduxState.eventsProgramsReducer.who_orders_books} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="date" name='books_shipped' value={moment(this.props.reduxState.eventsProgramsReducer.books_shipped).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                 </ul >
             </div >
