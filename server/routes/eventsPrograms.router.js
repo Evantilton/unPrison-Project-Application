@@ -4,11 +4,9 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware'); // Sends user 403 status if they are not logged in
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-    const queryText = 
-    // `SELECT * FROM "childrens_books"
-    // WHERE "event_id" = $1`;
+    const queryText =
 
-    `SELECT
+        `SELECT
     "public_event"."event_id",
     "public_event"."id",
     "public_event"."bio_sent",
@@ -67,27 +65,49 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         })
 }) // end fetch programs query
 
-router.put('/edit', rejectUnauthenticated, (req, res) => {
-    const queryText = `UPDATE "childrens_books"
-    SET $1 = $2
-    WHERE "event_id" = $3`
+router.put('/reading_glasses', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in eventsPrograms.router /reading_glasses is:', req.body);
+    const queryText = `UPDATE "reading_glasses"
+    SET "glasses_participating"= $1,
+    "est_number_partipating"= $2,
+    "est_population_over_forty"= $3,
+    "number_glasses_donated"= $4,
+    "number_glasses_shipped"= $5,
+    "number_glasses_delivered"= $6,
+    "date_glasses_shipped"= $7,
+    "date_glasses_delivered"= $8,
+    "received_form"= $9,
+    "glasses_one_half"= $10,
+    "glasses_two"= $11,
+    "glasses_two_half"= $12,
+    "glasses_three"= $13
+    
+    WHERE "event_id"= $14`
     const queryValues = [
-        req.body[0],
-        req.body[1],
-        req.body[2]
+        req.body.glasses_participating,
+        req.body.est_number_partipating,
+        req.body.est_population_over_forty,
+        req.body.number_glasses_donated,
+        req.body.number_glasses_shipped,
+        req.body.number_glasses_delivered,
+        req.body.date_glasses_shipped,
+        req.body.date_glasses_delivered,
+        req.body.received_form,
+        req.body.glasses_one_half,
+        req.body.glasses_two,
+        req.body.glasses_two_half,
+        req.body.glasses_three,
+        req.body.event_id
     ]
     pool.query(queryText, queryValues)
-        .then((result) => {
+        .then(() => {
             res.sendStatus(200);
         })
         .catch((error) => {
-            console.log('error in PUT route in eventsPrograms.router:', error);
+            console.log('error in PUT route in events-programs,reading_glasses', error);
             res.sendStatus(500);
         })
 
 })
-
-
-
 
 module.exports = router;

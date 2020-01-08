@@ -56,7 +56,7 @@ class General extends Component {
                         </li>
                         <li>
                             <label>Expected Attendance:</label>
-                            <input type="text" name='expected_attendance' value={this.props.reduxState.eventsGeneralReducer.expected_attendance} onChange={(event) => this.handleInputChange(event)}></input>
+                            <input type="number" name='expected_attendance' value={this.props.reduxState.eventsGeneralReducer.expected_attendance} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li>
                             <label>Room Location:</label>
@@ -64,7 +64,7 @@ class General extends Component {
                         </li>
                         <li>
                             <label>Actual Attendance:</label>
-                            <input type="text" name='actual_attendance' value={this.props.reduxState.eventsGeneralReducer.actual_attendance} onChange={(event) => this.handleInputChange(event)}></input>
+                            <input type="number" name='actual_attendance' value={this.props.reduxState.eventsGeneralReducer.actual_attendance} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li>
                             <label>Demographics:</label>

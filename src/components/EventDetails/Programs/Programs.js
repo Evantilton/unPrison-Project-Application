@@ -9,12 +9,15 @@ class Programs extends Component {
     handleInputChange = (event) => {
         this.props.dispatch({ type: 'SET_EXISTING_PROGRAMS', payload: { value: event.target.value, property: event.target.name } })
     }
+    handleSaveChangesButtonClick = () => {
+        this.props.dispatch({ type:'SAVE_EVENTS_PROGRAMS', payload: this.props.reduxState.eventsProgramsReducer});
+    }
     render() {
         return (
             <div>
                 <h3>General Component</h3>
                 <ul class="nobullet">
-                    <li><button className="tabButtonPosition">Save Changes</button></li>
+                    <li><button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button></li>
                     <h1>Children's Books Program (prison only) </h1>
 
                     <li >
