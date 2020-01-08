@@ -54,6 +54,10 @@ class VenueDetails extends Component {
         });
     } // End handleEventsTabClick
 
+    handleInputChange = (event) => {
+        this.props.dispatch({ type:'SET_EXISTING_VENUES_GENERAL', payload: { value: event.target.value, property: event.target.name } })
+    }
+
     render() {
 
         return (
@@ -64,15 +68,15 @@ class VenueDetails extends Component {
                 <div className="venueMainWindow">
                     <div className="primaryName">
                         <h3>Primary Contact:</h3>
-                        <p>{this.props.reduxState.venueDetailsReducer.contact_name}</p>
+                        <input type="text" name='contact_name' value={this.props.reduxState.venueDetailsReducer.contact_name || ''} onChange={(event) => this.handleInputChange(event)}></input>
                     </div>
                     <div className="primaryPhone">
                         <h3>Phone:</h3>
-                        <p>{this.props.reduxState.venueDetailsReducer.contact_phone}</p>
+                        <input type="text" name='contact_phone' value={this.props.reduxState.venueDetailsReducer.contact_phone || ''} onChange={(event) => this.handleInputChange(event)}></input>
                     </div>
                     <div className="primaryEmail">
                         <h3>Primary Email:</h3>
-                        <p>{this.props.reduxState.venueDetailsReducer.contact_email}</p>
+                        <input type="text" name='contact_email' value={this.props.reduxState.venueDetailsReducer.contact_email || ''} onChange={(event) => this.handleInputChange(event)}></input>
                     </div>
                     <div className="venueGeneralTab" onClick={this.handleGeneralTabClick} style={this.state.generalStyle}>
                         General

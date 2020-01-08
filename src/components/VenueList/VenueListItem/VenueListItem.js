@@ -15,7 +15,7 @@ class VenueListItem extends Component {
                 <td>{this.props.venue.name}
                 <br /><button onClick={this.goToVenueDetails}>See Details</button></td>
                 <td>{this.props.venue.contact_name}</td>
-                <td>{this.props.venue.street_address}</td>
+                <td>{this.props.venue.contact_phone}</td>
             </tr>
         );
     }

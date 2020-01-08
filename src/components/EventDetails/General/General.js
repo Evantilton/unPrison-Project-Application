@@ -4,12 +4,16 @@ import moment from 'moment';
 class General extends Component {
 
     componentDidMount() {
-        console.log('this.props.eventId is:',this.props.eventId)
+        console.log('this.props.eventId is:', this.props.eventId)
         this.props.dispatch({ type: 'FETCH_GENERAL_TABLE', payload: this.props.eventId });
     }
 
     handleInputChange = (event) => {
-        this.props.dispatch({ type:'SET_EXISTING_GENERAL', payload: { value: event.target.value, property: event.target.name } })
+        this.props.dispatch({ type: 'SET_EXISTING_GENERAL', payload: { value: event.target.value, property: event.target.name } })
+    }
+
+    handleDeleteButtonClick = (eventId) => {
+        this.props.dispatch({ type: 'DELETE_EVENT', payload: eventId });
     }
 
     handleSaveChangesButtonClick = () => {
@@ -71,12 +75,15 @@ class General extends Component {
                             <input type="text" name='demographics' value={this.props.reduxState.eventsGeneralReducer.demographics} onChange={(event) => this.handleInputChange(event)}></input>
                         </li>
                         <li >
+
+
                         <label>Flyer Mailed:</label>
                         <select name='flyer_mailed' value={this.props.reduxState.eventsGeneralReducer.flyer_mailed} onChange={(event) => this.handleInputChange(event)}>
                             <option value="false">no</option>
                             <option value="true">yes</option>
                         </select>
                     </li>
+
                         <li>
                             <label>Flyer Mailed Date:</label>
                             <input type="date" name='flyer_mailed_date' value={moment(this.props.reduxState.eventsGeneralReducer.flyer_mailed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>

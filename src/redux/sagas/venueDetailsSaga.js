@@ -3,6 +3,19 @@ import axios from 'axios';
 
 function* venueDetailsSaga() {
     yield takeLatest('GET_ONE_VENUE', getDetailsVenue);
+
+    yield takeLatest('SAVE_VENUES_GENERAL', saveVenueDetailsGeneral);
+
+    yield takeLatest('DELETE_VENUE', deleteVenue);
+}
+
+function* deleteVenue(action){
+    try {
+        console.log('action.payload in deleteVenue is:', action.payload);
+        yield axios.delete(`/api/venue/delete/${action.payload}`);
+    } catch (error) {
+        console.log('error in deleteVenue function in venueDetailsSaga,', error);
+    }
 }
 
 function* getDetailsVenue(action){
@@ -15,6 +28,18 @@ function* getDetailsVenue(action){
     } catch (error) {
         console.log('error getting venue details', error);  
     }
+}
+
+function* saveVenueDetailsGeneral(action) {
+    console.log('save venue details reducer', action);
+    try {
+        yield axios.put('/api/venue/save-contacts', action.payload);
+        yield axios.put('/api/venue/save-venue', action.payload);
+    } catch (error) {
+        console.log('error saving venue details and general tab', error);
+        
+    }
+    
 }
 
 export default venueDetailsSaga;
