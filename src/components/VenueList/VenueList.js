@@ -80,8 +80,7 @@ class VenueList extends Component {
               <input value={this.state.contact.contact_name} onChange={this.handleContactInput} placeholder="Contact" />
               <select value={this.state.venue.venue_type}
                 onChange={this.handleDropDown('venue_type')}>
-                {/* Placeholder values. Waiting for Deborah to reply with types. */}
-                <option value=""></option>
+                <option value="">Choose Type</option>
                 <option value="prison">Prison</option>
                 <option value="conference">Conference</option>
                 <option value="school">School</option>
