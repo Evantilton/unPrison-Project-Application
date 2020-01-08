@@ -35,6 +35,7 @@ class EventList extends Component {
         <div className="listOptions">
           <select onChange={this.handleChangeForVenue('venue_id')}
           >
+            <option value="">Choose Venue</option>
             {/* Brings in names of venues previously created and their ids to use in event creation */}
           {this.props.reduxState.venueReducer.map((location) => {
                                 return (

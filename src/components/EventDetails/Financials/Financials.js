@@ -2,24 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Financials extends Component {
-    componentDidMount() {
-        console.log('this.props.eventId is:',this.props.eventId)
-        this.props.dispatch({ type: 'FETCH_FINANCIALS_TABLE', payload: this.props.eventId });
-    }
 
     handleInputChange = (event) => {
         this.props.dispatch({ type:'SET_EXISTING_FINANCIALS', payload: { value: event.target.value, property: event.target.name } })
-    }
-    handleSaveChangesButtonClick = () => {
-        console.log("saving financials");
-        this.props.dispatch({ type:'SAVE_EVENTS_FINANCIALS', payload: this.props.reduxState.eventsFinancialsReducer});
     }
     render() {
         return (
             <div>
                 <h3>Financials</h3>
                 <ul class="nobullet">
-                <li><button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button></li>
                     <h1>Contributions</h1>
                         <li >
                             <label>Prison Contribution:</label>

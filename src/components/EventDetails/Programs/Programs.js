@@ -2,22 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 class Programs extends Component {
-    componentDidMount() {
-        console.log('this.props.eventId is:', this.props.eventId)
-        this.props.dispatch({ type: 'FETCH_PROGRAMS_TABLE', payload: this.props.eventId });
-    }
+
     handleInputChange = (event) => {
         this.props.dispatch({ type: 'SET_EXISTING_PROGRAMS', payload: { value: event.target.value, property: event.target.name } })
     }
-    handleSaveChangesButtonClick = () => {
-        this.props.dispatch({ type:'SAVE_EVENTS_PROGRAMS', payload: this.props.reduxState.eventsProgramsReducer});
-    }
+    
     render() {
         return (
             <div>
-                <h3>General Component</h3>
                 <ul class="nobullet">
-                    <li><button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button></li>
                     <h1>Children's Books Program (prison only) </h1>
 
                     <li >

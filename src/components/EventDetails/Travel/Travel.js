@@ -3,23 +3,15 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 class Travel extends Component {
 
-    componentDidMount() {
-        console.log('this.props.eventId is:', this.props.eventId)
-        this.props.dispatch({ type: 'FETCH_TRAVEL_TABLE', payload: this.props.eventId });
-    }
 
     handleInputChange = (event) => {
         this.props.dispatch({ type: 'SET_EXISTING_TRAVEL', payload: { value: event.target.value, property: event.target.name } })
-    }
-    handleSaveChangesButtonClick = () => {
-        this.props.dispatch({ type:'SAVE_EVENTS_TRAVEL', payload: this.props.reduxState.eventsTravelReducer});
     }
     render() {
         return (
             <div>
                 <h3>Travel Component</h3>
                 <ul class="nobullet">
-                    <li><button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button></li>
                     <li >
                         <label>Nearest Airport:</label>
                         <input type="text" name='nearest_airport' value={this.props.reduxState.eventsTravelReducer.nearest_airport} onChange={(event) => this.handleInputChange(event)}></input>
