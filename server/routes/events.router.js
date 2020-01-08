@@ -5,9 +5,35 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 // Database query to fetch all data from 'event' table
 router.get('/', rejectUnauthenticated, (req, res) => {
-    const queryText = `SELECT * FROM "event"`;
+    const queryText = `
+    SELECT  
+    
+    "event"."id",
+    "event"."venue_id",
+    "event"."last_date_contacted",
+    "event"."best_days_week",
+    "event"."best_times",
+    "event"."proposed_month",
+    "event"."proposed_dates",
+    "event"."confirmed_date",
+    "event"."desired_focus",
+    "event"."total_count",
+    "event"."expected_attendance",
+    "event"."room_location",
+    "event"."actual_attendance",
+    "event"."demographics",
+    "event"."flyer_mailed",
+    "event"."flyer_mailed_date",
+    "event"."hear_about",
+
+    "venue"."name"
+    
+    FROM "event" 
+    JOIN "venue" ON "venue"."id" = "event"."venue_id"`;
     pool.query(queryText)
         .then((result) => {
+            console.log(result.rows);
+            
             res.send(result.rows)
         })
         .catch(() => {
