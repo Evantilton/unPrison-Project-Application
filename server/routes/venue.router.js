@@ -29,11 +29,11 @@ router.get('/one/:id', rejectUnauthenticated, (req, res) => {
     pool.query(queryText, [req.params.id])
         .then((result) => {
             // console.log('get route details', result);
-            
+
             res.send(result.rows);
             console.log(result.rows);
-            
-        }). catch((error) => {
+
+        }).catch((error) => {
             console.log('Error in GET venue details', error);
             res.sendStatus(500);
         })
@@ -47,7 +47,7 @@ router.get('/events-tab/:id', rejectUnauthenticated, (req, res) => {
     pool.query(queryText, [req.params.id])
         .then((result) => {
             res.send(result.rows);
-            console.log(result.rows);   
+            console.log(result.rows);
         }).catch((error) => {
             console.log('Error in GET events for one venue', error);
             res.sendStatus(500);
@@ -70,14 +70,14 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
                             VALUES ($1, $2)`
     try {
         await connection.query('BEGIN;');
-        result = await connection.query(queryText,queryValues)
+        result = await connection.query(queryText, queryValues)
         const venueIdContact = result.rows[0].id
-        await connection.query(queryTextContact,[venueIdContact, newVenue.contact.contact_name])
+        await connection.query(queryTextContact, [venueIdContact, newVenue.contact.contact_name])
         await connection.query('COMMIT;');
         console.log('reached commit without error');
-        
+
         res.sendStatus(201);
-    } catch (error ){
+    } catch (error) {
         await connection.query('ROLLBACK;');
         res.sendStatus(500);
     } finally {
@@ -85,9 +85,17 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     }
 });
 
-// router.delete('/delete/:id', rejectUnauthenticated (req, res) => {
-//     const queryText = `DELETE FROM "venue"`
-
-// })
+router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
+    const queryText = `DELETE FROM "venue"
+    WHERE "id"=$1`;
+    pool.query(queryText, [req.params.id])
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error in deleting venue in venue.router.js:', error);
+            res.sendStatus(500);
+        })
+})
 
 module.exports = router;

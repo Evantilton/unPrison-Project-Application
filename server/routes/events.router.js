@@ -60,7 +60,6 @@ router.post('/add', rejectUnauthenticated, async (req, res) => {
     }
 });
 
-
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT * FROM "event"
     WHERE "id" = $1`;
@@ -73,6 +72,19 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         })
 }) // end fetch events query
+
+router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
+    const queryText = `DELETE FROM "event"
+    WHERE "id" = $1`;
+    pool.query(queryText, [req.params.id])
+    .then(() => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('error in delete request in events.router.js:', error);
+        res.sendStatus(500);
+    })
+})
 
 
 module.exports = router;
