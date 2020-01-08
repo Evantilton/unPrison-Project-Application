@@ -20,7 +20,7 @@ class VenueGeneral extends Component {
     }
     handleDeleteButtonClick = (venueId) => {
         this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
-
+        this.props.history.push('/home')
     }
 
     render() {
@@ -35,7 +35,7 @@ class VenueGeneral extends Component {
                     </li>
                     <li>
                         <label>Venue Type:</label>
-                        <select type='text' name="venue_type" defaultValue={this.props.reduxState.venueDetailsReducer.venue_type || ''} onChange={(event) => this.handleInputChange(event)}>
+                        <select type='text' name="venue_type" value={this.props.reduxState.venueDetailsReducer.venue_type || ''} onChange={(event) => this.handleInputChange(event)}>
                             <option value="prison">Prison</option>
                             <option value="conference">Conference</option>
                             <option value="school">School/University</option>
