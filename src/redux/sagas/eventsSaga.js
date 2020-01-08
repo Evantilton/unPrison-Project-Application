@@ -5,6 +5,15 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* eventsSaga() {
     yield takeLatest('FETCH_EVENTS', fetchEvents);
     yield takeLatest('POST_EVENTS', addEvents);
+    yield takeLatest('DELETE_EVENT', deleteEvent);
+}
+
+function* deleteEvent(action) {
+    try {
+        yield axios.delete(`/api/events/delete/${action.payload}`);
+    } catch (error) {
+        console.log('error in eventsSaga, deleteEvent request failed with error:', error);
+    }
 }
 
 // worker Saga: will be fired on 'FETCH_EVENTS' actions
