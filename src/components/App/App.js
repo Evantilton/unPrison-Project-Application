@@ -9,7 +9,7 @@ import {
 import {connect} from 'react-redux';
 
 import Nav from '../Nav/Nav';
-
+import CustomPaginationActionsTable from '../VenueList/PracticeTable';
 import VenueDetails from '../VenueDetails/VenueDetails';
 import EventDetails from '../EventDetails/EventDetails';
 import VenueList from '../VenueList/VenueList';
@@ -63,6 +63,10 @@ class App extends Component {
              <ProtectedRoute
             path="/venue-details/:id"
             component={VenueDetails}
+            />
+            <ProtectedRoute
+            path="/table"
+            component={CustomPaginationActionsTable}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

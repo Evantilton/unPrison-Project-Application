@@ -89,8 +89,6 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
-<<<<<<< HEAD
-export default connect(mapStateToProps)(VenueGeneral);
-=======
+
+
 export default withRouter(connect(mapStateToProps)(VenueGeneral));
->>>>>>> master

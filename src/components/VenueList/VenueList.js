@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
 import VenueListItem from './VenueListItem/VenueListItem';
-
-
+//styling imports
+import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 
 class VenueList extends Component {
 
@@ -76,6 +77,13 @@ class VenueList extends Component {
         <div className="listOptions">
         
             <div>
+            <TextField
+          label="Venue Name"
+          id="outlined-size-small"
+        
+          variant="outlined"
+          size="small"
+        />
               <input value={this.state.venue.name} onChange={this.handleVenueInput} placeholder="Venue Name" />
               <input value={this.state.contact.contact_name} onChange={this.handleContactInput} placeholder="Contact" />
               <select value={this.state.venue.venue_type}
@@ -105,22 +113,22 @@ class VenueList extends Component {
 
         <div className="listVenues"></div>
         {/* Using table without headers for potential sort system and thinking we can style it to look like what we want. */}
-        <table border="1">
-          <thead>
-            <tr>
-              <th>Venue</th>
-              <th>Primary Contact</th>
-              <th>Primary Contact Phone Number</th>
-            </tr>
-            </thead>
-            <tbody>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Venue</TableCell>
+              <TableCell>Primary Contact</TableCell>
+              <TableCell>Primary Contact Phone Number</TableCell>
+            </TableRow>
+            </TableHead>
+            <TableBody>
             {this.props.reduxState.venueReducer.map((venue) => {
               return (
                 <VenueListItem key={venue.id} venue={venue} />
               );
               })}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
     )
   }
