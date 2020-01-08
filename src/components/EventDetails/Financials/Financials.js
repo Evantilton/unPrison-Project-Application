@@ -10,12 +10,16 @@ class Financials extends Component {
     handleInputChange = (event) => {
         this.props.dispatch({ type:'SET_EXISTING_FINANCIALS', payload: { value: event.target.value, property: event.target.name } })
     }
+    handleSaveChangesButtonClick = () => {
+        console.log("saving financials");
+        this.props.dispatch({ type:'SAVE_EVENTS_FINANCIALS', payload: this.props.reduxState.eventsFinancialsReducer});
+    }
     render() {
         return (
             <div>
                 <h3>Financials</h3>
                 <ul class="nobullet">
-                <li><button className="tabButtonPosition">Save Changes</button></li>
+                <li><button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button></li>
                     <h1>Contributions</h1>
                         <li >
                             <label>Prison Contribution:</label>

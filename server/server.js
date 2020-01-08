@@ -16,7 +16,9 @@ const venueRouter = require('./routes/venue.router');
 const eventsTravelRouter = require('./routes/eventsTravel.router');
 const eventsGeneralRouter = require('./routes/eventsGeneral.router');
 const eventsFinancialsRouter = require('./routes/eventsFinancials.router');
+const programsTabEventRouter = require('./routes/programsTabEvent.router');
 const eventsProgramsRouter = require('./routes/eventsPrograms.router');
+const programsTabRouter = require('./routes/programsTab.router');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,6 +37,8 @@ app.use('/api/events-travel', eventsTravelRouter);
 app.use('/api/events-general', eventsGeneralRouter);
 app.use('/api/events-financials', eventsFinancialsRouter);
 app.use('/api/events-programs', eventsProgramsRouter);
+app.use('/api/programsTabEvent', programsTabEventRouter);
+app.use('/api/programsTab', programsTabRouter);
 app.use('/users',  usersRouter);
 app.use('/api/venue', venueRouter);
 

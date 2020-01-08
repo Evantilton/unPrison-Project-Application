@@ -1,12 +1,21 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* editProgramsTable(action) {
+function* saveProgramsTable(action) {
     try {
-        const response = yield axios.put('/api/events-programs/edit', action.payload );
-        yield put({ type:'FETCH_PROGRAMS_TABLE', payload: response.data });
+        yield axios.put('/api/programsTab/childrens_books', action.payload );
     } catch (error) {
-        console.log('error fetching programs', error);
+        console.log('error saving ', error);
+    }
+    try {
+        yield axios.put('/api/events-programs/reading_glasses', action.payload );
+    } catch (error) {
+        console.log('error saving ', error);
+    }
+    try {
+        yield axios.put('/api/programsTabEvent/public_event', action.payload );
+    } catch (error) {
+        console.log('error saving ', error);
     }
 }
 
@@ -20,7 +29,7 @@ function* fetchProgramsTable(action) {
 }
 
 function* eventsProgramsSaga() {
-    yield takeLatest('EDIT_PROGRAMS_TABLE', editProgramsTable); 
+    yield takeLatest('SAVE_EVENTS_PROGRAMS', saveProgramsTable); 
     yield takeLatest('FETCH_PROGRAMS_TABLE', fetchProgramsTable);
 }
 
