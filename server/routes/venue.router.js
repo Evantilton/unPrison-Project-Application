@@ -85,6 +85,70 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     }
 });
 
+
+router.put('/save-contacts', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in save contacts is:', req.body);
+    const queryText = `UPDATE "contacts"
+    SET "contact_name" = $1,
+    "contact_phone" = $2,
+    "contact_email" = $3,
+    "position" = $4,
+    "is_primary" = $5
+    WHERE "id" = $6;`;
+    const queryValues = [
+        req.body.contact_name,
+        req.body.contact_phone,
+        req.body.contact_email,
+        req.body.position,
+        req.body.is_primary,
+        req.body.id
+    ] 
+    pool.query(queryText, queryValues)
+    .then(() => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('error in PUT route in venues details for contacts router:', error);
+        res.sendStatus(500);
+    })
+})
+
+router.put('/save-venue', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in save venue is:', req.body);
+    const queryText = `UPDATE "venue"
+    SET "name" = $1,
+    "street_address" = $2,
+    "city" = $3,
+    "state" = $4,
+    "country" = $5,
+    "zip" = $6,
+    "venue_type" = $7
+    WHERE "id" = $8;`;
+    const queryValues = [
+        req.body.name,
+        req.body.street_address,
+        req.body.city,
+        req.body.state,
+        req.body.country,
+        req.body.zip,
+        req.body.venue_type,
+        req.body.venue_id
+    ] 
+    pool.query(queryText, queryValues)
+    .then(() => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('error in PUT route in venues details for contacts router:', error);
+        res.sendStatus(500);
+    })
+})
+
+// router.delete('/delete/:id', rejectUnauthenticated (req, res) => {
+//     const queryText = `DELETE FROM "venue"`
+
+// })
+
 router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `DELETE FROM "venue"
     WHERE "id"=$1`;
@@ -97,5 +161,7 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         })
 })
+
+
 
 module.exports = router;

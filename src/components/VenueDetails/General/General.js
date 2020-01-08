@@ -14,8 +14,13 @@ class VenueGeneral extends Component {
         this.props.dispatch({ type:'SET_EXISTING_VENUES_GENERAL', payload: { value: event.target.value, property: event.target.name } })
     }
 
+
+    handleSaveChangesButtonClick = () => {
+        this.props.dispatch({ type: 'SAVE_VENUES_GENERAL', payload: this.props.reduxState.venueDetailsReducer});
+
     handleDeleteButtonClick = (venueId) => {
         this.props.dispatch({ type:'DELETE_VENUE', payload: venueId });
+
     }
 
     render() {
@@ -24,8 +29,15 @@ class VenueGeneral extends Component {
                 <h3>Venue Details</h3>
                     <ul className="nobullet">
                         <li>
+
+
+                        <button className="tabButtonPosition">Delete Venue</button><button className="tabButtonPosition" onClick = {this.handleSaveChangesButtonClick}>Save Changes</button>
+
+                        <button className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</button>
+
                         <button className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to the venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</button>
                         <button className="tabButtonPosition">Save Changes</button>
+
                         </li>
                         <li>
                             <label>Venue Type:</label>
@@ -94,3 +106,4 @@ const mapStateToProps = reduxState => ({
 });
 
 export default withRouter(connect(mapStateToProps)(VenueGeneral));
+
