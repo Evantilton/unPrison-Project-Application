@@ -11,7 +11,9 @@ class General extends Component {
         this.props.dispatch({ type: 'DELETE_EVENT', payload: eventId });
     }
 
-    
+    handleDelete = () => {
+        console.log("click")
+    }
 
     render() {
         return (
@@ -85,6 +87,8 @@ class General extends Component {
                         <label>Event Notes:</label>
                         <input type="text"></input>
                     </li>
+
+                    
                 </ul>
             </div>
         )

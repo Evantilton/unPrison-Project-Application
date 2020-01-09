@@ -17,6 +17,7 @@ const eventsTravelRouter = require('./routes/eventsTravel.router');
 const eventsGeneralRouter = require('./routes/eventsGeneral.router');
 const eventsFinancialsRouter = require('./routes/eventsFinancials.router');
 const programsTabEventRouter = require('./routes/programsTabEvent.router');
+const eventsNotesRouter = require('./routes/eventsNotes.router');
 const eventsProgramsRouter = require('./routes/eventsPrograms.router');
 const programsTabRouter = require('./routes/programsTab.router');
 // Body parser middleware
@@ -41,6 +42,7 @@ app.use('/api/programsTabEvent', programsTabEventRouter);
 app.use('/api/programsTab', programsTabRouter);
 app.use('/users',  usersRouter);
 app.use('/api/venue', venueRouter);
+app.use('/api/notes', eventsNotesRouter);
 
 // Serve static files
 app.use(express.static('build'));

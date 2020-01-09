@@ -10,14 +10,11 @@ class EventDetails extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_CURRENT_EVENT', payload: this.props.match.params.id });
-        console.log('this.props.eventId is:', this.props.eventId);
         this.props.dispatch({ type: 'FETCH_PROGRAMS_TABLE', payload: this.props.match.params.id });
-        console.log('this.props.eventId is:', this.props.eventId);
         this.props.dispatch({ type: 'FETCH_TRAVEL_TABLE', payload: this.props.match.params.id });
-        console.log('this.props.eventId is:', this.props.eventId);
         this.props.dispatch({ type: 'FETCH_GENERAL_TABLE', payload: this.props.match.params.id });
-        console.log('this.props.eventId is:', this.props.eventId);
         this.props.dispatch({ type: 'FETCH_FINANCIALS_TABLE', payload: this.props.match.params.id });
+        // this.props.dispatch({ type: 'FETCH_NOTES_TABLE', payload: this.props.match.params.id });
     }
 
     state = {

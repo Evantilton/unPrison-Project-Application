@@ -33,6 +33,7 @@ class Admin extends Component {
         payload: {
           username: this.state.username,
           password: this.state.password,
+          is_admin: false,
         },
       });
     } else {
