@@ -39,10 +39,7 @@ export default function* rootSaga() {
     deleteUsersSaga(),
     eventsListForVenuesTabSaga(),
     deleteUsersSaga(),
-<<<<<<< HEAD
-    contactsSaga()
-=======
+    contactsSaga(),
     deleteEventSaga()
->>>>>>> master
   ]);
 }
