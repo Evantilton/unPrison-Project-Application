@@ -55,7 +55,7 @@ class VenueDetails extends Component {
     } // End handleEventsTabClick
 
     handleInputChange = (event) => {
-        this.props.dispatch({ type:'SET_EXISTING_VENUES_GENERAL', payload: { value: event.target.value, property: event.target.name } })
+        this.props.dispatch({ type: 'SET_EXISTING_VENUES_GENERAL', payload: { value: event.target.value, property: event.target.name } })
     }
 
     render() {

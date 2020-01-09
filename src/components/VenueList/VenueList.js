@@ -5,10 +5,7 @@ import VenueListItem from './VenueListItem/VenueListItem';
 import './VenueList.css';
 //styling imports
 import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
+import { TextField, Select, MenuItem, Button } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 
 class VenueList extends Component {
@@ -25,7 +22,7 @@ class VenueList extends Component {
 
   componentDidMount() {
     // on ready function
-    this.props.dispatch({ type: 'GET_VENUES'})
+    this.props.dispatch({ type: 'GET_VENUES' })
   }
 
   newVenueAdded = () => {
@@ -74,93 +71,92 @@ class VenueList extends Component {
     });
   }
 
-
   render() {
     return (
       <div className="venueContainer">
         <Container>
-        <h1>Venue List</h1>
-        
-        <div className="listOptions">
-       
-            <div>
-            <TextField
-          label="Venue Name"
-          id="smallInput1"
-          variant="outlined"
-          size="small"
-          value={this.state.venue.name}
-          onChange={this.handleVenueInput}
-          />
-<span>&nbsp;</span>
-          <TextField
-          label="Venue Contact"
-          id="smallInput2"
-          variant="outlined"
-          size="small"
-          value={this.state.contact.contact_name} 
-          onChange={this.handleContactInput}
-          />
-<span>&nbsp;</span>
-        <Select
-          labelId="simple-outlined-drop"
-          id="selectVenues"
-          variant="outlined"
-          style={{ width: `150px`, height: `30px` }}
-          value={this.state.venue.venue_type}
-          onChange={this.handleDropDown('venue_type')}
-        >
-          
-          <MenuItem value="prison">Prison</MenuItem>
-          <MenuItem value="conference">Conference</MenuItem>
-          <MenuItem value="school">School</MenuItem>
-          <MenuItem value="other">Other</MenuItem>
-        </Select>
-<span>&nbsp;</span>
-        <Button variant="contained"  size="small" className="venueButtons" onClick={this.newVenueAdded} disableElevation>Add Venue</Button>
+          <h1>Venue List</h1>
 
-              
+          <div className="listOptions">
+
+            <div>
+              <TextField
+                label="Venue Name"
+                id="smallInput1"
+                variant="outlined"
+                size="small"
+                value={this.state.venue.name}
+                onChange={this.handleVenueInput}
+              />
+              <span>&nbsp;</span>
+              <TextField
+                label="Venue Contact"
+                id="smallInput2"
+                variant="outlined"
+                size="small"
+                value={this.state.contact.contact_name}
+                onChange={this.handleContactInput}
+              />
+              <span>&nbsp;</span>
+              <Select
+                labelId="simple-outlined-drop"
+                id="selectVenues"
+                variant="outlined"
+                style={{ width: `150px`, height: `30px` }}
+                value={this.state.venue.venue_type}
+                onChange={this.handleDropDown('venue_type')}
+              >
+
+                <MenuItem value="prison">Prison</MenuItem>
+                <MenuItem value="conference">Conference</MenuItem>
+                <MenuItem value="school">School</MenuItem>
+                <MenuItem value="other">Other</MenuItem>
+              </Select>
+              <span>&nbsp;</span>
+              <Button variant="contained" size="small" className="venueButtons" onClick={this.newVenueAdded} disableElevation>Add Venue</Button>
+
+
             </div>
 
-<div align="right">
-<Select
-          labelId="selectUnlined"
-          id="sortDrop"
-          value=""
-          style={{ width: `150px`, height: `30px` }}
-        >
-          <MenuItem>
-          <em>Order By</em>
-          </MenuItem>
-          <MenuItem value="prison">Prison</MenuItem>
-          <MenuItem value="conference">Conference</MenuItem>
-          <MenuItem value="school">School</MenuItem>
-          <MenuItem value="other">Other</MenuItem>
-        </Select>
-         
-</div>
+            <div align="right">
+              <Select
+                labelId="selectUnlined"
+                id="sortDrop"
+                value=""
+                style={{ width: `150px`, height: `30px` }}
+              >
+                <MenuItem>
+                  <em>Order By</em>
+                </MenuItem>
+                <MenuItem value="prison">Prison</MenuItem>
+                <MenuItem value="conference">Conference</MenuItem>
+                <MenuItem value="school">School</MenuItem>
+                <MenuItem value="other">Other</MenuItem>
+              </Select>
 
-        </div>
+            </div>
 
-        <div className="listVenues"></div>
-        {/* Using table without headers for potential sort system and thinking we can style it to look like what we want. */}
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Venue</TableCell>
-              <TableCell>Primary Contact</TableCell>
-              <TableCell>Phone Number</TableCell>
-              <TableCell></TableCell>
-            </TableRow>
+          </div>
+
+          <div className="listVenues"></div>
+          {/* Using table without headers for potential sort system and thinking we can style it to look like what we want. */}
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Venue</TableCell>
+                <TableCell>Primary Contact</TableCell>
+                <TableCell>Phone Number</TableCell>
+                <TableCell></TableCell>
+              </TableRow>
             </TableHead>
             <TableBody>
-            {this.props.reduxState.venueReducer.map((venue) => {
-              return (
-                <VenueListItem key={venue.id} venue={venue} />
-              );
+              {this.props.reduxState.venueReducer.map((venue) => {
+                return (
+                  <VenueListItem key={venue.id} venue={venue} />
+                );
               })}
-          </TableBody>
-        </Table>
+            </TableBody>
+          </Table>
         </Container>
       </div>
     )
