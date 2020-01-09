@@ -12,6 +12,7 @@ import getUsersSaga from './getUsersSaga';
 import eventDetailsSaga from './eventDetailsSaga';
 import venueDetailsSaga from './venueDetailsSaga';
 import deleteUsersSaga from './deleteUsersSaga';
+import deleteEventSaga from './deleteEventSaga';
 import eventsListForVenuesTabSaga from './eventsListForVenuesTabSaga';
 import contactsSaga from './contactsSaga';
 // rootSaga is the primary saga.
@@ -38,6 +39,10 @@ export default function* rootSaga() {
     deleteUsersSaga(),
     eventsListForVenuesTabSaga(),
     deleteUsersSaga(),
+<<<<<<< HEAD
     contactsSaga()
+=======
+    deleteEventSaga()
+>>>>>>> master
   ]);
 }
