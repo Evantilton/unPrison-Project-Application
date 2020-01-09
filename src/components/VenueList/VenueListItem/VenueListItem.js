@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router';
+//styling imports
+import { TableCell, TableRow } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
-import TableBody from '@material-ui/core/TableBody';
-import TableHead from '@material-ui/core/TableHead';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
 import moment from 'moment'; // imports moment.js to format dates correctly
 
 class VenueListItem extends Component {
@@ -17,10 +16,10 @@ class VenueListItem extends Component {
     render() {
         return (
             <TableRow>
-               <TableCell >{this.props.venue.name}
-                <br /><button onClick={this.goToVenueDetails}>See Details</button></TableCell >
+               <TableCell >{this.props.venue.name}</TableCell >
                 <TableCell >{this.props.venue.contact_name}</TableCell >
                 <TableCell >{this.props.venue.street_address}</TableCell >
+                <TableCell align="right"><Button variant="outlined" onClick={this.goToVenueDetails}>Details</Button></TableCell>
                 </TableRow>
         );
     }

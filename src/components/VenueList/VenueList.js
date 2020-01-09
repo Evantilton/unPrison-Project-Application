@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
 import VenueListItem from './VenueListItem/VenueListItem';
+import './VenueList.css';
 //styling imports
 import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 
 class VenueList extends Component {
 
@@ -73,40 +78,66 @@ class VenueList extends Component {
   render() {
     return (
       <div className="venueContainer">
+        <Container>
         <h1>Venue List</h1>
-        <div className="listOptions">
         
+        <div className="listOptions">
+       
             <div>
             <TextField
           label="Venue Name"
-          id="outlined-size-small"
-        
+          id="smallInput1"
           variant="outlined"
           size="small"
-        />
-              <input value={this.state.venue.name} onChange={this.handleVenueInput} placeholder="Venue Name" />
-              <input value={this.state.contact.contact_name} onChange={this.handleContactInput} placeholder="Contact" />
-              <select value={this.state.venue.venue_type}
-                onChange={this.handleDropDown('venue_type')}>
-                {/* Placeholder values. Waiting for Deborah to reply with types. */}
-                <option value=""></option>
-                <option value="prison">Prison</option>
-                <option value="conference">Conference</option>
-                <option value="school">School</option>
-                <option value="other">Other</option>
-              </select>
-              <button onClick={this.newVenueAdded}>Create Venue</button>
+          value={this.state.venue.name}
+          onChange={this.handleVenueInput}
+          />
+<span>&nbsp;</span>
+          <TextField
+          label="Venue Contact"
+          id="smallInput2"
+          variant="outlined"
+          size="small"
+          value={this.state.contact.contact_name} 
+          onChange={this.handleContactInput}
+          />
+<span>&nbsp;</span>
+        <Select
+          labelId="simple-outlined-drop"
+          id="selectVenues"
+          variant="outlined"
+          style={{ width: `150px`, height: `30px` }}
+          value={this.state.venue.venue_type}
+          onChange={this.handleDropDown('venue_type')}
+        >
+          
+          <MenuItem value="prison">Prison</MenuItem>
+          <MenuItem value="conference">Conference</MenuItem>
+          <MenuItem value="school">School</MenuItem>
+          <MenuItem value="other">Other</MenuItem>
+        </Select>
+<span>&nbsp;</span>
+        <Button variant="contained"  size="small" className="venueButtons" onClick={this.newVenueAdded} disableElevation>Add Venue</Button>
+
+              
             </div>
 
 <div align="right">
-          <select>
-            {/* Use a sort table function? */}
-            <option>Order By</option>
-            <option value="prison">Prison</option>
-            <option value="conference">Conference</option>
-            <option value="school">School</option>
-            <option value="other">Other</option>
-          </select>
+<Select
+          labelId="selectUnlined"
+          id="sortDrop"
+          value=""
+          style={{ width: `150px`, height: `30px` }}
+        >
+          <MenuItem>
+          <em>Order By</em>
+          </MenuItem>
+          <MenuItem value="prison">Prison</MenuItem>
+          <MenuItem value="conference">Conference</MenuItem>
+          <MenuItem value="school">School</MenuItem>
+          <MenuItem value="other">Other</MenuItem>
+        </Select>
+         
 </div>
 
         </div>
@@ -118,7 +149,8 @@ class VenueList extends Component {
             <TableRow>
               <TableCell>Venue</TableCell>
               <TableCell>Primary Contact</TableCell>
-              <TableCell>Primary Contact Phone Number</TableCell>
+              <TableCell>Phone Number</TableCell>
+              <TableCell></TableCell>
             </TableRow>
             </TableHead>
             <TableBody>
@@ -129,6 +161,7 @@ class VenueList extends Component {
               })}
           </TableBody>
         </Table>
+        </Container>
       </div>
     )
   }
