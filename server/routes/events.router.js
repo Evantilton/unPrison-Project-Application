@@ -100,6 +100,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 }) // end fetch events query
 
 router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
+    console.log(req.params.id)
     const queryText = `DELETE FROM "event"
     WHERE "id" = $1`;
     pool.query(queryText, [req.params.id])

@@ -20,7 +20,7 @@ class Admin extends Component {
 
   handleDelete = (id) => {
     console.log("delete click", "this is id", id)
-    this.props.dispatch({ type: 'DELETE_USERS', payload: id});
+    this.props.dispatch({ type: 'DELETE_USERS', payload: id });
   }
 
   registerUser = (event) => {
@@ -46,11 +46,13 @@ class Admin extends Component {
     });
   }
 
- 
+
 
   render() {
     return (
+
       <div>
+
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -60,58 +62,71 @@ class Admin extends Component {
           </h2>
         )}
 
+        {/* 
+        these conditional renders need to be consolidated */}
 
-        {/* <form onSubmit={this.registerUser}> */}
-        <p>Register New User</p>
+        {this.props.user.is_admin && (
+          <p>Register New User</p>
+        )}
         <div>
-          <label htmlFor="username">
-            Username:
+          {this.props.user.is_admin && (
+            <label htmlFor="username">
+              Username:
               <input
-              type="text"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleInputChangeFor('username')}
-            />
-          </label>
+                type="text"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleInputChangeFor('username')}
+              />
+            </label>
+          )}
         </div>
         <div>
-          <label htmlFor="password">
-            Password:
+          {this.props.user.is_admin && (
+            <label htmlFor="password">
+              Password:
               <input
-              type="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </label>
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleInputChangeFor('password')}
+              />
+            </label>
+          )}
         </div>
         <div>
-          <button onClick={this.registerUser}> submit </button>
+          {this.props.user.is_admin && (
+            <button onClick={this.registerUser}> submit </button>
+          )}
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Username</th>
-              <th></th>
+        {this.props.user.is_admin && (
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th></th>
 
-            </tr>
-          </thead>
-          <tbody> 
-            {this.props.allUsers.map((users) => {
-              return (
-                <tr key={users.id}>
-                  <td>{users.id}</td>
-                  <td>{users.username}</td>
-                  <td><button key={users.id} onClick={() => { if (window.confirm('Are you sure you wish to delete this user? This cannot be undone.')) this.handleDelete(users.id) }}> delete </button></td>
-                </tr>
-              )
-            })
-          }
-          </tbody>
-        </table>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.allUsers.map((users) => {
+                return (
+                  <tr key={users.id}>
+                    <td>{users.id}</td>
+                    <td>{users.username}</td>
+                    <td><button key={users.id} onClick={() => { if (window.confirm('Are you sure you wish to delete this user? This cannot be undone.')) this.handleDelete(users.id) }}> delete </button></td>
+                  </tr>
+                )
+              })
+              }
+            </tbody>
+          </table>
+        )}
+
       </div >
+
     );
   }
 }
