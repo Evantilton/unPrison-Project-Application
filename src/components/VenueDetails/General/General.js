@@ -2,18 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import {withRouter} from 'react-router';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
+
 import TextField from '@material-ui/core/TextField';
 import {Button, Select} from '@material-ui/core';
+
+import SecondaryContacts from './SecondaryContacts/SecondaryContacts';
+
 
 class VenueGeneral extends Component {
 
     componentDidMount() {
         console.log('this.props.match.params.id is:', this.props.match.params.id)
         this.props.dispatch({ type: 'FETCH_VENUES_GENERAL_TABLE', payload: this.props.match.params.id });
+        this.props.dispatch({ type: 'FETCH_CONTACTS', payload: this.props.match.params.id });
     }
 
     handleInputChange = (event) => {
-        this.props.dispatch({ type: 'SET_EXISTING_VENUES_GENERAL', payload: { value: event.target.value, property: event.target.name } })
+        this.props.dispatch({ type: 'SET_EXISTING_VENUES_GENERAL', payload: { value: event.target.value, property: event.target.name } });
     }
 
 
@@ -22,7 +27,7 @@ class VenueGeneral extends Component {
     }
     handleDeleteButtonClick = (venueId) => {
         this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
-        this.props.history.push('/home')
+        this.props.history.push('/home');
     }
 
     render() {
@@ -65,7 +70,7 @@ class VenueGeneral extends Component {
                         <TextField type="text" name='zip' value={this.props.reduxState.venueDetailsReducer.zip || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <h3>Secondary Contacts</h3>
-                    <p>contact:</p>
+                    {/* <p>contact:</p>
                     <li>
                         <label>Name:</label>
                         <TextField type="text" ></TextField>
@@ -78,8 +83,8 @@ class VenueGeneral extends Component {
                         <label>Email:</label>
                         <TextField type="text" ></TextField>
                     </li>
-                    <p>contact:</p>
                     <li>
+
                         <label>Name:</label>
                         <TextField type="text" ></TextField>
                     </li>
@@ -91,6 +96,13 @@ class VenueGeneral extends Component {
                         <label>Email:</label>
                         <TextField type="number" ></TextField>
                     </li>
+
+                        <label>Position:</label>
+                        <input></input>
+                    </li> */}
+
+                   <SecondaryContacts />
+
                 </ul>
             </div>
         )
@@ -101,4 +113,6 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
+
 export default withRouter(connect(mapStateToProps)(VenueGeneral));
+
