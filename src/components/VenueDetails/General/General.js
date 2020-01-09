@@ -99,4 +99,6 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
+
 export default withRouter(connect(mapStateToProps)(VenueGeneral));
+

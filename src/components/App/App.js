@@ -5,19 +5,14 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import {connect} from 'react-redux';
-
 import Nav from '../Nav/Nav';
-
 import VenueDetails from '../VenueDetails/VenueDetails';
 import EventDetails from '../EventDetails/EventDetails';
 import VenueList from '../VenueList/VenueList';
 import EventList from '../EventList/EventList';
 import Admin from '../Admin/Admin';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import './App.css';
 
 class App extends Component {
