@@ -20,7 +20,7 @@ class EventListItem extends Component {
                     {this.props.event.best_times}
                 </td>
                 <td>
-                    {this.props.event.venue_id}
+                    {this.props.event.name}
                 </td>
                 <td>
                     <button onClick={this.goToEventDetails}>See Details</button>

@@ -9,7 +9,15 @@ import './EventDetails.css';
 class EventDetails extends Component {
 
     componentDidMount() {
-        this.props.dispatch({ type:'FETCH_CURRENT_EVENT', payload: this.props.match.params.id })
+        this.props.dispatch({ type: 'FETCH_CURRENT_EVENT', payload: this.props.match.params.id });
+        console.log('this.props.eventId is:', this.props.eventId);
+        this.props.dispatch({ type: 'FETCH_PROGRAMS_TABLE', payload: this.props.match.params.id });
+        console.log('this.props.eventId is:', this.props.eventId);
+        this.props.dispatch({ type: 'FETCH_TRAVEL_TABLE', payload: this.props.match.params.id });
+        console.log('this.props.eventId is:', this.props.eventId);
+        this.props.dispatch({ type: 'FETCH_GENERAL_TABLE', payload: this.props.match.params.id });
+        console.log('this.props.eventId is:', this.props.eventId);
+        this.props.dispatch({ type: 'FETCH_FINANCIALS_TABLE', payload: this.props.match.params.id });
     }
 
     state = {
@@ -31,7 +39,7 @@ class EventDetails extends Component {
             backgroundColor: 'gray',
         },
     }
-  
+
     // Function that takes in two paramaters related to local state properties, called on click of inner window tab
     // Sets the value of the tab that was clicked to true in local state, backgroundColor to 'antiquewhite', and all other booleans and backgroundColors to false and gray respectively
     handleTabClick = (propertyName, styleName) => {
@@ -60,7 +68,21 @@ class EventDetails extends Component {
             }
         });
     } // End handleTabClick function
+    handleSaveChangesButtonClick = () => {
+        this.props.dispatch({ type: 'SAVE_EVENTS_TRAVEL', payload: this.props.reduxState.eventsTravelReducer });
+        this.props.dispatch({ type: 'SAVE_EVENTS_GENERAL', payload: this.props.reduxState.eventsGeneralReducer });
+        this.props.dispatch({ type: 'SAVE_EVENTS_PROGRAMS', payload: this.props.reduxState.eventsProgramsReducer });
+        this.props.dispatch({ type: 'SAVE_EVENTS_FINANCIALS', payload: this.props.reduxState.eventsFinancialsReducer });
+    }
+    handleDeleteClick = () => {
+        console.log("handleDeleteClick has been clicked, action payload is",{value: this.props.match.params.id} );
+        this.props.dispatch({ type: 'DELETE_EVENT', payload: this.props.match.params.id })
+        this.props.history.push('/home')
+    }
 
+    handleDeleteButtonClick = (venueId) => {
+        this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
+    }
     render() {
         return (
             <>
@@ -69,7 +91,7 @@ class EventDetails extends Component {
                 </div>
                 <div className="mainWindow">
                     <div className="mainInfo">
-                        <h3>When?</h3>
+                        <h3>When?<button className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</button><button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button></h3>
                     </div>
                     <div className="generalTab" onClick={() => this.handleTabClick('general', 'generalStyle')} style={this.state.generalStyle}>
                         General
@@ -83,27 +105,31 @@ class EventDetails extends Component {
                     <div className="programsTab" onClick={() => this.handleTabClick('programs', 'programsStyle')} style={this.state.programsStyle}>
                         Programs
                     </div>
+
+
+
                     {this.state.general &&
                         <div className="tabWindow">
-                            <General eventId={this.props.match.params.id}/>
+                            <General eventId={this.props.match.params.id} />
                         </div>
                     }
                     {this.state.financials &&
                         <div className="tabWindow">
-                            <Financials eventId={this.props.match.params.id}/>
+                            <Financials eventId={this.props.match.params.id} />
                         </div>
                     }
                     {this.state.programs &&
                         <div className="tabWindow">
-                            <Programs eventId={this.props.match.params.id}/>
+                            <Programs eventId={this.props.match.params.id} />
                         </div>
                     }
                     {this.state.travel &&
                         <div className="tabWindow">
-                            <Travel eventId={this.props.match.params.id}/>
+                            <Travel eventId={this.props.match.params.id} />
                         </div>
                     }
                 </div>
+
             </>
         )
     }

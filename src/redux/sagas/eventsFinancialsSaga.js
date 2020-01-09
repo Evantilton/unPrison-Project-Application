@@ -1,12 +1,13 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* editFinancialsTable(action) {
+function* saveFinancialsTable(action) {
+    
     try {
-        const response = yield axios.put('/api/events-financials/edit', action.payload );
-        yield put({ type:'FETCH_FINANCIALS_TABLE', payload: response.data });
+        console.log("savefinanacials",action.payload)
+        yield axios.put('/api/events-financials/save', action.payload );
     } catch (error) {
-        console.log('error fetching financials', error);
+        console.log('error saving ', error);
     }
 }
 
@@ -20,7 +21,7 @@ function* fetchFinancialsTable(action) {
 }
 
 function* eventsFinancialsSaga() {
-    yield takeLatest('EDIT_FINANCIALS_TABLE', editFinancialsTable); 
+    yield takeLatest('SAVE_EVENTS_FINANCIALS', saveFinancialsTable); 
     yield takeLatest('FETCH_FINANCIALS_TABLE', fetchFinancialsTable);
 }
 

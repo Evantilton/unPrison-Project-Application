@@ -21,9 +21,10 @@ const Nav = (props) => (
             Events
           </Link>
           <LogOutButton className="nav-link"/>
-          <Link className="nav-link" to="/admin">
-        Admin
-      </Link>
+          {props.user.is_admin && (
+          <Link className="nav-link" to="/admin" >
+        Admin  
+      </Link>)}
         </>
       )}
       {/* Always show this link since the about page is not protected */}

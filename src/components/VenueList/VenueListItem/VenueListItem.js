@@ -13,12 +13,14 @@ class VenueListItem extends Component {
 
     render() {
         return (
+
             <TableRow>
                 <TableCell >{this.props.venue.name}</TableCell >
                 <TableCell >{this.props.venue.contact_name}</TableCell >
                 <TableCell >{this.props.venue.street_address}</TableCell >
                 <TableCell align="right"><Button variant="outlined" onClick={this.goToVenueDetails}>Details</Button></TableCell>
             </TableRow>
+
         );
     }
 }

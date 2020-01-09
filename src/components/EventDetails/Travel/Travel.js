@@ -1,27 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import moment from 'moment';
 class Travel extends Component {
 
-    componentDidMount() {
-        console.log('this.props.eventId is:', this.props.eventId)
-        this.props.dispatch({ type: 'FETCH_TRAVEL_TABLE', payload: this.props.eventId });
-    }
 
     handleInputChange = (event) => {
-        this.props.dispatch({ type:'SET_EXISTING_TRAVEL', payload: { value: event.target.value, property: event.target.name } });
+        this.props.dispatch({ type: 'SET_EXISTING_TRAVEL', payload: { value: event.target.value, property: event.target.name } })
     }
-
-    handleSaveChangesButtonClick = () => {
-        this.props.dispatch({ type:'SAVE_EVENTS_TRAVEL', payload: this.props.reduxState.eventsTravelReducer });
-    }
-
     render() {
         return (
             <div>
                 <h3>Travel Component</h3>
                 <ul class="nobullet">
-                    <li><button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button></li>
                     <li >
                         <label>Nearest Airport:</label>
                         <input type="text" name='nearest_airport' value={this.props.reduxState.eventsTravelReducer.nearest_airport} onChange={(event) => this.handleInputChange(event)}></input>
@@ -30,8 +20,6 @@ class Travel extends Component {
                         <label>Airport Code:</label>
                         <input type="text" name='airport_code' value={this.props.reduxState.eventsTravelReducer.airport_code} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
-
-
                     <li >
                         <label>Flights Booked:</label>
                         <select name='flights_booked' value={this.props.reduxState.eventsTravelReducer.flights_booked} onChange={(event) => this.handleInputChange(event)}>
@@ -39,19 +27,17 @@ class Travel extends Component {
                             <option value="true">yes</option>
                         </select>
                     </li>
-
-
                     <li >
                         <label>Flights Information:</label>
                         <input type="text" name='flight_information' value={this.props.reduxState.eventsTravelReducer.flight_information} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <li >
                         <label>Flights Departure:</label>
-                        <input type="date" name='flight_departure' value={this.props.reduxState.eventsTravelReducer.flight_departure} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="date" name='flight_departure' value={moment(this.props.reduxState.eventsTravelReducer.flight_departure).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <li >
                         <label>Flights Return:</label>
-                        <input type="date" name='flight_return' value={this.props.reduxState.eventsTravelReducer.flight_return} onChange={(event) => this.handleInputChange(event)}></input>
+                        <input type="date" name='flight_return' value={moment(this.props.reduxState.eventsTravelReducer.flight_return).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <li >
                         <label>Hotel Booked:</label>

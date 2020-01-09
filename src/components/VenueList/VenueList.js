@@ -80,6 +80,7 @@ class VenueList extends Component {
           <div className="listOptions">
 
             <div>
+
               <TextField
                 label="Venue Name"
                 id="smallInput1"
@@ -139,7 +140,7 @@ class VenueList extends Component {
           </div>
 
           <div className="listVenues"></div>
-          {/* Using table without headers for potential sort system and thinking we can style it to look like what we want. */}
+        
           <Table>
             <TableHead>
               <TableRow>

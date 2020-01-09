@@ -16,17 +16,41 @@ router.get('/:id', (req, res) => {
         })
 }) // end fetch financials query
 
-router.put('/edit', rejectUnauthenticated, (req, res) => {
+router.put('/save', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in eventsFinancials.router /save is:', req.body);
     const queryText = `UPDATE "financials"
-    SET $1 = $2
-    WHERE "event_id" = $3`
+    SET "prison_contribution"= $1, 
+    "public_event_fee_paid" = $2,
+    "public_event_donations" = $3,
+    "expenses_travel" = $4,
+    "expenses_air" = $5,
+    "expenses_hotel" = $6,
+    "expenses_car" = $7,
+    "expenses_meals" = $8,
+    "expenses_supplies" = $9,
+    "expenses_printing" = $10,
+    "expenses_purchases" = $11,
+    "expenses_prep_time_costs" = $12,
+    "expenses_staffing_consultants" = $13
+    WHERE "event_id" = $14`
     const queryValues = [
-        req.body[0],
-        req.body[1],
-        req.body[2]
+    req.body.prison_contribution, 
+    req.body.public_event_fee_paid,
+    req.body.public_event_donations,
+    req.body.expenses_travel,
+    req.body.expenses_air,
+    req.body.expenses_hotel,
+    req.body.expenses_car,
+    req.body.expenses_meals,
+    req.body.expenses_supplies,
+    req.body.expenses_printing,
+    req.body.expenses_purchases,
+    req.body.expenses_prep_time_costs,
+    req.body.expenses_staffing_consultants,
+    req.body.event_id
     ]
     pool.query(queryText, queryValues)
-        .then((result) => {
+        .then(() => {
             res.sendStatus(200);
         })
         .catch((error) => {
