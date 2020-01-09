@@ -7,6 +7,7 @@ import eventsTravelReducer from './eventsTravelReducer';
 import eventsFinancialsReducer from './eventsFinancialsReducer';
 import eventsProgramsReducer from './eventsProgramsReducer';
 import eventsGeneralReducer from './eventsGeneralReducer';
+import eventsNotesReducer from './eventsNotesReducer';
 import venueReducer from './venueReducer';
 import eventDetailsReducer from './eventDetailsReducer';
 import venueDetailsReducer from './venueDetailsReducer';
@@ -34,7 +35,7 @@ const rootReducer = combineReducers({
   eventsReducer, // data from events table in database
   allUsers,
   eventsListForVenuesTabReducer, // this is all the users
-
+  eventsNotesReducer,
 });
 
 export default rootReducer;
