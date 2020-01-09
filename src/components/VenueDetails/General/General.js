@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import {withRouter} from 'react-router';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import {Button, Select} from '@material-ui/core';
 
 class VenueGeneral extends Component {
 
@@ -29,65 +31,65 @@ class VenueGeneral extends Component {
                 <h3>Venue Details</h3>
                 <ul className="nobullet">
                     <li>
-                        <button className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</button>
-                        <button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button>
+                        <Button color="secondary" className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
+                        <Button color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
 
                     </li>
                     <li>
                         <label>Venue Type:</label>
-                        <select type='text' name="venue_type" value={this.props.reduxState.venueDetailsReducer.venue_type || ''} onChange={(event) => this.handleInputChange(event)}>
+                        <Select type='text' name="venue_type" value={this.props.reduxState.venueDetailsReducer.venue_type || ''} onChange={(event) => this.handleInputChange(event)}>
                             <option value="prison">Prison</option>
                             <option value="conference">Conference</option>
                             <option value="school">School/University</option>
                             <option value="other">Other</option>
-                        </select>
+                        </Select>
                     </li>
                     <li>
                         <label>Street Address:</label>
-                        <input type="text" name='street_address' value={this.props.reduxState.venueDetailsReducer.street_address || ''} onChange={(event) => this.handleInputChange(event)}></input>
+                        <TextField type="text" name='street_address' value={this.props.reduxState.venueDetailsReducer.street_address || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
                         <label>City:</label>
-                        <input type="text" name='city' value={this.props.reduxState.venueDetailsReducer.city || ''} onChange={(event) => this.handleInputChange(event)}></input>
+                        <TextField type="text" name='city' value={this.props.reduxState.venueDetailsReducer.city || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
                         <label>State:</label>
-                        <input type="text" name='state' value={this.props.reduxState.venueDetailsReducer.state || ''} onChange={(event) => this.handleInputChange(event)}></input>
+                        <TextField type="text" name='state' value={this.props.reduxState.venueDetailsReducer.state || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
                         <label>Country:</label>
-                        <input type="text" name='country' value={this.props.reduxState.venueDetailsReducer.country || ''} onChange={(event) => this.handleInputChange(event)}></input>
+                        <TextField type="text" name='country' value={this.props.reduxState.venueDetailsReducer.country || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
                         <label>Zip:</label>
-                        <input type="text" name='zip' value={this.props.reduxState.venueDetailsReducer.zip || ''} onChange={(event) => this.handleInputChange(event)}></input>
+                        <TextField type="text" name='zip' value={this.props.reduxState.venueDetailsReducer.zip || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <h3>Secondary Contacts</h3>
                     <p>contact:</p>
                     <li>
                         <label>Name:</label>
-                        <input type="text" ></input>
+                        <TextField type="text" ></TextField>
                     </li>
                     <li>
                         <label>Phone:</label>
-                        <input type="text" ></input>
+                        <TextField type="text" ></TextField>
                     </li>
                     <li>
                         <label>Email:</label>
-                        <input type="text" ></input>
+                        <TextField type="text" ></TextField>
                     </li>
                     <p>contact:</p>
                     <li>
                         <label>Name:</label>
-                        <input type="text" ></input>
+                        <TextField type="text" ></TextField>
                     </li>
                     <li>
                         <label>Phone:</label>
-                        <input type="text" ></input>
+                        <TextField type="text" ></TextField>
                     </li>
                     <li>
                         <label>Email:</label>
-                        <input type="number" ></input>
+                        <TextField type="number" ></TextField>
                     </li>
                 </ul>
             </div>

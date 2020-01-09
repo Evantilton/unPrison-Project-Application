@@ -8,7 +8,7 @@
     background-color: gray;
     display: grid;
     height: 600px;
-    grid-template-rows: 15% 5% 75% 5%;
+    grid-template-rows: 18% 8% 67% 5%;
     grid-template-columns: 5% 15% 15% 15% 15% 15% 15% 5%;
     grid-template-areas: 
     ". contactName contactName primaryPhone primaryPhone primaryEmail primaryEmail ."
@@ -46,4 +46,8 @@
     border-left: 2px solid black;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+}
+
+#textfield {
+    height: 10px;
 }
