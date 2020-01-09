@@ -12,6 +12,7 @@ import eventDetailsReducer from './eventDetailsReducer';
 import venueDetailsReducer from './venueDetailsReducer';
 import allUsers from './allUsers';
 import eventsListForVenuesTabReducer from './eventsListForVenuesTabReducer';
+import contactsReducer from './contactsReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   eventsReducer, // data from events table in database
   allUsers,
   eventsListForVenuesTabReducer, // this is all the users
+  contactsReducer,
 
 });
 

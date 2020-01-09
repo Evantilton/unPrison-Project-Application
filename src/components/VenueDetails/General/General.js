@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import {withRouter} from 'react-router';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
+import SecondaryContacts from './SecondaryContacts/SecondaryContacts';
 
 class VenueGeneral extends Component {
 
     componentDidMount() {
         console.log('this.props.match.params.id is:', this.props.match.params.id)
         this.props.dispatch({ type: 'FETCH_VENUES_GENERAL_TABLE', payload: this.props.match.params.id });
+        this.props.dispatch({ type: 'FETCH_CONTACTS', payload: this.props.match.params.id });
     }
 
     handleInputChange = (event) => {
-        this.props.dispatch({ type: 'SET_EXISTING_VENUES_GENERAL', payload: { value: event.target.value, property: event.target.name } })
+        this.props.dispatch({ type: 'SET_EXISTING_VENUES_GENERAL', payload: { value: event.target.value, property: event.target.name } });
     }
 
 
@@ -20,7 +22,7 @@ class VenueGeneral extends Component {
     }
     handleDeleteButtonClick = (venueId) => {
         this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
-        this.props.history.push('/home')
+        this.props.history.push('/home');
     }
 
     render() {
@@ -63,7 +65,7 @@ class VenueGeneral extends Component {
                         <input type="text" name='zip' value={this.props.reduxState.venueDetailsReducer.zip || ''} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
                     <h3>Secondary Contacts</h3>
-                    <p>contact:</p>
+                    {/* <p>contact:</p>
                     <li>
                         <label>Name:</label>
                         <input type="text" ></input>
@@ -76,19 +78,12 @@ class VenueGeneral extends Component {
                         <label>Email:</label>
                         <input type="text" ></input>
                     </li>
-                    <p>contact:</p>
                     <li>
-                        <label>Name:</label>
-                        <input type="text" ></input>
-                    </li>
-                    <li>
-                        <label>Phone:</label>
-                        <input type="text" ></input>
-                    </li>
-                    <li>
-                        <label>Email:</label>
-                        <input type="number" ></input>
-                    </li>
+                        <label>Position:</label>
+                        <input></input>
+                    </li> */}
+
+                   <SecondaryContacts />
                 </ul>
             </div>
         )

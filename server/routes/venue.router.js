@@ -65,9 +65,10 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     const queryValues = [
         newVenue.venue.name,
         newVenue.venue.venue_type,
+        true,
     ];
-    const queryTextContact = `INSERT INTO contacts ("venue_id", "contact_name")
-                            VALUES ($1, $2)`
+    const queryTextContact = `INSERT INTO contacts ("venue_id", "contact_name", "is_primary")
+                            VALUES ($1, $2, $3)`
     try {
         await connection.query('BEGIN;');
         result = await connection.query(queryText, queryValues)

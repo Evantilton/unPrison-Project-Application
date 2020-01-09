@@ -13,6 +13,7 @@ import eventDetailsSaga from './eventDetailsSaga';
 import venueDetailsSaga from './venueDetailsSaga';
 import deleteUsersSaga from './deleteUsersSaga';
 import eventsListForVenuesTabSaga from './eventsListForVenuesTabSaga';
+import contactsSaga from './contactsSaga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -36,6 +37,7 @@ export default function* rootSaga() {
     venueDetailsSaga(),
     deleteUsersSaga(),
     eventsListForVenuesTabSaga(),
-    deleteUsersSaga()
+    deleteUsersSaga(),
+    contactsSaga()
   ]);
 }

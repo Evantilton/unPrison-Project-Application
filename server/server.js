@@ -19,6 +19,8 @@ const eventsFinancialsRouter = require('./routes/eventsFinancials.router');
 const programsTabEventRouter = require('./routes/programsTabEvent.router');
 const eventsProgramsRouter = require('./routes/eventsPrograms.router');
 const programsTabRouter = require('./routes/programsTab.router');
+const contactsRouter = require('./routes/contacts.router');
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,6 +43,7 @@ app.use('/api/programsTabEvent', programsTabEventRouter);
 app.use('/api/programsTab', programsTabRouter);
 app.use('/users',  usersRouter);
 app.use('/api/venue', venueRouter);
+app.use('/api/contacts', contactsRouter);
 
 // Serve static files
 app.use(express.static('build'));
