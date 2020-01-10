@@ -5,7 +5,8 @@ import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-rou
 
 import TextField from '@material-ui/core/TextField';
 import {Button, Select} from '@material-ui/core';
-
+import Icon from '@material-ui/core/Icon';
+// import SaveIcon from '@material-ui/icons/Save';
 import SecondaryContacts from './SecondaryContacts/SecondaryContacts';
 
 
@@ -36,8 +37,8 @@ class VenueGeneral extends Component {
                 <h3 id="general-header">Venue Details</h3>
                 <ul className="nobullet">
                     <li>
-                        <Button color="secondary" className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
-                        <Button color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
+                        <Button startIcon={<Icon>delete</Icon>} variant="contained"color="secondary" className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
+                        <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
 
                     </li>
                     <li>
