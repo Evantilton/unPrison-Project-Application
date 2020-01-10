@@ -34,9 +34,10 @@ router.put('/save', rejectUnauthenticated, (req, res) => {
     "demographics"=$12, 
     "flyer_mailed"=$13, 
     "flyer_mailed_date"=$14, 
-    "hear_about"=$15 
+    "hear_about"=$15,
+    "event_notes"=$16
 
-    WHERE "id" = $16`
+    WHERE "id" = $17`
     const queryValues = [
         req.body.last_date_contacted, 
         req.body.best_days_week,
@@ -53,6 +54,7 @@ router.put('/save', rejectUnauthenticated, (req, res) => {
         req.body.flyer_mailed,
         req.body.flyer_mailed_date,
         req.body.hear_about,
+        req.body.event_notes,
         req.body.id
     ]
     pool.query(queryText, queryValues)

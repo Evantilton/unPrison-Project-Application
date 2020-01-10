@@ -61,7 +61,8 @@ CREATE TABLE "event" (
   "demographics" VARCHAR(255),
   "flyer_mailed" BOOLEAN,
   "flyer_mailed_date" DATE,
-  "hear_about" VARCHAR(255)
+  "hear_about" VARCHAR(255),
+  "event_notes" VARCHAR
 );
 
 CREATE TABLE "travel" (
@@ -76,7 +77,8 @@ CREATE TABLE "travel" (
   "hotel_booked" BOOLEAN DEFAULT false,
   "hotel_information" VARCHAR(1000),
   "car_booked" BOOLEAN DEFAULT false,
-  "car_information" VARCHAR(1000)
+  "car_information" VARCHAR(1000),
+  "travel_notes" VARCHAR
 );
 
 CREATE TABLE "childrens_books" (
@@ -146,17 +148,10 @@ CREATE TABLE "financials" (
   "expenses_printing" NUMERIC,
   "expenses_purchases" NUMERIC,
   "expenses_prep_time_costs" NUMERIC,
-  "expenses_staffing_consultants" NUMERIC
+  "expenses_staffing_consultants" NUMERIC,
+  "financials_notes" VARCHAR
 );
 
-CREATE TABLE "notes" (
-  "id" SERIAL PRIMARY KEY,
-  "event_id" INT NOT NULL,
-  "is_expenses" BOOLEAN DEFAULT false,
-  "is_event" BOOLEAN DEFAULT false,
-  "is_travel" BOOLEAN DEFAULT false,
-  "note" VARCHAR
-);
 
 ALTER TABLE "contacts" ADD FOREIGN KEY ("venue_id") REFERENCES "venue" ("id");
 
@@ -172,7 +167,6 @@ ALTER TABLE "public_event" ADD FOREIGN KEY ("event_id") REFERENCES "event" ("id"
 
 ALTER TABLE "financials" ADD FOREIGN KEY ("event_id") REFERENCES "event" ("id");
 
-ALTER TABLE "notes" ADD FOREIGN KEY ("event_id") REFERENCES "event" ("id");
 
 ALTER TABLE "public"."childrens_books"
   DROP CONSTRAINT "childrens_books_event_id_fkey",
@@ -190,9 +184,6 @@ ALTER TABLE "public"."financials"
   DROP CONSTRAINT "financials_event_id_fkey",
   ADD CONSTRAINT "financials_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
 
-ALTER TABLE "public"."notes"
-  DROP CONSTRAINT "notes_event_id_fkey",
-  ADD CONSTRAINT "notes_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
 
 ALTER TABLE "public"."public_event"
   DROP CONSTRAINT "public_event_event_id_fkey",
