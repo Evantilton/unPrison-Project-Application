@@ -5,6 +5,9 @@ import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-rou
 import VenueGeneral from './General/General';
 import VenueEvents from './Events/Events';
 import './VenueDetails.css';
+import TextField from '@material-ui/core/TextField';
+import Tab from '@material-ui/core/Tab';
+
 
 class VenueDetails extends Component {
 
@@ -68,23 +71,24 @@ class VenueDetails extends Component {
                 <div className="venueMainWindow">
                     <div className="primaryName">
                         <h3>Primary Contact:</h3>
-                        <input type="text" name='contact_name' value={this.props.reduxState.venueDetailsReducer.contact_name || ''} onChange={(event) => this.handleInputChange(event)}></input>
+                        <TextField id="textfield" variant="standard" type="text" name='contact_name' value={this.props.reduxState.venueDetailsReducer.contact_name || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </div>
                     <div className="primaryPhone">
                         <h3>Phone:</h3>
-                        <input type="text" name='contact_phone' value={this.props.reduxState.venueDetailsReducer.contact_phone || ''} onChange={(event) => this.handleInputChange(event)}></input>
+                        <TextField id="textfield" type="text" name='contact_phone' value={this.props.reduxState.venueDetailsReducer.contact_phone || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </div>
                     <div className="primaryEmail">
                         <h3>Primary Email:</h3>
-                        <input type="text" name='contact_email' value={this.props.reduxState.venueDetailsReducer.contact_email || ''} onChange={(event) => this.handleInputChange(event)}></input>
+                        <TextField id="textfield" type="text" name='contact_email' value={this.props.reduxState.venueDetailsReducer.contact_email || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </div>
-                    <div className="venueGeneralTab" onClick={this.handleGeneralTabClick} style={this.state.generalStyle}>
+                    <Tab label="General" className="venueGeneralTab" onClick={this.handleGeneralTabClick} style={this.state.generalStyle}>
                         General
-                    </div>
-                    <div className="venueEventsTab" onClick={this.handleEventsTabClick} style={this.state.eventsStyle}>
+                    </Tab>
+                    <Tab label="Events" className="venueEventsTab" onClick={this.handleEventsTabClick} style={this.state.eventsStyle}>
                         Events
-                    </div>
+                    </Tab>
                     {this.state.events ?
+
                         <div className="venueTabWindow">
                             <VenueEvents />
                         </div> :
