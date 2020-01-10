@@ -45,7 +45,6 @@ app.use('/users',  usersRouter);
 app.use('/api/venue', venueRouter);
 app.use('/api/contacts', contactsRouter);
 
-
 // Serve static files
 app.use(express.static('build'));
 

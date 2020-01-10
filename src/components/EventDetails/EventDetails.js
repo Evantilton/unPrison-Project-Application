@@ -5,6 +5,7 @@ import General from './General/General';
 import Programs from './Programs/Programs';
 import Travel from './Travel/Travel';
 import './EventDetails.css';
+import moment from 'moment';
 
 class EventDetails extends Component {
 
@@ -64,6 +65,11 @@ class EventDetails extends Component {
             }
         });
     } // End handleTabClick function
+
+    handleInputChange = (event) => {
+        this.props.dispatch({ type: 'SET_EXISTING_GENERAL', payload: { value: event.target.value, property: event.target.name } })
+    }
+
     handleSaveChangesButtonClick = () => {
         this.props.dispatch({ type: 'SAVE_EVENTS_TRAVEL', payload: this.props.reduxState.eventsTravelReducer });
         this.props.dispatch({ type: 'SAVE_EVENTS_GENERAL', payload: this.props.reduxState.eventsGeneralReducer });
@@ -87,7 +93,11 @@ class EventDetails extends Component {
                 </div>
                 <div className="mainWindow">
                     <div className="mainInfo">
-                        <h3>When?<button className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</button><button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button></h3>
+                        <h3> <li>
+                        <label>Date</label>
+                        <input type="date" name='confirmed_date' value={moment(this.props.reduxState.eventsGeneralReducer.confirmed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
+                    </li>
+                            <button className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</button><button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button></h3>
                     </div>
                     <div className="generalTab" onClick={() => this.handleTabClick('general', 'generalStyle')} style={this.state.generalStyle}>
                         General
