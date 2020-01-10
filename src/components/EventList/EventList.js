@@ -78,9 +78,14 @@ class EventList extends Component {
                 );
               })
               }
+            </tbody>
+          </table>
+          {/* <pre>{JSON.stringify(this.props,null,2)}</pre> */}
+
             </TableBody>
           </Table>
           </Container>
+
         </div>
 
 

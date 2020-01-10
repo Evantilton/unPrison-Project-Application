@@ -5,7 +5,8 @@ import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-rou
 
 import TextField from '@material-ui/core/TextField';
 import {Button, Select} from '@material-ui/core';
-
+import Icon from '@material-ui/core/Icon';
+// import SaveIcon from '@material-ui/icons/Save';
 import SecondaryContacts from './SecondaryContacts/SecondaryContacts';
 
 
@@ -33,16 +34,16 @@ class VenueGeneral extends Component {
     render() {
         return (
             <div>
-                <h3>Venue Details</h3>
+                <h3 id="general-header">Venue Details</h3>
                 <ul className="nobullet">
                     <li>
-                        <Button color="secondary" className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
-                        <Button color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
+                        <Button startIcon={<Icon>delete</Icon>} variant="contained"color="secondary" className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
+                        <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
 
                     </li>
                     <li>
                         <label>Venue Type:</label>
-                        <Select type='text' name="venue_type" value={this.props.reduxState.venueDetailsReducer.venue_type || ''} onChange={(event) => this.handleInputChange(event)}>
+                        <Select id="material-ui" type='text' name="venue_type" value={this.props.reduxState.venueDetailsReducer.venue_type || ''} onChange={(event) => this.handleInputChange(event)}>
                             <option value="prison">Prison</option>
                             <option value="conference">Conference</option>
                             <option value="school">School/University</option>
@@ -51,23 +52,23 @@ class VenueGeneral extends Component {
                     </li>
                     <li>
                         <label>Street Address:</label>
-                        <TextField type="text" name='street_address' value={this.props.reduxState.venueDetailsReducer.street_address || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="material-ui"type="text" name='street_address' value={this.props.reduxState.venueDetailsReducer.street_address || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
                         <label>City:</label>
-                        <TextField type="text" name='city' value={this.props.reduxState.venueDetailsReducer.city || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="material-ui"type="text" name='city' value={this.props.reduxState.venueDetailsReducer.city || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
                         <label>State:</label>
-                        <TextField type="text" name='state' value={this.props.reduxState.venueDetailsReducer.state || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="material-ui"type="text" name='state' value={this.props.reduxState.venueDetailsReducer.state || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
                         <label>Country:</label>
-                        <TextField type="text" name='country' value={this.props.reduxState.venueDetailsReducer.country || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="material-ui"type="text" name='country' value={this.props.reduxState.venueDetailsReducer.country || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
                         <label>Zip:</label>
-                        <TextField type="text" name='zip' value={this.props.reduxState.venueDetailsReducer.zip || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="material-ui"type="text" name='zip' value={this.props.reduxState.venueDetailsReducer.zip || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <h3>Secondary Contacts</h3>
                     {/* <p>contact:</p>

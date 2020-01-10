@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
+import logo from './unPrisonProjectLogo.jpg';
 
 const Nav = (props) => (
   <div className="nav">
-      <h2 className="nav-title">Unprison Project</h2>
+      <img src={logo} alt="logo for unPrison Project nonprofit" id="nav-logo"></img>
     <div className="nav-right">
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
