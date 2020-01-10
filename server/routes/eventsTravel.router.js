@@ -28,8 +28,9 @@ router.put('/save', rejectUnauthenticated, (req, res) => {
     "hotel_booked" = $7,
     "hotel_information" = $8,
     "car_booked" = $9,
-    "car_information" = $10
-    WHERE "event_id" = $11`
+    "car_information" = $10,
+    "travel_notes" = $11
+    WHERE "event_id" = $12`
     const queryValues = [
         req.body.nearest_airport,
         req.body.airport_code,
@@ -41,6 +42,7 @@ router.put('/save', rejectUnauthenticated, (req, res) => {
         req.body.hotel_information,
         req.body.car_booked,
         req.body.car_information,
+        req.body.travel_notes,
         req.body.event_id
     ]
     pool.query(queryText, queryValues)

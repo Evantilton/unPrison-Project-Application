@@ -31,8 +31,9 @@ router.put('/save', rejectUnauthenticated, (req, res) => {
     "expenses_printing" = $10,
     "expenses_purchases" = $11,
     "expenses_prep_time_costs" = $12,
-    "expenses_staffing_consultants" = $13
-    WHERE "event_id" = $14`
+    "expenses_staffing_consultants" = $13,
+    "financials_notes"=$14
+    WHERE "event_id" = $15`
     const queryValues = [
     req.body.prison_contribution, 
     req.body.public_event_fee_paid,
@@ -47,6 +48,7 @@ router.put('/save', rejectUnauthenticated, (req, res) => {
     req.body.expenses_purchases,
     req.body.expenses_prep_time_costs,
     req.body.expenses_staffing_consultants,
+    req.body.financials_notes,
     req.body.event_id
     ]
     pool.query(queryText, queryValues)
