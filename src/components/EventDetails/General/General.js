@@ -85,7 +85,7 @@ class General extends Component {
                     </li>
                     <li>
                         <label>Event Notes:</label>
-                        <input type="text"></input>
+                        <input type="text" name='event_notes' value={this.props.reduxState.eventsGeneralReducer.event_notes} onChange={(event) => this.handleInputChange(event)}></input>
                     </li>
 
                     

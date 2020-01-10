@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EventListItem from './EventListItem/EventListItem';
+//style imports
+import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
+import { TextField, Select, MenuItem, Button } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import InputLabel from '@material-ui/core/InputLabel';
 
 class EventList extends Component {
 
@@ -31,44 +36,42 @@ class EventList extends Component {
   render() {
     return (
       <div className="eventContainer">
+         <Container>
         <h1>Event List</h1>
         <div className="listOptions">
-          <select onChange={this.handleChangeForVenue('venue_id')}
-          >
-            <option value="">Choose Venue</option>
+        <InputLabel shrink id="venue-event">Select a Venue</InputLabel>
+        <Select
+        variant="outlined"
+        labelId="venue-event"
+        style={{ width: `150px`, height: `30px` }}
+        onChange={this.handleChangeForVenue('venue_id')}> 
+          
+        
             {/* Brings in names of venues previously created and their ids to use in event creation */}
           {this.props.reduxState.venueReducer.map((location) => {
                                 return (
-                                    <option key={location.id} value={location.id}>{location.name}</option>
+                                    <MenuItem key={location.id} value={location.id}>{location.name}</MenuItem>
                                 );
                             })}
-            </select>
-
-        
-            <button onClick={this.createEventButton}>Create Event</button>
+            </Select>
+            <span>&nbsp;</span>
+            <Button variant="contained" size="small" className="eventButtons" onClick={this.createEventButton} disableElevation>Create Event</Button>
 
         </div>
 
           <div className="listEvents"></div>
 
-          <table border="1">
-            <thead>
-              <tr>
-                <th>
-                  Event Date
-            </th>
-                <th>
-                  Event Time
-            </th>
-                <th>
-                  Event Location
-            </th>
-                <th>
-                  Primary Contact
-            </th>
-              </tr>
-            </thead>
-            <tbody>
+          <Table>
+            <TableHead>
+            <TableRow>
+            <TableCell>Event Date</TableCell>
+                <TableCell>Event Time</TableCell>
+                <TableCell>Event Location</TableCell>
+                <TableCell></TableCell>
+                
+              </TableRow>
+              </TableHead>
+            <TableBody>
               {this.props.reduxState.eventsReducer.map((event) => {
                 return (
                   <EventListItem key={event.id} event={event} />
@@ -78,6 +81,11 @@ class EventList extends Component {
             </tbody>
           </table>
           {/* <pre>{JSON.stringify(this.props,null,2)}</pre> */}
+
+            </TableBody>
+          </Table>
+          </Container>
+
         </div>
 
 
