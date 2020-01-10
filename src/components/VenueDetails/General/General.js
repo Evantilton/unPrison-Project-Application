@@ -30,6 +30,10 @@ class VenueGeneral extends Component {
         this.props.history.push('/home');
     }
 
+    addSecondaryContactButtonClick = () => {
+        this.props.dispatch({ type: 'ADD_SECONDARY_CONTACT', payload: this.props.match.params.id });
+    }
+
     render() {
         return (
             <div>
@@ -69,7 +73,13 @@ class VenueGeneral extends Component {
                         <label>Zip:</label>
                         <TextField type="text" name='zip' value={this.props.reduxState.venueDetailsReducer.zip || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
-                    <h3>Secondary Contacts</h3>
+                    <h3>Secondary Contacts:</h3>
+                    <Button color="primary" variant="outlined" onClick={this.addSecondaryContactButtonClick}>Add Secondary contact</Button>
+                    {this.props.reduxState.contactsReducer.map((contact) => {
+                        return(
+                            <SecondaryContacts key={contact.id} contact={contact} />
+                        )
+                    })}
                     {/* <p>contact:</p>
                     <li>
                         <label>Name:</label>
@@ -100,9 +110,6 @@ class VenueGeneral extends Component {
                         <label>Position:</label>
                         <input></input>
                     </li> */}
-
-                   <SecondaryContacts />
-
                 </ul>
             </div>
         )

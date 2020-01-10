@@ -3,6 +3,8 @@ import axios from 'axios';
 
 function* contactsSaga() {
     yield takeLatest('FETCH_CONTACTS', fetchContacts);
+    yield takeLatest('ADD_SECONDARY_CONTACT', addSecondaryContact);
+    yield takeLatest('DELETE_SECONDARY_CONTACT', deleteSecondaryContact)
 }
 
 function* fetchContacts(action) {
@@ -10,7 +12,25 @@ function* fetchContacts(action) {
         const contactsResponse = yield axios.get(`/api/contacts/${action.payload}`);
         yield put({ type: 'SET_CONTACTS', payload: contactsResponse.data });
     } catch (error) {
-        console.log('error fetching contacts for venue', error);
+        console.log('error fetching contacts for venue in contactsSaga', error);
+    }
+}
+
+function* addSecondaryContact(action) {
+    try {
+        yield axios.post(`/api/contacts/add/secondary/${action.payload}`);
+        yield put({ type: 'FETCH_CONTACTS', payload: action.payload });
+    } catch (error) {
+        console.log('error adding secondary contact in contactsSaga,', error);
+    }
+}
+
+function* deleteSecondaryContact(action) {
+    try {
+        const contactsResponse = yield axios.delete(`/api/contacts/delete/secondary/${action.payload}`);
+        yield put({ type: 'FETCH_CONTACTS', payload: contactsResponse.data });
+    } catch (error) {
+        console.log('error deleting secondary contact in contactsSaga,', error);
     }
 }
 
