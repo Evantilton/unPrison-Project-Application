@@ -14,7 +14,6 @@ class EventDetails extends Component {
         this.props.dispatch({ type: 'FETCH_TRAVEL_TABLE', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'FETCH_GENERAL_TABLE', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'FETCH_FINANCIALS_TABLE', payload: this.props.match.params.id });
-        // this.props.dispatch({ type: 'FETCH_NOTES_TABLE', payload: this.props.match.params.id });
     }
 
     state = {
