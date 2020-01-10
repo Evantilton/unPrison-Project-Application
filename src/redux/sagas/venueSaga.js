@@ -9,6 +9,7 @@ function* venueSaga() {
 function* createVenue(action){
     //sends inputted user value to server side post route
     try {
+        console.log('in create venue saga',action)
         yield axios.post('/api/venue', action.payload);
         yield put({ type: 'GET_VENUES', payload: action.payload })
     } catch (error) {
