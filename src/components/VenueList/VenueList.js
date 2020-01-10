@@ -17,6 +17,7 @@ class VenueList extends Component {
     },
     contact: {
       contact_name: "",
+      is_primary: "",
     }
   }
 
@@ -37,6 +38,7 @@ class VenueList extends Component {
       },
       contact: {
         contact_name: "",
+        is_primary: "",
       }
     });
   }
@@ -56,7 +58,8 @@ class VenueList extends Component {
     this.setState({
       contact: {
         ...this.state.contact,
-        contact_name: event.target.value
+        contact_name: event.target.value,
+        is_primary: true,
       }
     });
   }
