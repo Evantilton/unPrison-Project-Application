@@ -80,7 +80,7 @@ class VenueList extends Component {
           <div className="listOptions">
 
             <div>
-
+            
               <TextField
                 label="Venue Name"
                 id="smallInput1"
@@ -99,11 +99,13 @@ class VenueList extends Component {
                 onChange={this.handleContactInput}
               />
               <span>&nbsp;</span>
+              
               <Select
                 labelId="simple-outlined-drop"
                 id="selectVenues"
                 variant="outlined"
-                style={{ width: `150px`, height: `30px` }}
+                displayEmpty
+                style={{ width: `140px`, height: `30px` }}
                 value={this.state.venue.venue_type}
                 onChange={this.handleDropDown('venue_type')}
               >
@@ -116,15 +118,15 @@ class VenueList extends Component {
               <span>&nbsp;</span>
               <Button variant="contained" size="small" className="venueButtons" onClick={this.newVenueAdded} disableElevation>Add Venue</Button>
 
-
             </div>
 
             <div align="right">
-              <Select
+            
+              Order By: <Select
                 labelId="selectUnlined"
                 id="sortDrop"
-                value=""
-                style={{ width: `150px`, height: `30px` }}
+                
+                style={{ width: `140px`, height: `30px` }}
               >
                 <MenuItem>
                   <em>Order By</em>

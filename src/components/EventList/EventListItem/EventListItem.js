@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 import moment from 'moment'; // imports moment.js to format dates correctly
+//style imports
+import { TableCell, TableRow } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 class EventListItem extends Component {
 
@@ -11,21 +14,15 @@ class EventListItem extends Component {
 
     render() {
         return (
-            <tr>
+            <TableRow>
                 {this.props.event.confirmed_date ?
-                <td>{moment(this.props.event.confirmed_date).format('MM/DD/YYYY')}</td>:
-                <td>No Confirmed Date</td>
-    }
-                <td>
-                    {this.props.event.best_times}
-                </td>
-                <td>
-                    {this.props.event.name}
-                </td>
-                <td>
-                    <button onClick={this.goToEventDetails}>See Details</button>
-                </td>
-            </tr>
+                    <TableCell>{moment(this.props.event.confirmed_date).format('MM/DD/YYYY')}</TableCell> :
+                    <TableCell>No Confirmed Date</TableCell>
+                }
+                <TableCell>{this.props.event.best_times}</TableCell>
+                <TableCell> {this.props.event.name}</TableCell>
+                <TableCell align="right"><Button variant="outlined" size="small" onClick={this.goToEventDetails}>Details</Button></TableCell>
+            </TableRow>
         );
     }
 }
