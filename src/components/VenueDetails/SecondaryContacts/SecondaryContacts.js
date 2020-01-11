@@ -6,7 +6,7 @@ import {Button, Select} from '@material-ui/core';
 class SecondaryContacts extends Component {
 
     componentDidMount() {
-        this.props.dispatch({ type: 'FETCH_CONTACTS', payload: this.props.eventId });
+        this.props.dispatch({ type: 'FETCH_CONTACTS', payload: this.props.venueId });
     }
 
     handleDeleteContactButtonClick = (contactId) => {
@@ -18,7 +18,11 @@ class SecondaryContacts extends Component {
     }
 
     addSecondaryContactButtonClick = () => {
-        this.props.dispatch({ type: 'ADD_SECONDARY_CONTACT', payload: this.props.eventId });
+        this.props.dispatch({ type: 'ADD_SECONDARY_CONTACT', payload: this.props.VenueId });
+    }
+
+    handleMakePrimaryContactButtonClick = (contactId) => {
+        this.props.dispatch({ type: 'MARK_CONTACT_AS_PRIMARY', payload: { contactId: contactId, venueId: this.props.venueId } });
     }
 
     render() {
@@ -32,7 +36,7 @@ class SecondaryContacts extends Component {
                         return(
                     <div>
                         <div>
-                            <Button color="primary" variant="outlined">Make primary contact</Button>
+                            <Button color="primary" variant="outlined" onClick={() => this.handleMakePrimaryContactButtonClick(contact.id)}>Make primary contact</Button>
                             <Button color="secondary" variant="outlined" onClick={() => this.handleDeleteContactButtonClick(contact.id)}>Delete Contact</Button>
                         </div>
                         <div>

@@ -26,7 +26,8 @@ router.get('/one/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `
                 SELECT * FROM venue 
                 JOIN "contacts" ON "contacts"."venue_id" = "venue"."id"
-                WHERE venue.id=$1;`;
+                WHERE "venue"."id" = $1
+                AND "contacts"."is_primary" = 'true'`;
     pool.query(queryText, [req.params.id])
         .then((result) => {
             // console.log('get route details', result);

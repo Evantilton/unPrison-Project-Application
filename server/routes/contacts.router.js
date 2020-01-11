@@ -18,7 +18,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         })
 });
 
-router.post('/add/secondary/:id', rejectUnauthenticated, (req, res) => {
+router.post('/add-secondary/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `INSERT INTO "contacts" ("venue_id")
     VALUES ($1)`;
     console.log('in contacts.router post route, req.params.id is:', req.params.id);
@@ -32,7 +32,7 @@ router.post('/add/secondary/:id', rejectUnauthenticated, (req, res) => {
     })
 });
 
-router.delete('/delete/secondary/:id', rejectUnauthenticated, async (req, res) => {
+router.delete('/delete-secondary/:id', rejectUnauthenticated, async (req, res) => {
     const connection = await pool.connect();
 
     const queryText = `SELECT "venue_id" FROM "contacts"
@@ -57,6 +57,40 @@ router.delete('/delete/secondary/:id', rejectUnauthenticated, async (req, res) =
         connection.release();
     }
 });
+
+router.put('/mark-primary/:id', rejectUnauthenticated, async (req, res) => {
+    const connection = await pool.connect();
+
+    const queryText = `SELECT "id" FROM "contacts"
+    WHERE "is_primary" = true
+    AND "venue_id" = $1`;
+
+    const queryTextTwo = `UPDATE "contacts"
+    SET "is_primary" = false
+    WHERE "id" = $1`;
+
+    const queryTextThree = `UPDATE "contacts"
+    SET "is_primary" = true
+    WHERE "id" = $1`;
+
+    try {
+        console.log('in PUT route in contacts.router.js to mark secondary contact as primary, req.body is:', req.body);
+        await connection.query('BEGIN;');
+        const currentPrimaryId = await connection.query(queryText, [req.body.venueId]);
+        console.log('in contacts.router, this is currentPrimaryId.rows variable in put route:', currentPrimaryId.rows);
+        await connection.query(queryTextTwo, [currentPrimaryId.rows[0].id]);
+        const venueId = await connection.query(queryTextThree, [req.params.id]);
+        await connection.query('COMMIT;');
+
+        res.send(venueId.rows);
+    } catch (error) {
+        await connection.query('ROLLBACK;');
+        console.log('error in marking contact primary contact in contacts.router,', error);
+        res.sendStatus(500);
+    } finally {
+        connection.release();
+    }
+})
 
 
 module.exports = router;

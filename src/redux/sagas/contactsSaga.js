@@ -4,7 +4,8 @@ import axios from 'axios';
 function* contactsSaga() {
     yield takeLatest('FETCH_CONTACTS', fetchContacts);
     yield takeLatest('ADD_SECONDARY_CONTACT', addSecondaryContact);
-    yield takeLatest('DELETE_SECONDARY_CONTACT', deleteSecondaryContact)
+    yield takeLatest('DELETE_SECONDARY_CONTACT', deleteSecondaryContact);
+    yield takeLatest('MARK_CONTACT_AS_PRIMARY', markContactPrimary);
 }
 
 function* fetchContacts(action) {
@@ -18,7 +19,7 @@ function* fetchContacts(action) {
 
 function* addSecondaryContact(action) {
     try {
-        yield axios.post(`/api/contacts/add/secondary/${action.payload}`);
+        yield axios.post(`/api/contacts/add-secondary/${action.payload}`);
         yield put({ type: 'FETCH_CONTACTS', payload: action.payload });
     } catch (error) {
         console.log('error adding secondary contact in contactsSaga,', error);
@@ -27,11 +28,21 @@ function* addSecondaryContact(action) {
 
 function* deleteSecondaryContact(action) {
     try {
-        const contactsResponse = yield axios.delete(`/api/contacts/delete/secondary/${action.payload}`);
+        const contactsResponse = yield axios.delete(`/api/contacts/delete-secondary/${action.payload}`);
         console.log('in contactsSaga this is contactsResponse of delete route:', contactsResponse);
         yield put({ type: 'FETCH_CONTACTS', payload: contactsResponse.data[0].venue_id });
     } catch (error) {
         console.log('error deleting secondary contact in contactsSaga,', error);
+    }
+}
+
+function* markContactPrimary(action) {
+    try {
+        yield axios.put(`/api/contacts/mark-primary/${action.payload.contactId}`, action.payload);
+        // console.log('in contactsSaga markContactPrimary, markPrimaryResponse.data is:', markPrimaryResponse.data);
+        yield put({ type: 'GET_ONE_VENUE',  payload: action.payload.venueId })
+    } catch (error) {
+        console.log('error in marking a secondary contact as the primary contact in contactsSaga,', error);
     }
 }
 
