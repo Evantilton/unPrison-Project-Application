@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './LoginPage.css';
+// styling imports
+import Container from '@material-ui/core/Container';
+import { TextField, Button, Paper } from '@material-ui/core';
 
 class LoginPage extends Component {
   state = {
@@ -32,49 +36,47 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        {this.props.errors.loginMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
-            {this.props.errors.loginMessage}
-          </h2>
-        )}
-        <form onSubmit={this.login}>
-          <h1>Login</h1>
-          <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
-          </div>
-          <div>
-            <input
-              className="log-in"
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
-          </div>
-        </form>
-        <center>
-        </center>
+        <Container id="logContainer"> <Paper id="logPaper"> <div className="logDiv">
+          {this.props.errors.loginMessage && (
+            <h2
+              className="alert"
+              role="alert"
+            >
+              {this.props.errors.loginMessage}
+            </h2>
+          )}
+          
+            <h1>Login</h1>
+            
+
+                <TextField
+                  label="Username"
+                  id="userInput"
+                  variant="outlined"
+                  value={this.state.username}
+                  onChange={this.handleInputChangeFor('username')}
+                />
+
+                <br /><br />
+                
+                <TextField
+                  id="userInput"
+                  label="Password"
+                  type="password"
+                  variant="outlined"
+                  value={this.state.password}
+                  onChange={this.handleInputChangeFor('password')}
+                />
+
+             <br />
+             <br/><div align="center">
+              <Button variant="contained" className="logButtons" onClick={this.login} disableElevation>Login</Button>
+              <br />
+              </div>
+              </div>
+              </Paper>
+      
+        </Container>
       </div>
     );
   }
