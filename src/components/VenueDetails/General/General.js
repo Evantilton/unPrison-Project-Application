@@ -25,6 +25,7 @@ class VenueGeneral extends Component {
     handleSaveChangesButtonClick = () => {
         this.props.dispatch({ type: 'SAVE_VENUES_GENERAL', payload: this.props.reduxState.venueDetailsReducer });
     }
+    
     handleDeleteButtonClick = (venueId) => {
         this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
         this.props.history.push('/home');
@@ -36,6 +37,7 @@ class VenueGeneral extends Component {
 
     render() {
         return (
+            <>
             <div>
                 <h3>Venue Details</h3>
                 <ul className="nobullet">
@@ -75,43 +77,17 @@ class VenueGeneral extends Component {
                     </li>
                     <h3>Secondary Contacts:</h3>
                     <Button color="primary" variant="outlined" onClick={this.addSecondaryContactButtonClick}>Add Secondary contact</Button>
-                    {this.props.reduxState.contactsReducer.map((contact) => {
-                        return(
-                            <SecondaryContacts key={contact.id} contact={contact} />
-                        )
-                    })}
-                    {/* <p>contact:</p>
-                    <li>
-                        <label>Name:</label>
-                        <TextField type="text" ></TextField>
-                    </li>
-                    <li>
-                        <label>Phone:</label>
-                        <TextField type="text" ></TextField>
-                    </li>
-                    <li>
-                        <label>Email:</label>
-                        <TextField type="text" ></TextField>
-                    </li>
-                    <li>
-
-                        <label>Name:</label>
-                        <TextField type="text" ></TextField>
-                    </li>
-                    <li>
-                        <label>Phone:</label>
-                        <TextField type="text" ></TextField>
-                    </li>
-                    <li>
-                        <label>Email:</label>
-                        <TextField type="number" ></TextField>
-                    </li>
-
-                        <label>Position:</label>
-                        <input></input>
-                    </li> */}
                 </ul>
             </div>
+            {this.props.reduxState.contactsReducer[0] ?
+            <div>
+                <SecondaryContacts />
+            </div>:
+            <div>
+                There are not currently any secondary contacts for this venue.
+            </div>
+    }
+            </>
         )
     }
 }
