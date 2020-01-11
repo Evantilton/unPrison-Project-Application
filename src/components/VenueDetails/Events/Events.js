@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
 import moment from 'moment';
+import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
+import { TextField, Select, MenuItem, Button } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
 
 class VenueEvents extends Component {
 
@@ -20,33 +23,35 @@ class VenueEvents extends Component {
     render() {
         return (
             <div>
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>
+                
+                <Table border="1">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>
                                 Event Date
-                            </th>
-                            <th>
+                            </TableCell>
+                            <TableCell>
                                 Event Details
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                            </TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {this.props.reduxState.eventsListForVenuesTabReducer.map((event) => {
                             return(
-                            <tr key={event.id}>
+                            <TableRow key={event.id}>
                                 {event.confirmed_date ?
-                                    <td>{moment(event.confirmed_date).format('MM/DD/YYYY')}</td> :
-                                    <td>No Confirmed Date</td>
+                                    <TableCell>{moment(event.confirmed_date).format('MM/DD/YYYY')}</TableCell> :
+                                    <TableCell>No Confirmed Date</TableCell>
                                     }
-                                <td>
-                                    <button onClick={() => this.goToEventDetails(event.id)}>See Details</button>
-                                </td>
-                            </tr>
+                                <TableCell>
+                                    <Button variant="contained" onClick={() => this.goToEventDetails(event.id)}>See Details</Button>
+                                </TableCell>
+                            </TableRow>
                         )})
                         }
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
+                
             </div>
         )
     }

@@ -80,7 +80,9 @@ class EventList extends Component {
               }
             </TableBody>
           </Table>
+          {/* <pre>{JSON.stringify(this.props,null,2)}</pre> */}
           </Container>
+
         </div>
 
 
