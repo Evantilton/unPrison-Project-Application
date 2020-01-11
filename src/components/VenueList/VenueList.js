@@ -7,6 +7,7 @@ import './VenueList.css';
 import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
 import { TextField, Select, MenuItem, Button } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
+import InputLabel from '@material-ui/core/InputLabel';
 
 class VenueList extends Component {
 
@@ -82,7 +83,7 @@ class VenueList extends Component {
 
           <div className="listOptions">
 
-            <div>
+            <div id="inputlabel">
             
               <TextField
                 label="Venue Name"
@@ -102,13 +103,12 @@ class VenueList extends Component {
                 onChange={this.handleContactInput}
               />
               <span>&nbsp;</span>
-              
               <Select
                 labelId="simple-outlined-drop"
                 id="selectVenues"
                 variant="outlined"
                 displayEmpty
-                style={{ width: `140px`, height: `30px` }}
+                style={{ width: `140px`, height: '40px' }}
                 value={this.state.venue.venue_type}
                 onChange={this.handleDropDown('venue_type')}
               >
@@ -119,8 +119,9 @@ class VenueList extends Component {
                 <MenuItem value="other">Other</MenuItem>
               </Select>
               <span>&nbsp;</span>
-              <Button variant="contained" size="small" className="venueButtons" onClick={this.newVenueAdded} disableElevation>Add Venue</Button>
-
+              <span>&nbsp;</span>
+              <Button variant="contained" size="normal" className="venueButtons" onClick={this.newVenueAdded}>Add Venue</Button>
+        
             </div>
 
             <div align="right">
@@ -129,7 +130,7 @@ class VenueList extends Component {
                 labelId="selectUnlined"
                 id="sortDrop"
                 
-                style={{ width: `140px`, height: `30px` }}
+                style={{ width: `140px`, height: `30px`, margin: `3px` }}
               >
                 <MenuItem>
                   <em>Order By</em>

@@ -14,7 +14,7 @@ class VenueListItem extends Component {
     render() {
         return (
 
-            <TableRow>
+            <TableRow id="TableRow">
                 <TableCell >{this.props.venue.name}</TableCell >
                 <TableCell >{this.props.venue.contact_name}</TableCell >
                 <TableCell >{this.props.venue.street_address}</TableCell >

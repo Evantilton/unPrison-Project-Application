@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Admin.css';
+import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
+import { TextField, Select, MenuItem, Button } from '@material-ui/core';
 
 class Admin extends Component {
 
@@ -97,33 +99,33 @@ class Admin extends Component {
         </div>
         <div>
           {this.props.user.is_admin && (
-            <button onClick={this.registerUser}> submit </button>
+            <Button id="material-ui" variant="contained"color="Primary"onClick={this.registerUser}> submit </Button>
           )}
         </div>
 
         {this.props.user.is_admin && (
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Username</th>
-                <th></th>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>#</TableCell>
+                <TableCell>Username</TableCell>
+                <TableCell></TableCell>
 
-              </tr>
-            </thead>
-            <tbody>
+              </TableRow>
+            </TableHead>
+            <TableBody>
               {this.props.allUsers.map((users) => {
                 return (
-                  <tr key={users.id}>
-                    <td>{users.id}</td>
-                    <td>{users.username}</td>
-                    <td><button key={users.id} onClick={() => { if (window.confirm('Are you sure you wish to delete this user? This cannot be undone.')) this.handleDelete(users.id) }}> delete </button></td>
-                  </tr>
+                  <TableRow id="TableRow"key={users.id}>
+                    <TableCell>{users.id}</TableCell>
+                    <TableCell>{users.username}</TableCell>
+                    <TableCell><Button key={users.id} onClick={() => { if (window.confirm('Are you sure you wish to delete this user? This cannot be undone.')) this.handleDelete(users.id) }}> delete </Button></TableCell>
+                  </TableRow>
                 )
               })
               }
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         )}
 
       </div >
