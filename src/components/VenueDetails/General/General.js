@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import {Button, Select} from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
 // import SaveIcon from '@material-ui/icons/Save';
-import SecondaryContacts from './SecondaryContacts/SecondaryContacts';
 
 class VenueGeneral extends Component {
 
