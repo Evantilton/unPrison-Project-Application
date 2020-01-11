@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 class VenueListItem extends Component {
 
     goToVenueDetails = () => {
-        this.props.history.push(`/venue-details/${this.props.venue.id}`)
+        this.props.history.push(`/venue-details/${this.props.venue.venue_id}`)
     }
 
     render() {

@@ -12,7 +12,7 @@
     grid-template-columns: 5% 15% 15% 15% 15% 15% 15% 5%;
     grid-template-areas: 
     ". contactName contactName primaryPhone primaryPhone primaryEmail primaryEmail ."
-    ". general event . . . . ."
+    ". general general contacts contacts event event ."
     ". tab tab tab tab tab tab ."
     ". . . . . . . ."
     ;
@@ -38,14 +38,18 @@
 
 .venueEventsTab {
     grid-area: event;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 
 .venueGeneralTab {
     grid-area: general;
-    border-left: 2px solid black;
+    /* border-left: 2px solid black;
     border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid black; */
+}
+
+.venueContactsTab {
+    grid-area: contacts;
 }
 
 #textfield {
