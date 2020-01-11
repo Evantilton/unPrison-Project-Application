@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import {withRouter} from 'react-router';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
-
 import TextField from '@material-ui/core/TextField';
 import {Button, Select} from '@material-ui/core';
-
-import SecondaryContacts from './SecondaryContacts/SecondaryContacts';
-
 
 class VenueGeneral extends Component {
 
@@ -29,10 +25,6 @@ class VenueGeneral extends Component {
     handleDeleteButtonClick = (venueId) => {
         this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
         this.props.history.push('/home');
-    }
-
-    addSecondaryContactButtonClick = () => {
-        this.props.dispatch({ type: 'ADD_SECONDARY_CONTACT', payload: this.props.match.params.id });
     }
 
     render() {
@@ -75,18 +67,8 @@ class VenueGeneral extends Component {
                         <label>Zip:</label>
                         <TextField type="text" name='zip' value={this.props.reduxState.venueDetailsReducer.zip || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
-                    <h3>Secondary Contacts:</h3>
-                    <Button color="primary" variant="outlined" onClick={this.addSecondaryContactButtonClick}>Add Secondary contact</Button>
                 </ul>
             </div>
-            {this.props.reduxState.contactsReducer[0] ?
-            <div>
-                <SecondaryContacts />
-            </div>:
-            <div>
-                There are not currently any secondary contacts for this venue.
-            </div>
-    }
             </>
         )
     }

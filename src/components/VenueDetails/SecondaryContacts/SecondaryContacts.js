@@ -6,7 +6,7 @@ import {Button, Select} from '@material-ui/core';
 class SecondaryContacts extends Component {
 
     componentDidMount() {
-        this.props.dispatch({ type: 'FETCH_CONTACTS' });
+        this.props.dispatch({ type: 'FETCH_CONTACTS', payload: this.props.eventId });
     }
 
     handleDeleteContactButtonClick = (contactId) => {
@@ -17,9 +17,17 @@ class SecondaryContacts extends Component {
         this.props.dispatch({ type: 'SET_EXISTING_SECONDARY_CONTACTS', payload: { value: event.target.value, property: event.target.name } });
     }
 
+    addSecondaryContactButtonClick = () => {
+        this.props.dispatch({ type: 'ADD_SECONDARY_CONTACT', payload: this.props.eventId });
+    }
+
     render() {
-        return (
+        if(this.props.reduxState.contactsReducer[0]) {
+            return(
             <>
+            <div>
+            <Button color="primary" variant="outlined" onClick={this.addSecondaryContactButtonClick}>Add Secondary contact</Button>
+            </div>
             {this.props.reduxState.contactsReducer.map((contact) => {
                         return(
                     <div>
@@ -45,9 +53,15 @@ class SecondaryContacts extends Component {
             )})
         }
             </>
-        )
+            )} else {
+                return(
+                    <div>
+                        There are currently no secondary contacts for this venue.
+                    </div>
+                )
+            }
     }
-}
+    }
 
 const mapStateToProps = reduxState => ({
     reduxState,
