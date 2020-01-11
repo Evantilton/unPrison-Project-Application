@@ -1,0 +1,22 @@
+#logContainer {
+   padding-top: 5%;
+}
+
+#logPaper {
+    background-color: #469AEF20;
+    height: 400px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+
+.logDiv {
+    width: 200px;
+    margin: 0 auto; 
+    padding-top: 15%;
+    
+}
+
+#userInput {
+    background-color: white;
+}
