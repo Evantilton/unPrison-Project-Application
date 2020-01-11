@@ -28,7 +28,8 @@ function* addSecondaryContact(action) {
 function* deleteSecondaryContact(action) {
     try {
         const contactsResponse = yield axios.delete(`/api/contacts/delete/secondary/${action.payload}`);
-        yield put({ type: 'FETCH_CONTACTS', payload: contactsResponse.data });
+        console.log('in contactsSaga this is contactsResponse of delete route:', contactsResponse);
+        yield put({ type: 'FETCH_CONTACTS', payload: contactsResponse.data[0].venue_id });
     } catch (error) {
         console.log('error deleting secondary contact in contactsSaga,', error);
     }

@@ -32,18 +32,30 @@ router.post('/add/secondary/:id', rejectUnauthenticated, (req, res) => {
     })
 });
 
-router.delete('/delete/secondary/:id', rejectUnauthenticated, (req, res) => {
-    const queryText = `DELETE FROM "contacts"
-    WHERE "id" = $1
-    RETURNING "venue_id"`;
-    pool.query(queryText, [req.params.id])
-    .then((result) => {
-        res.send(result.rows);
-    })
-    .catch((error) => {
+router.delete('/delete/secondary/:id', rejectUnauthenticated, async (req, res) => {
+    const connection = await pool.connect();
+
+    const queryText = `SELECT "venue_id" FROM "contacts"
+    WHERE "id" = $1`;
+
+    const queryTextTwo = `DELETE FROM "contacts"
+    WHERE "id" = $1`;
+
+    try {
+        await connection.query('BEGIN;');
+        const venueId = await connection.query(queryText, [req.params.id]);
+        console.log('in contacts.router, this is venueId.rows variable in delete route:', venueId.rows);
+        await connection.query(queryTextTwo, [req.params.id]);
+        await connection.query('COMMIT;');
+
+        res.send(venueId.rows);
+    } catch (error) {
+        await connection.query('ROLLBACK;');
         console.log('error in deleting secondary contact in contacts.router,', error);
         res.sendStatus(500);
-    })
+    } finally {
+        connection.release();
+    }
 });
 
 

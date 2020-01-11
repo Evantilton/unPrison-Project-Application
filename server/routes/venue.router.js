@@ -5,8 +5,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     // SQL Query to return all venues
-    const query = `SELECT * FROM venue
-    JOIN "contacts" ON "contacts"."venue_id" = "venue"."id"`;
+    const query = `SELECT * FROM "venue"
+    JOIN "contacts" ON "contacts"."venue_id" = "venue"."id"
+    WHERE "contacts"."is_primary" = 'true'`;
     pool.query(query)
         .then((response) => {
             console.log('from venue.router.js response to GET route:', response.rows);
