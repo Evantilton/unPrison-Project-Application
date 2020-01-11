@@ -1,4 +1,4 @@
-#smallInput1 {
+/* #smallInput1 {
    height: 10px;
 }
 
@@ -8,8 +8,18 @@
 
  #selectVenues {
     height: 10px;
- }
+ } */
 
  .venueButtons {
-    height: 30px;
+    height: 40px;
  }
+
+#TableRow:nth-child(odd) {
+   background-color: #469AEF20;
+}
+
+#inputlabel {
+   display: inline-flex;
+}
+
+

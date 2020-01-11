@@ -6,6 +6,7 @@ import Programs from './Programs/Programs';
 import Travel from './Travel/Travel';
 import './EventDetails.css';
 import moment from 'moment';
+import {Button, Select, TextField, Tab, Icon} from '@material-ui/core';
 
 class EventDetails extends Component {
 
@@ -94,23 +95,23 @@ class EventDetails extends Component {
                 <div className="mainWindow">
                     <div className="mainInfo">
                         <h3> <li>
-                        <label>Date</label>
-                        <input type="date" name='confirmed_date' value={moment(this.props.reduxState.eventsGeneralReducer.confirmed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></input>
+                        <label>Date:</label>
+                        <TextField id="material-ui" type="date" name='confirmed_date' value={moment(this.props.reduxState.eventsGeneralReducer.confirmed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
-                            <button className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</button><button className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</button></h3>
+                            <Button startIcon={<Icon>delete</Icon>} variant="contained"color="secondary"className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</Button><Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button></h3>
                     </div>
-                    <div className="generalTab" onClick={() => this.handleTabClick('general', 'generalStyle')} style={this.state.generalStyle}>
+                    <Tab label="General" className="generalTab" onClick={() => this.handleTabClick('general', 'generalStyle')} style={this.state.generalStyle}>
                         General
-                    </div>
-                    <div className="travelTab" onClick={() => this.handleTabClick('travel', 'travelStyle')} style={this.state.travelStyle}>
+                    </Tab>
+                    <Tab label="Travel" className="travelTab" onClick={() => this.handleTabClick('travel', 'travelStyle')} style={this.state.travelStyle}>
                         Travel
-                    </div>
-                    <div className="financialsTab" onClick={() => this.handleTabClick('financials', 'financialsStyle')} style={this.state.financialsStyle}>
+                    </Tab>
+                    <Tab label="Financials" className="financialsTab" onClick={() => this.handleTabClick('financials', 'financialsStyle')} style={this.state.financialsStyle}>
                         Financials
-                    </div>
-                    <div className="programsTab" onClick={() => this.handleTabClick('programs', 'programsStyle')} style={this.state.programsStyle}>
+                    </Tab>
+                    <Tab label="Programs" className="programsTab" onClick={() => this.handleTabClick('programs', 'programsStyle')} style={this.state.programsStyle}>
                         Programs
-                    </div>
+                    </Tab>
 
 
 

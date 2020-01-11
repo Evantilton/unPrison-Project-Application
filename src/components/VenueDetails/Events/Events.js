@@ -38,7 +38,7 @@ class VenueEvents extends Component {
                     <TableBody>
                         {this.props.reduxState.eventsListForVenuesTabReducer.map((event) => {
                             return(
-                            <TableRow key={event.id}>
+                            <TableRow id="TableRow" key={event.id}>
                                 {event.confirmed_date ?
                                     <TableCell>{moment(event.confirmed_date).format('MM/DD/YYYY')}</TableCell> :
                                     <TableCell>No Confirmed Date</TableCell>

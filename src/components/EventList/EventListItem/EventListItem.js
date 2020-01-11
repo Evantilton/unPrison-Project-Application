@@ -14,7 +14,7 @@ class EventListItem extends Component {
 
     render() {
         return (
-            <TableRow>
+            <TableRow id="TableRow">
                 {this.props.event.confirmed_date ?
                     <TableCell>{moment(this.props.event.confirmed_date).format('MM/DD/YYYY')}</TableCell> :
                     <TableCell>No Confirmed Date</TableCell>

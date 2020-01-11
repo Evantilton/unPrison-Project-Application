@@ -37,13 +37,14 @@ class EventList extends Component {
     return (
       <div className="eventContainer">
          <Container>
-        <h1>Event List</h1>
+        <h1 id="eventHeader">Event List</h1>
         <div className="listOptions">
         <InputLabel shrink id="venue-event">Select a Venue</InputLabel>
         <Select
+        
         variant="outlined"
         labelId="venue-event"
-        style={{ width: `150px`, height: `30px` }}
+        style={{ width: `150px`, height: `40px`, margin: `10px` }}
         onChange={this.handleChangeForVenue('venue_id')}> 
           
         
@@ -55,7 +56,7 @@ class EventList extends Component {
                             })}
             </Select>
             <span>&nbsp;</span>
-            <Button variant="contained" size="small" className="eventButtons" onClick={this.createEventButton} disableElevation>Create Event</Button>
+            <Button variant="contained" size="normal" className="eventButtons" onClick={this.createEventButton} >Create Event</Button>
 
         </div>
 
