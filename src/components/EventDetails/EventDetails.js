@@ -102,50 +102,45 @@ class EventDetails extends Component {
                         </h3>
                         <Button startIcon={<Icon>delete</Icon>} variant="contained" color="secondary" className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</Button><Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
 
-  
-                        <ul>
-                        <label>Date:</label>
-                        <TextField id="material-ui" type="date" name='confirmed_date' value={moment(this.props.reduxState.eventsGeneralReducer.confirmed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
-                    </ul>
-                            <Button startIcon={<Icon>delete</Icon>} variant="contained" color="secondary"className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</Button><Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button></h3>
 
-                    </div>
-                    <Tab label="General" className="generalTab" onClick={() => this.handleTabClick('general', 'generalStyle')} style={this.state.generalStyle}>
-                        General
-                    </Tab>
-                    <Tab label="Travel" className="travelTab" onClick={() => this.handleTabClick('travel', 'travelStyle')} style={this.state.travelStyle}>
-                        Travel
-                    </Tab>
-                    <Tab label="Financials" className="financialsTab" onClick={() => this.handleTabClick('financials', 'financialsStyle')} style={this.state.financialsStyle}>
-                        Financials
-                    </Tab>
-                    <Tab label="Programs" className="programsTab" onClick={() => this.handleTabClick('programs', 'programsStyle')} style={this.state.programsStyle}>
-                        Programs
-                    </Tab>
-
-
-
-                    {this.state.general &&
-                        <div className="tabWindow">
-                            <General eventId={this.props.match.params.id} />
-                        </div>
-                    }
-                    {this.state.financials &&
-                        <div className="tabWindow">
-                            <Financials eventId={this.props.match.params.id} />
-                        </div>
-                    }
-                    {this.state.programs &&
-                        <div className="tabWindow">
-                            <Programs eventId={this.props.match.params.id} />
-                        </div>
-                    }
-                    {this.state.travel &&
-                        <div className="tabWindow">
-                            <Travel eventId={this.props.match.params.id} />
-                        </div>
-                    }
+                        
                 </div>
+                <Tab label="General" className="generalTab" onClick={() => this.handleTabClick('general', 'generalStyle')} style={this.state.generalStyle}>
+                    General
+                    </Tab>
+                <Tab label="Travel" className="travelTab" onClick={() => this.handleTabClick('travel', 'travelStyle')} style={this.state.travelStyle}>
+                    Travel
+                    </Tab>
+                <Tab label="Financials" className="financialsTab" onClick={() => this.handleTabClick('financials', 'financialsStyle')} style={this.state.financialsStyle}>
+                    Financials
+                    </Tab>
+                <Tab label="Programs" className="programsTab" onClick={() => this.handleTabClick('programs', 'programsStyle')} style={this.state.programsStyle}>
+                    Programs
+                    </Tab>
+
+
+
+                {this.state.general &&
+                    <div className="tabWindow">
+                        <General eventId={this.props.match.params.id} />
+                    </div>
+                }
+                {this.state.financials &&
+                    <div className="tabWindow">
+                        <Financials eventId={this.props.match.params.id} />
+                    </div>
+                }
+                {this.state.programs &&
+                    <div className="tabWindow">
+                        <Programs eventId={this.props.match.params.id} />
+                    </div>
+                }
+                {this.state.travel &&
+                    <div className="tabWindow">
+                        <Travel eventId={this.props.match.params.id} />
+                    </div>
+                }
+            </div>
 
             </>
         )
