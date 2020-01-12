@@ -47,7 +47,7 @@ CREATE TABLE "contacts" (
   "contact_phone" VARCHAR(255),
   "contact_email" VARCHAR(255),
   "position" VARCHAR(100),
-  "is_primary" BOOLEAN
+  "is_primary" BOOLEAN DEFAULT false
 );
 
 CREATE TABLE "event" (

@@ -6,8 +6,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     console.log('req.params in contacts.router.js get route:', req.params);
     const queryText = `
-                SELECT * FROM contacts
-                WHERE venue_id = $1;`;
+                SELECT * FROM "contacts"
+                WHERE "venue_id" = $1
+                AND "is_primary" = false`;
     pool.query(queryText, [req.params.id])
         .then((result) => {
             res.send(result.rows);
@@ -23,19 +24,19 @@ router.post('/add-secondary/:id', rejectUnauthenticated, (req, res) => {
     VALUES ($1)`;
     console.log('in contacts.router post route, req.params.id is:', req.params.id);
     pool.query(queryText, [req.params.id])
-    .then(() => {
-        res.sendStatus(200);
-    })
-    .catch((error) => {
-        console.log('error in contacts.router /add/secondary:', error);
-        res.sendStatus(500);
-    })
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error in contacts.router /add/secondary:', error);
+            res.sendStatus(500);
+        })
 });
 
 router.delete('/delete-secondary/:id', rejectUnauthenticated, async (req, res) => {
     const connection = await pool.connect();
 
-    const queryText = `SELECT "venue_id" FROM "contacts"
+    const queryText = `SELECT * FROM "contacts"
     WHERE "id" = $1`;
 
     const queryTextTwo = `DELETE FROM "contacts"
@@ -45,7 +46,11 @@ router.delete('/delete-secondary/:id', rejectUnauthenticated, async (req, res) =
         await connection.query('BEGIN;');
         const venueId = await connection.query(queryText, [req.params.id]);
         console.log('in contacts.router, this is venueId.rows variable in delete route:', venueId.rows);
-        await connection.query(queryTextTwo, [req.params.id]);
+        if (venueId.rows[0].is_primary === false) {
+            await connection.query(queryTextTwo, [req.params.id]);
+        } else {
+            console.log('in delete route in contacts.router.js, primary contact can not be deleted');
+        }
         await connection.query('COMMIT;');
 
         res.send(venueId.rows);
@@ -90,6 +95,32 @@ router.put('/mark-primary/:id', rejectUnauthenticated, async (req, res) => {
     } finally {
         connection.release();
     }
+})
+
+router.put('/save-contacts', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in save contacts is:', req.body);
+    const queryText = `UPDATE "contacts"
+    SET "contact_name" = $1,
+    "contact_phone" = $2,
+    "contact_email" = $3,
+    "position" = $4
+    WHERE "id" = $5;`;
+    const updatedContact = req.body.newContact;
+    const queryValues = [
+        updatedContact.contact_name,
+        updatedContact.contact_phone,
+        updatedContact.contact_email,
+        updatedContact.position,
+        req.body.id
+    ]
+    pool.query(queryText, queryValues)
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error in PUT route to save contacts in contacts.router.js,', error);
+            res.sendStatus(500);
+        })
 })
 
 
