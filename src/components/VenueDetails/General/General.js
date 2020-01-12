@@ -27,6 +27,7 @@ class VenueGeneral extends Component {
     handleDeleteButtonClick = (venueId) => {
         this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
         this.props.history.push('/home');
+        this.props.dispatch({ type: 'GET_VENUES' });
     }
 
     render() {
