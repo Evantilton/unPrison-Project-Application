@@ -21,7 +21,7 @@ class General extends Component {
     render() {
         return (
             <div>
-                <h2 id="general-header">General Component</h2>
+                <h2 id="general-header">General</h2>
                 <ul class="nobullet">
                     <li >
                         <label>Date Last Contacted:</label>

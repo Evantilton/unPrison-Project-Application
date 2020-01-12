@@ -14,7 +14,7 @@ class Travel extends Component {
         return (
             <>
                 <div>
-                    <h2 id="general-header">Travel Component</h2>
+                    <h2 id="general-header">Travel</h2>
                     <ul class="nobullet">
                         <li >
                             <label>Nearest Airport:</label>

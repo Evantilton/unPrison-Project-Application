@@ -90,7 +90,7 @@ class EventDetails extends Component {
         return (
             <>
                 <div className="header">
-                    <h1>Event Details Component</h1>
+                    <h1>Event Details</h1>
                 </div>
                 <div className="mainWindow">
                     <div className="mainInfo">
