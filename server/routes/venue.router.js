@@ -152,6 +152,12 @@ router.put('/save-venue', rejectUnauthenticated, (req, res) => {
 // })
 
 router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
+    console.log("here!!!!!!!!!!!")
+    console.log("here!!!!!!!!!!!")
+    console.log("here!!!!!!!!!!!")
+    console.log("here!!!!!!!!!!!")
+    console.log("here!!!!!!!!!!!")
+    console.log(req.params.id)
     const queryText = `DELETE FROM "venue"
     WHERE "id"=$1`;
     pool.query(queryText, [req.params.id])
