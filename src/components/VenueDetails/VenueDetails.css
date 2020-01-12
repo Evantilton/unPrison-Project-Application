@@ -12,7 +12,7 @@
     grid-template-columns: 5% 15% 15% 15% 15% 15% 15% 5%;
     grid-template-areas: 
     ". contactName contactName primaryPhone primaryPhone primaryEmail primaryEmail ."
-    ". general general contacts contacts event event ."
+    ". general contacts event . . . ."
     ". tab tab tab tab tab tab ."
     ". . . . . . . ."
     ;
