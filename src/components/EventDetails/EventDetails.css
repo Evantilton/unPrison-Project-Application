@@ -8,7 +8,7 @@
     background-color: gray;
     display: grid;
     height: 600px;
-    grid-template-rows: 5% 10% 5% 75% 5%;
+    grid-template-rows: 5% 10% 8% 71% 5%;
     grid-template-columns: 5% 15% 15% 15% 15% 30% 5%;
     grid-template-areas: 
     ". . . . . . ."
@@ -65,4 +65,11 @@
     float: right;
     margin-right: 2%;
     
+}
+
+h1 {
+    border-bottom: solid 2px #EA7600;
+    padding-bottom: 4px;
+    width: 20vw;
+
 }

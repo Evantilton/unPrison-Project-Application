@@ -10,11 +10,17 @@
 
 --you need to add these to the user table, the username, hashed password, and isAdmin.
 
+--add the below after all other database tables are created
+INSERT INTO "user"("username", "password", "is_admin")
+VALUES ('admin', '$2b$10$iYJnw61JpnFPllPvdqRPQOc7iGdrLFBmgGiCAGqwFqdAevlIRlMDC', true);
+
 --username: admin
 --hashed password in database: $2b$10$iYJnw61JpnFPllPvdqRPQOc7iGdrLFBmgGiCAGqwFqdAevlIRlMDC
 --isAdmin: true
 
 --plain text password: password
+
+
 
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
