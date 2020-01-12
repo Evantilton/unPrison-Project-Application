@@ -49,6 +49,12 @@ class VenueGeneral extends Component {
                             <option value="other">Other</option>
                         </Select>
                     </li>
+
+                    <li>
+                        <label>Venue Name:</label>
+                        <TextField id="material-ui"type="text" name='name' value={this.props.reduxState.venueDetailsReducer.name || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                    </li>
+
                     <li>
                         <label>Street Address:</label>
                         <TextField id="material-ui"type="text" name='street_address' value={this.props.reduxState.venueDetailsReducer.street_address || ''} onChange={(event) => this.handleInputChange(event)}></TextField>

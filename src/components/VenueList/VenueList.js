@@ -93,6 +93,7 @@ class VenueList extends Component {
                 value={this.state.venue.name}
                 onChange={this.handleVenueInput}
               />
+              
               <span>&nbsp;</span>
               <TextField
                 label="Venue Contact"
@@ -108,7 +109,7 @@ class VenueList extends Component {
                 id="selectVenues"
                 variant="outlined"
                 displayEmpty
-                style={{ width: `140px`, height: '40px' }}
+                style={{ width: `140px`, height: '40px'  }}
                 value={this.state.venue.venue_type}
                 onChange={this.handleDropDown('venue_type')}
               >
@@ -124,25 +125,6 @@ class VenueList extends Component {
         
             </div>
 
-            <div align="right">
-            
-              Order By: <Select
-                labelId="selectUnlined"
-                id="sortDrop"
-                
-                style={{ width: `140px`, height: `30px`, margin: `3px` }}
-              >
-                <MenuItem>
-                  <em>Order By</em>
-                </MenuItem>
-                <MenuItem value="prison">Prison</MenuItem>
-                <MenuItem value="conference">Conference</MenuItem>
-                <MenuItem value="school">School</MenuItem>
-                <MenuItem value="other">Other</MenuItem>
-              </Select>
-
-            </div>
-
           </div>
 
           <div className="listVenues"></div>
@@ -153,7 +135,19 @@ class VenueList extends Component {
                 <TableCell>Venue</TableCell>
                 <TableCell>Primary Contact</TableCell>
                 <TableCell>Phone Number</TableCell>
-                <TableCell></TableCell>
+                <TableCell align="right">Order By: <Select
+                labelId="selectUnlined"
+                id="sortDrop"
+                style={{ width: `140px`, height: `30px` }}
+              >
+                <MenuItem>
+                  <em>Order By</em>
+                </MenuItem>
+                <MenuItem value="prison">Prison</MenuItem>
+                <MenuItem value="conference">Conference</MenuItem>
+                <MenuItem value="school">School</MenuItem>
+                <MenuItem value="other">Other</MenuItem>
+              </Select></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

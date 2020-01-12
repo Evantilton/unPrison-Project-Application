@@ -19,6 +19,7 @@ class EventList extends Component {
   }
 
   getVenues = () => {
+
     this.props.dispatch({ type: 'GET_VENUES' })
   }
 
