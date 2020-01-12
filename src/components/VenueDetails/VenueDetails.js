@@ -96,17 +96,21 @@ class VenueDetails extends Component {
                     {this.state.events &&
 
                         <div className="venueTabWindow">
-                            <VenueEvents />
+                            <VenueEvents savePrimary={this.handleInputChange}/>
                         </div>
                     }
                     {this.state.general &&
                         <div className="venueTabWindow">
-                            <VenueGeneral />
+                            <VenueGeneral savePrimary={this.handleInputChange}/>
                         </div>
                     }
                     {this.state.secondaryContacts &&
                         <div className="venueTabWindow">
+
                             <SecondaryContacts venueId={this.props.match.params.id} />
+
+                            <SecondaryContacts venueId={this.props.match.params.id} savePrimary={this.handleInputChange}/>
+
                         </div>
                     }
                 </div>
