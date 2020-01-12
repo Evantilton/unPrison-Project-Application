@@ -6,7 +6,7 @@ import Programs from './Programs/Programs';
 import Travel from './Travel/Travel';
 import './EventDetails.css';
 import moment from 'moment';
-import {Button, Select, TextField, Tab, Icon} from '@material-ui/core';
+import { Button, Select, TextField, Tab, Icon } from '@material-ui/core';
 
 class EventDetails extends Component {
 
@@ -78,7 +78,7 @@ class EventDetails extends Component {
         this.props.dispatch({ type: 'SAVE_EVENTS_FINANCIALS', payload: this.props.reduxState.eventsFinancialsReducer });
     }
     handleDeleteClick = () => {
-        console.log("handleDeleteClick has been clicked, action payload is",{value: this.props.match.params.id} );
+        console.log("handleDeleteClick has been clicked, action payload is", { value: this.props.match.params.id });
         this.props.dispatch({ type: 'DELETE_EVENT', payload: this.props.match.params.id })
         this.props.history.push('/home')
     }
@@ -90,15 +90,25 @@ class EventDetails extends Component {
         return (
             <>
                 <div className="header">
-                    <h1>Event Details</h1>
+                    <h1>{this.props.reduxState.venueDetailsReducer.name}</h1>
                 </div>
                 <div className="mainWindow">
                     <div className="mainInfo">
-                        <h3> <ul>
+
+
+                        <h3>
+                            <label>Date:</label>
+                            <TextField id="material-ui" type="date" name='confirmed_date' value={moment(this.props.reduxState.eventsGeneralReducer.confirmed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        </h3>
+                        <Button startIcon={<Icon>delete</Icon>} variant="contained" color="secondary" className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</Button><Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
+
+  
+                        <ul>
                         <label>Date:</label>
                         <TextField id="material-ui" type="date" name='confirmed_date' value={moment(this.props.reduxState.eventsGeneralReducer.confirmed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </ul>
                             <Button startIcon={<Icon>delete</Icon>} variant="contained" color="secondary"className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</Button><Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button></h3>
+
                     </div>
                     <Tab label="General" className="generalTab" onClick={() => this.handleTabClick('general', 'generalStyle')} style={this.state.generalStyle}>
                         General

@@ -11,7 +11,8 @@ function* getDetailsEvent(action){
     
     try {
         const eventDetailsResponse = yield axios.get(`/api/events/${action.payload}`);
-        yield put({type: 'SET_EVENT_DETAILS', payload: eventDetailsResponse.data[0]})
+        yield put({type: 'SET_EVENT_DETAILS', payload: eventDetailsResponse.data[0]});
+        yield put({ type: 'GET_ONE_VENUE', payload: eventDetailsResponse.data[0].venue_id});
     } catch (error) {
         console.log('error getting venue details', error);  
     }

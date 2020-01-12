@@ -11,12 +11,15 @@
     grid-template-rows: 18% 8% 63% 2% 6% 2%;
     grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
     grid-template-areas: 
+
+
     ". contactName contactName contactName primaryPhone primaryPhone primaryPhone primaryEmail primaryEmail primaryEmail ."
     ". general general general contacts contacts contacts event event event ."
     ". tab tab tab tab tab tab tab tab tab ."
     ". . . . . . . . . . ."
     ". . . . . . button2 button2 button1 button1 ."
     ". . . . . . . . . . ."
+
     ;
 }
 
