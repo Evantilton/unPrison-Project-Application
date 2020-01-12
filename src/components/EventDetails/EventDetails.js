@@ -90,9 +90,10 @@ class EventDetails extends Component {
         return (
             <>
                 <div className="header">
-                    <h1>{this.props.reduxState.venueDetailsReducer.name}</h1>
+                    <h1>{this.props.reduxState.venueDetailsReducer.name} <br  />Event Details</h1>
                 </div>
                 <div className="mainWindow">
+                    
                     <div className="mainInfo">
 
 
@@ -100,7 +101,8 @@ class EventDetails extends Component {
                             <label>Date:</label>
                             <TextField id="material-ui" type="date" name='confirmed_date' value={moment(this.props.reduxState.eventsGeneralReducer.confirmed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
                         </h3>
-                        <Button startIcon={<Icon>delete</Icon>} variant="contained" color="secondary" className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</Button><Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
+                        {/* <Button startIcon={<Icon>delete</Icon>} variant="contained" color="secondary" className="tabButtonPosition1" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</Button>
+                        <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition2" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button> */}
 
 
                         
@@ -139,7 +141,9 @@ class EventDetails extends Component {
                     <div className="tabWindow">
                         <Travel eventId={this.props.match.params.id} />
                     </div>
-                }
+                } <Button startIcon={<Icon>delete</Icon>} variant="contained" color="secondary" className="tabButtonPosition1" onClick={() => { if (window.confirm('Are you sure you wish to delete this event? This cannot be undone.')) this.handleDeleteClick() }}>Delete Event</Button>
+                <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition2" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
+
             </div>
 
             </>

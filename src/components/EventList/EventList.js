@@ -57,7 +57,7 @@ class EventList extends Component {
                             })}
             </Select>
             <span>&nbsp;</span>
-            <Button variant="contained" size="normal" className="eventButtons" onClick={this.createEventButton} >Create Event</Button>
+            <Button variant="contained" size="normal" color="primary" className="eventButtons" onClick={this.createEventButton} >Create Event</Button>
 
         </div>
 

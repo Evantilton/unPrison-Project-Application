@@ -21,7 +21,7 @@ class EventListItem extends Component {
                 }
                 <TableCell>{this.props.event.best_times}</TableCell>
                 <TableCell> {this.props.event.name}</TableCell>
-                <TableCell align="right"><Button variant="outlined" size="small" onClick={this.goToEventDetails}>Details</Button></TableCell>
+                <TableCell align="right"><Button variant="outlined" size="small" color="primary" onClick={this.goToEventDetails}>Details</Button></TableCell>
             </TableRow>
         );
     }

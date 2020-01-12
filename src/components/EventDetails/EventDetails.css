@@ -8,14 +8,16 @@
     background-color: #469aef20;
     display: grid;
     height: 600px;
-    grid-template-rows: 5% 10% 8% 71% 5%;
-    grid-template-columns: 5% 15% 15% 15% 15% 30% 5%;
+    grid-template-rows: 18% 8% 63% 2% 6% 2%;
+    grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
     grid-template-areas: 
-    ". . . . . . ."
-    ". main main main main main ."
-    ". general travel financials programs . ."
-    ". tab tab tab tab tab ."
-    ". . . . . . ."
+    
+    ". main main main main main main main main main ."
+    ". general general travel travel financials financials programs programs . ."
+    ". tab tab tab tab tab tab tab tab tab ."
+    ". . . . . . . . . . ."
+    ". . . . . . button2 button2 button1 button1 ."
+    ". . . . . . . . . . ."
     ;
 }
 
@@ -72,3 +74,12 @@ h1 {
     padding-bottom: 4px;
     width: 25vw;
 }
+
+.tabButtonPosition1 {
+    grid-area: button1;
+    
+    }
+    
+    .tabButtonPosition2 {
+        grid-area: button2;
+        }
