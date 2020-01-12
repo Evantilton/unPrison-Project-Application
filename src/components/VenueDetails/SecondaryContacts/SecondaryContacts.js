@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import {Button, Select} from '@material-ui/core';
+import Icon from '@material-ui/core/Icon';
 
 class SecondaryContacts extends Component {
 
@@ -25,10 +26,17 @@ class SecondaryContacts extends Component {
         this.props.dispatch({ type: 'MARK_CONTACT_AS_PRIMARY', payload: { contactId: contactId, venueId: this.props.venueId } });
     }
 
+    handleSaveChangesButtonClick = () => {
+        this.props.dispatch({ type: 'SAVE_VENUES_CONTACTS', payload: this.props.reduxState.secondaryContactsReducer });
+    }
+
     render() {
         if(this.props.reduxState.contactsReducer[0]) {
             return(
             <>
+            <div>
+            <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
+            </div>
             <div>
             <Button color="primary" variant="outlined" onClick={this.addSecondaryContactButtonClick}>Add Secondary contact</Button>
             </div>

@@ -23,13 +23,13 @@ router.post('/add-secondary/:id', rejectUnauthenticated, (req, res) => {
     VALUES ($1)`;
     console.log('in contacts.router post route, req.params.id is:', req.params.id);
     pool.query(queryText, [req.params.id])
-    .then(() => {
-        res.sendStatus(200);
-    })
-    .catch((error) => {
-        console.log('error in contacts.router /add/secondary:', error);
-        res.sendStatus(500);
-    })
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error in contacts.router /add/secondary:', error);
+            res.sendStatus(500);
+        })
 });
 
 router.delete('/delete-secondary/:id', rejectUnauthenticated, async (req, res) => {
@@ -90,6 +90,31 @@ router.put('/mark-primary/:id', rejectUnauthenticated, async (req, res) => {
     } finally {
         connection.release();
     }
+})
+
+router.put('/save-contacts', rejectUnauthenticated, (req, res) => {
+    console.log('req.body in save contacts is:', req.body);
+    const queryText = `UPDATE "contacts"
+    SET "contact_name" = $1,
+    "contact_phone" = $2,
+    "contact_email" = $3,
+    "position" = $4
+    WHERE "id" = $5;`;
+    const queryValues = [
+        req.body.contact_name,
+        req.body.contact_phone,
+        req.body.contact_email,
+        req.body.position,
+        req.body.id
+    ]
+    pool.query(queryText, queryValues)
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error in PUT route to save contacts in contacts.router.js,', error);
+            res.sendStatus(500);
+        })
 })
 
 

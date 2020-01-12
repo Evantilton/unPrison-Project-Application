@@ -6,6 +6,7 @@ function* contactsSaga() {
     yield takeLatest('ADD_SECONDARY_CONTACT', addSecondaryContact);
     yield takeLatest('DELETE_SECONDARY_CONTACT', deleteSecondaryContact);
     yield takeLatest('MARK_CONTACT_AS_PRIMARY', markContactPrimary);
+    yield takeLatest('SAVE_VENUES_CONTACTS', saveVenueDetailsContacts);
 }
 
 function* fetchContacts(action) {
@@ -40,9 +41,18 @@ function* markContactPrimary(action) {
     try {
         yield axios.put(`/api/contacts/mark-primary/${action.payload.contactId}`, action.payload);
         // console.log('in contactsSaga markContactPrimary, markPrimaryResponse.data is:', markPrimaryResponse.data);
-        yield put({ type: 'GET_ONE_VENUE',  payload: action.payload.venueId })
+        yield put({ type: 'GET_ONE_VENUE',  payload: action.payload.venueId });
     } catch (error) {
         console.log('error in marking a secondary contact as the primary contact in contactsSaga,', error);
+    }
+}
+
+function* saveVenueDetailsContacts(action) {
+    console.log('save venue details contacts in contactsSaga, action is:', action);
+    try {
+        yield axios.put('/api/contacts/save-contacts', action.payload);
+    } catch (error) {
+        console.log('error saving venue details contacts tab in contactsSaga,', error);
     }
 }
 
