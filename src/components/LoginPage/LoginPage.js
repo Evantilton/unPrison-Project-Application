@@ -46,7 +46,7 @@ class LoginPage extends Component {
             </h2>
           )}
           
-            <h1>Login</h1>
+            <div id="logTitle">Login</div>
             
 
                 <TextField
@@ -70,7 +70,7 @@ class LoginPage extends Component {
 
              <br />
              <br/><div align="center">
-              <Button variant="contained" className="logButtons" onClick={this.login} disableElevation>Login</Button>
+              <Button variant="contained" className="logButtons" color="primary" onClick={this.login} disableElevation>Login</Button>
               <br />
               </div>
               </div>

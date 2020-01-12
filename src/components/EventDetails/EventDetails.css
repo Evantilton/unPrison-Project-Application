@@ -5,7 +5,7 @@
 .mainWindow {
     margin-left: 50px;
     margin-right: 50px;
-    background-color: gray;
+    background-color: #469aef20;
     display: grid;
     height: 600px;
     grid-template-rows: 5% 10% 8% 71% 5%;
@@ -20,7 +20,7 @@
 }
 
 .tabWindow {
-    background-color: antiquewhite;
+    background-color: white;
     grid-area: tab;
     overflow-y: auto;
 }

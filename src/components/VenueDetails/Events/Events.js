@@ -24,14 +24,14 @@ class VenueEvents extends Component {
         return (
             <div>
                 
-                <Table border="1">
+                <Table >
                     <TableHead>
                         <TableRow>
                             <TableCell>
                                 Event Date
                             </TableCell>
                             <TableCell>
-                                Event Details
+                                
                             </TableCell>
                         </TableRow>
                     </TableHead>
@@ -43,8 +43,8 @@ class VenueEvents extends Component {
                                     <TableCell>{moment(event.confirmed_date).format('MM/DD/YYYY')}</TableCell> :
                                     <TableCell>No Confirmed Date</TableCell>
                                     }
-                                <TableCell>
-                                    <Button variant="contained" onClick={() => this.goToEventDetails(event.id)}>See Details</Button>
+                                <TableCell >
+                                    <Button variant="outlined" color="primary" onClick={() => this.goToEventDetails(event.id)}>Details</Button>
                                 </TableCell>
                             </TableRow>
                         )})
