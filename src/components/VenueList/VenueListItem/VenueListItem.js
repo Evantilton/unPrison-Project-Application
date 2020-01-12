@@ -18,7 +18,7 @@ class VenueListItem extends Component {
                 <TableCell >{this.props.venue.name}</TableCell >
                 <TableCell >{this.props.venue.contact_name}</TableCell >
                 <TableCell >{this.props.venue.contact_phone}</TableCell >
-                <TableCell align="right"><Button variant="outlined" size="small" onClick={this.goToVenueDetails}>Details</Button></TableCell>
+                <TableCell align="right"><Button variant="outlined" size="small" color="primary" onClick={this.goToVenueDetails}>Details</Button></TableCell>
             </TableRow>
 
         );

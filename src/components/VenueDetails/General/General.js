@@ -20,14 +20,7 @@ class VenueGeneral extends Component {
     }
 
 
-    handleSaveChangesButtonClick = () => {
-        this.props.dispatch({ type: 'SAVE_VENUES_GENERAL', payload: this.props.reduxState.venueDetailsReducer });
-    }
-    
-    handleDeleteButtonClick = (venueId) => {
-        this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
-        this.props.history.push('/home');
-    }
+   
 
     render() {
         return (
@@ -36,9 +29,7 @@ class VenueGeneral extends Component {
                 <h3 id="general-header">Venue Details</h3>
                 <ul className="nobullet">
                     <li>
-                        <Button startIcon={<Icon>delete</Icon>} variant="contained"color="secondary" className="tabButtonPosition" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
-                        <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
-
+                        
                     </li>
                     <li>
                         <label>Venue Type:</label>
