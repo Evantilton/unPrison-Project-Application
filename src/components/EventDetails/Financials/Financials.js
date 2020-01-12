@@ -13,9 +13,8 @@ class Financials extends Component {
     render() {
         return (
             <div>
-                <h2 id="general-header">Financials</h2>
                 <ul class="nobullet">
-                    <h1>Contributions</h1>
+                <h2 id="general-header">Income</h2>
                     <li >
                         <label>Prison Contribution:</label>
                         <TextField id="material-ui"type="number" name='prison_contribution' value={this.props.reduxState.eventsFinancialsReducer.prison_contribution} onChange={(event) => this.handleInputChange(event)}></TextField>
@@ -33,8 +32,7 @@ class Financials extends Component {
                             + Number((this.props.reduxState.eventsFinancialsReducer.public_event_fee_paid))
                             + Number((this.props.reduxState.eventsFinancialsReducer.public_event_donations))}
                     </li>
-
-                    <h1>Travel Costs</h1>
+                    <h2 id="general-header">Travel Costs</h2>
                     <li >
                         <label>Travel:</label>
                         <TextField id="material-ui"type="number" name='expenses_travel' value={this.props.reduxState.eventsFinancialsReducer.expenses_travel} onChange={(event) => this.handleInputChange(event)}></TextField>
@@ -62,8 +60,7 @@ class Financials extends Component {
                             + Number((this.props.reduxState.eventsFinancialsReducer.expenses_car))
                             + Number((this.props.reduxState.eventsFinancialsReducer.expenses_meals))}
                     </li>
-
-                    <h1>Supplies/Other Cost</h1>
+                    <h2 id="general-header">Supplies/Other Cost</h2>
                     <li >
                         <label>Supplies:</label>
                         <TextField id="material-ui"type="number" name='expenses_supplies' value={this.props.reduxState.eventsFinancialsReducer.expenses_supplies} onChange={(event) => this.handleInputChange(event)}></TextField>
@@ -109,6 +106,7 @@ class Financials extends Component {
                         </label>
 
                     </li>
+                    <h2 id="general-header">Notes</h2>
                     <li>
                         <label>Financials Notes:</label>
                         <TextField id="material-ui"type="text" name='financials_notes' value={this.props.reduxState.eventsFinancialsReducer.financials_notes} onChange={(event) => this.handleInputChange(event)}></TextField>

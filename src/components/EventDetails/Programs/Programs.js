@@ -14,7 +14,7 @@ class Programs extends Component {
         return (
             <div>
                 <ul class="nobullet">
-                    <h2>Children's Books Program (prison only) </h2>
+                    <h2 id="general-header">Children's Books Program (prison only)</h2>
 
                     <li >
                         <label>Participating:</label>
@@ -85,7 +85,7 @@ class Programs extends Component {
                         <label>Prison Baby Donation:   </label>
                         <TextField type="text" name='prison_prison_baby_donation' value={this.props.reduxState.eventsProgramsReducer.prison_prison_baby_donation} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
-                    <h2>Reading Glasses Program (prisons only)</h2>
+                    <h2 id="general-header">Reading Glasses Program (prisons only)</h2>
                     <li >
                         <label>Participating:  </label>
                         <Select name='glasses_participating' value={this.props.reduxState.eventsProgramsReducer.glasses_participating} onChange={(event) => this.handleInputChange(event)}>
@@ -145,7 +145,7 @@ class Programs extends Component {
                         <label>3.00  </label>
                         <TextField type="number" name='glasses_three' value={this.props.reduxState.eventsProgramsReducer.glasses_three} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
-                    <h2>Public Event Information (public event only)</h2>
+                    <h2 id="general-header">Public Event Information (public event only)</h2>
                     <li >
                         <label>Bio Sent: </label>
                         <Select name='bio_sent' value={this.props.reduxState.eventsProgramsReducer.bio_sent} onChange={(event) => this.handleInputChange(event)}>

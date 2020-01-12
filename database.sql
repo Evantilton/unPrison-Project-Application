@@ -11,8 +11,7 @@
 --you need to add these to the user table, the username, hashed password, and isAdmin.
 
 --add the below after all other database tables are created
-INSERT INTO "user"("username", "password", "is_admin")
-VALUES ('admin', '$2b$10$iYJnw61JpnFPllPvdqRPQOc7iGdrLFBmgGiCAGqwFqdAevlIRlMDC', true);
+
 
 --username: admin
 --hashed password in database: $2b$10$iYJnw61JpnFPllPvdqRPQOc7iGdrLFBmgGiCAGqwFqdAevlIRlMDC
@@ -203,3 +202,8 @@ ALTER TABLE "public"."travel"
   DROP CONSTRAINT "travel_event_id_fkey",
   ADD CONSTRAINT "travel_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
 
+INSERT INTO "user"("username", "password", "is_admin")
+VALUES ('admin', '$2b$10$iYJnw61JpnFPllPvdqRPQOc7iGdrLFBmgGiCAGqwFqdAevlIRlMDC', true);
+
+INSERT INTO "user"("username", "password", "is_admin")
+VALUES ('Deborah', '$2b$10$iYJnw61JpnFPllPvdqRPQOc7iGdrLFBmgGiCAGqwFqdAevlIRlMDC', true);

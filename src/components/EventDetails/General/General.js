@@ -21,8 +21,8 @@ class General extends Component {
     render() {
         return (
             <div>
-                <h2 id="general-header">General</h2>
                 <ul class="nobullet">
+                <h2 id="general-header">Scheduling</h2>
                     <li >
                         <label>Date Last Contacted:</label>
                         <TextField id="material-ui"type="date" name='last_date_contacted' value={moment(this.props.reduxState.eventsGeneralReducer.last_date_contacted).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
@@ -47,9 +47,33 @@ class General extends Component {
                         <label>Confirmed Date:</label>
                         <TextField id="material-ui"type="date" name='confirmed_date' value={moment(this.props.reduxState.eventsGeneralReducer.confirmed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
+                    <h2 id="general-header">Prison Information</h2>
+                    <li >
+                        <label>Promotional Flyer Mailed:</label>
+                        <Select name='flyer_mailed' value={this.props.reduxState.eventsGeneralReducer.flyer_mailed} onChange={(event) => this.handleInputChange(event)}>
+                            <option value="false">no</option>
+                            <option value="true">yes</option>
+                        </Select>
+                    </li>
+                    <li>
+                        <label>Promotional Flyer Mailed Date:</label>
+                        <TextField id="material-ui"type="date" name='flyer_mailed_date' value={moment(this.props.reduxState.eventsGeneralReducer.flyer_mailed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
+                    </li>
+                    <li>
+                        <label>Heard About Us From:</label>
+                        <TextField id="material-ui"type="text" name='hear_about' value={this.props.reduxState.eventsGeneralReducer.hear_about} onChange={(event) => this.handleInputChange(event)}></TextField>
+                    </li>
                     <li>
                         <label>Desired Focus:</label>
-                        <TextField id="material-ui"type="date" name='desired_focus' value={moment(this.props.reduxState.eventsGeneralReducer.desired_focus).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="material-ui"type="text" name='desired_focus' value={this.props.reduxState.eventsGeneralReducer.desired_focus} onChange={(event) => this.handleInputChange(event)}></TextField>
+                    </li>
+                    <li>
+                        <label>Audience Demographics:</label>
+                        <TextField id="material-ui"type="text" name='demographics' value={this.props.reduxState.eventsGeneralReducer.demographics} onChange={(event) => this.handleInputChange(event)}></TextField>
+                    </li>
+                    <li>
+                        <label>Room Location:</label>
+                        <TextField id="material-ui"type="text" name='room_location' value={this.props.reduxState.eventsGeneralReducer.room_location} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
                         <label>Total Prison Count:</label>
@@ -60,38 +84,14 @@ class General extends Component {
                         <TextField id="material-ui"type="number" name='expected_attendance' value={this.props.reduxState.eventsGeneralReducer.expected_attendance} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
-                        <label>Room Location:</label>
-                        <TextField id="material-ui"type="text" name='room_location' value={this.props.reduxState.eventsGeneralReducer.room_location} onChange={(event) => this.handleInputChange(event)}></TextField>
-                    </li>
-                    <li>
                         <label>Actual Attendance:</label>
                         <TextField id="material-ui"type="number" name='actual_attendance' value={this.props.reduxState.eventsGeneralReducer.actual_attendance} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
-                    <li>
-                        <label>Demographics:</label>
-                        <TextField id="material-ui"type="text" name='demographics' value={this.props.reduxState.eventsGeneralReducer.demographics} onChange={(event) => this.handleInputChange(event)}></TextField>
-                    </li>
-                    <li >
-                        <label>Flyer Mailed:</label>
-                        <Select name='flyer_mailed' value={this.props.reduxState.eventsGeneralReducer.flyer_mailed} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
-                        </Select>
-                    </li>
-                    <li>
-                        <label>Flyer Mailed Date:</label>
-                        <TextField id="material-ui"type="date" name='flyer_mailed_date' value={moment(this.props.reduxState.eventsGeneralReducer.flyer_mailed_date).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
-                    </li>
-                    <li>
-                        <label>Heard About:</label>
-                        <TextField id="material-ui"type="text" name='hear_about' value={this.props.reduxState.eventsGeneralReducer.hear_about} onChange={(event) => this.handleInputChange(event)}></TextField>
-                    </li>
+                    <h2 id="general-header">Notes</h2>
                     <li>
                         <label>Event Notes:</label>
                         <TextField id="material-ui"type="text" name='event_notes' value={this.props.reduxState.eventsGeneralReducer.event_notes} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
-
-                    
                 </ul>
             </div>
         )
