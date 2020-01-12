@@ -28,7 +28,7 @@ class SecondaryContacts extends Component {
 
     handleSaveChangesButtonClick = (contactId) => {
         this.props.dispatch({ type: 'SAVE_VENUES_CONTACTS', payload: { newContact: this.props.reduxState.secondaryContactsReducer, id: contactId } });
-        // this.props.savePrimary();
+        // this.props.savePrimary(); 
     }
 
     render() {

@@ -8,7 +8,8 @@ import SecondaryContacts from './SecondaryContacts/SecondaryContacts';
 import './VenueDetails.css';
 import TextField from '@material-ui/core/TextField';
 import Tab from '@material-ui/core/Tab';
-
+import {Button, Select} from '@material-ui/core';
+import Icon from '@material-ui/core/Icon';
 
 class VenueDetails extends Component {
 
@@ -17,18 +18,27 @@ class VenueDetails extends Component {
         events: false,
         secondaryContacts: false,
         generalStyle: {
-            backgroundColor: 'antiquewhite',
+            backgroundColor: 'white',
         },
         eventsStyle: {
-            backgroundColor: 'gray',
+            backgroundColor: '#82caff',
         },
         secondaryContactsStyle: {
-            backgroundColor: 'gray',
+            backgroundColor: '#82caff',
         }
     }
 
     componentDidMount() {
         this.props.dispatch({ type: 'GET_ONE_VENUE', payload: this.props.match.params.id })
+    }
+
+    handleSaveChangesButtonClick = () => {
+        this.props.dispatch({ type: 'SAVE_VENUES_GENERAL', payload: this.props.reduxState.venueDetailsReducer });
+    }
+    
+    handleDeleteButtonClick = (venueId) => {
+        this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
+        this.props.history.push('/home');
     }
 
     // Function that takes in two paramaters related to local state properties, called on click of inner window tab
@@ -43,13 +53,13 @@ class VenueDetails extends Component {
             } else if (property === styleName) {
                 this.setState({
                     [styleName]: {
-                        backgroundColor: 'antiquewhite',
+                        backgroundColor: 'white',
                     },
                 })
             } else if (property.includes('Style')) {
                 this.setState({
                     [property]: {
-                        backgroundColor: 'gray',
+                        backgroundColor: '#82caff',
                     },
                 })
             } else {
@@ -106,13 +116,11 @@ class VenueDetails extends Component {
                     }
                     {this.state.secondaryContacts &&
                         <div className="venueTabWindow">
-
-                            <SecondaryContacts venueId={this.props.match.params.id} />
-
                             <SecondaryContacts venueId={this.props.match.params.id} savePrimary={this.handleInputChange}/>
-
                         </div>
-                    }
+                    }  <Button startIcon={<Icon>delete</Icon>} variant="contained"color="secondary" className="tabButtonPosition1" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
+                    <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition2" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
+
                 </div>
             </>
         )

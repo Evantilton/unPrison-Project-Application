@@ -25,7 +25,7 @@ class General extends Component {
                 <ul class="nobullet">
                     <li >
                         <label>Date Last Contacted:</label>
-                        <TextField id="material-ui"type="date" name='last_date_contacted' value={moment(this.props.reduxState.eventsGeneralReducer.last_date_contacted).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="material-ui" type="date" name='last_date_contacted' value={moment(this.props.reduxState.eventsGeneralReducer.last_date_contacted).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                     <li>
                         <label>Best Day of Week:</label>

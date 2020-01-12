@@ -121,7 +121,7 @@ class VenueList extends Component {
               </Select>
               <span>&nbsp;</span>
               <span>&nbsp;</span>
-              <Button variant="contained" size="normal" className="venueButtons" onClick={this.newVenueAdded}>Add Venue</Button>
+              <Button variant="contained" size="normal" color="primary" className="venueButtons" onClick={this.newVenueAdded}>Add Venue</Button>
         
             </div>
 
