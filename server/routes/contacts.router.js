@@ -45,7 +45,7 @@ router.delete('/delete-secondary/:id', rejectUnauthenticated, async (req, res) =
         await connection.query('BEGIN;');
         const venueId = await connection.query(queryText, [req.params.id]);
         console.log('in contacts.router, this is venueId.rows variable in delete route:', venueId.rows);
-        if (venueId.rows[0].is_primary == false) {
+        if (venueId.rows[0].is_primary === false) {
             await connection.query(queryTextTwo, [req.params.id]);
         } else {
             console.log('in delete route in contacts.router.js, primary contact can not be deleted');
@@ -104,11 +104,12 @@ router.put('/save-contacts', rejectUnauthenticated, (req, res) => {
     "contact_email" = $3,
     "position" = $4
     WHERE "id" = $5;`;
+    const updatedContact = req.body.newContact;
     const queryValues = [
-        req.body.contact_name,
-        req.body.contact_phone,
-        req.body.contact_email,
-        req.body.position,
+        updatedContact.contact_name,
+        updatedContact.contact_phone,
+        updatedContact.contact_email,
+        updatedContact.position,
         req.body.id
     ]
     pool.query(queryText, queryValues)
