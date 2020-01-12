@@ -13,6 +13,7 @@ function* deleteVenue(action){
     try {
         console.log('action.payload in deleteVenue is:', action.payload);
         yield axios.delete(`/api/venue/delete/${action.payload}`);
+        yield put({ type: 'GET_VENUES' });
     } catch (error) {
         console.log('error in deleteVenue function in venueDetailsSaga,', error);
     }
