@@ -13,7 +13,6 @@ function* fetchContacts(action) {
     try {
         const contactsResponse = yield axios.get(`/api/contacts/${action.payload}`);
         yield put({ type: 'SET_CONTACTS', payload: contactsResponse.data });
-        // yield put({ type: 'SET_SECONDARY_CONTACTS', payload: contactsResponse.data });
     } catch (error) {
         console.log('error fetching contacts for venue in contactsSaga', error);
     }
@@ -41,8 +40,8 @@ function* deleteSecondaryContact(action) {
 function* markContactPrimary(action) {
     try {
         yield axios.put(`/api/contacts/mark-primary/${action.payload.contactId}`, action.payload);
-        // console.log('in contactsSaga markContactPrimary, markPrimaryResponse.data is:', markPrimaryResponse.data);
         yield put({ type: 'GET_ONE_VENUE',  payload: action.payload.venueId });
+        yield put({ type: 'FETCH_CONTACTS', payload: action.payload.venueId });
     } catch (error) {
         console.log('error in marking a secondary contact as the primary contact in contactsSaga,', error);
     }

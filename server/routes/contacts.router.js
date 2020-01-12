@@ -6,8 +6,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     console.log('req.params in contacts.router.js get route:', req.params);
     const queryText = `
-                SELECT * FROM contacts
-                WHERE venue_id = $1;`;
+                SELECT * FROM "contacts"
+                WHERE "venue_id" = $1
+                AND "is_primary" = false`;
     pool.query(queryText, [req.params.id])
         .then((result) => {
             res.send(result.rows);
