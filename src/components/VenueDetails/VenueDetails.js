@@ -118,8 +118,8 @@ class VenueDetails extends Component {
                         <div className="venueTabWindow">
                             <SecondaryContacts venueId={this.props.match.params.id} savePrimary={this.handleInputChange}/>
                         </div>
-                    }  <Button startIcon={<Icon>delete</Icon>} variant="contained"color="secondary" className="tabButtonPosition1" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
-                    <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition2" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
+                    }  <Button startIcon={<Icon>delete</Icon>} variant="contained"color="secondary" size="small" className="tabButtonPosition1" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
+                    <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" size="small" className="tabButtonPosition2" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
 
                 </div>
             </>

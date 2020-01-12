@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
 import moment from 'moment';
 import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
-import { TextField, Select, MenuItem, Button } from '@material-ui/core';
-import Container from '@material-ui/core/Container';
+import { Button } from '@material-ui/core';
+
 
 class VenueEvents extends Component {
 
