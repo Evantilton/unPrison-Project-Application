@@ -8,6 +8,8 @@ const secondaryContactsReducer = (state = [], action) => {
             ...state,
             [action.payload.property]: action.payload.value,
         }
+        case 'SET_SECONDARY_CONTACTS':
+            return action.payload;
         default:
             return state;
     }

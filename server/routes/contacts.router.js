@@ -35,7 +35,7 @@ router.post('/add-secondary/:id', rejectUnauthenticated, (req, res) => {
 router.delete('/delete-secondary/:id', rejectUnauthenticated, async (req, res) => {
     const connection = await pool.connect();
 
-    const queryText = `SELECT "venue_id" FROM "contacts"
+    const queryText = `SELECT * FROM "contacts"
     WHERE "id" = $1`;
 
     const queryTextTwo = `DELETE FROM "contacts"
@@ -45,7 +45,11 @@ router.delete('/delete-secondary/:id', rejectUnauthenticated, async (req, res) =
         await connection.query('BEGIN;');
         const venueId = await connection.query(queryText, [req.params.id]);
         console.log('in contacts.router, this is venueId.rows variable in delete route:', venueId.rows);
-        await connection.query(queryTextTwo, [req.params.id]);
+        if (venueId.rows[0].is_primary == false) {
+            await connection.query(queryTextTwo, [req.params.id]);
+        } else {
+            console.log('in delete route in contacts.router.js, primary contact can not be deleted');
+        }
         await connection.query('COMMIT;');
 
         res.send(venueId.rows);

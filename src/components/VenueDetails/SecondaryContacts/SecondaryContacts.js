@@ -19,7 +19,7 @@ class SecondaryContacts extends Component {
     }
 
     addSecondaryContactButtonClick = () => {
-        this.props.dispatch({ type: 'ADD_SECONDARY_CONTACT', payload: this.props.VenueId });
+        this.props.dispatch({ type: 'ADD_SECONDARY_CONTACT', payload: this.props.venueId });
     }
 
     handleMakePrimaryContactButtonClick = (contactId) => {
@@ -42,7 +42,7 @@ class SecondaryContacts extends Component {
             </div>
             {this.props.reduxState.contactsReducer.map((contact) => {
                         return(
-                    <div>
+                    <div key={contact.id}>
                         <div>
                             <Button color="primary" variant="outlined" onClick={() => this.handleMakePrimaryContactButtonClick(contact.id)}>Make primary contact</Button>
                             <Button color="secondary" variant="outlined" onClick={() => this.handleDeleteContactButtonClick(contact.id)}>Delete Contact</Button>
