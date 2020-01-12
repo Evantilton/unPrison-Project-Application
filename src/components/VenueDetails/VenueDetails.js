@@ -37,7 +37,7 @@ class VenueDetails extends Component {
     }
     
     handleDeleteButtonClick = (venueId) => {
-        this.props.dispatch({ type: 'DELETE_VENUE', payload: venueId });
+        this.props.dispatch({ type: 'DELETE_VENUE', payload: this.props.match.params.id });
         this.props.history.push('/home');
     }
 
