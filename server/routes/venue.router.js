@@ -23,7 +23,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     "contacts"."is_primary"
     FROM "venue"
     JOIN "contacts" ON "contacts"."venue_id" = "venue"."id"
-    WHERE "contacts"."is_primary" = 'true'`;
+    WHERE "contacts"."is_primary" = 'true'
+    ORDER BY "name" ASC`;
     pool.query(query)
         .then((response) => {
             console.log('from venue.router.js response to GET route:', response.rows);

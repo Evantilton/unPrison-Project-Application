@@ -29,7 +29,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     "venue"."name"
     
     FROM "event" 
-    JOIN "venue" ON "venue"."id" = "event"."venue_id"`;
+    JOIN "venue" ON "venue"."id" = "event"."venue_id"
+    ORDER BY "confirmed_date" DESC`;
     pool.query(queryText)
         .then((result) => {
             console.log(result.rows);

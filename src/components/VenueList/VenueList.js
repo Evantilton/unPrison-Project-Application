@@ -79,7 +79,7 @@ class VenueList extends Component {
     return (
       <div className="venueContainer">
         <Container>
-          <h1>Venue List</h1>
+          <h1 class="h1-main">Venue List</h1>
 
           <div className="listOptions">
 
