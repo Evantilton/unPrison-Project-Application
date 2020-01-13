@@ -70,7 +70,8 @@ class Travel extends Component {
                         <h2 id="general-header">Notes</h2>
                         <li>
                             <label>Travel Notes:</label>
-                            <TextField size="large" id="material-ui" type="text" name='travel_notes' value={this.props.reduxState.eventsTravelReducer.travel_notes} onChange={(event) => this.handleInputChange(event)}></TextField>
+                            <TextField multiline
+          id="material-ui" type="text" name='travel_notes' value={this.props.reduxState.eventsTravelReducer.travel_notes} onChange={(event) => this.handleInputChange(event)}></TextField>
                         </li>
                     </ul>
                 </div>
