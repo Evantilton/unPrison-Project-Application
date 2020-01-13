@@ -90,7 +90,8 @@ class General extends Component {
                     <h2 id="general-header">Notes</h2>
                     <li>
                         <label>Event Notes:</label>
-                        <TextField id="material-ui"type="text" name='event_notes' value={this.props.reduxState.eventsGeneralReducer.event_notes} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField multiline
+          id="material-ui"type="text" name='event_notes' value={this.props.reduxState.eventsGeneralReducer.event_notes} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </li>
                 </ul>
             </div>
