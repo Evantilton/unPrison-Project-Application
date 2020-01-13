@@ -119,7 +119,7 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
 });
 
 
-router.put('/save-contacts', rejectUnauthenticated, (req, res) => {
+router.put('/save-contacts', rejectUnauthenticated, (req, res) => { 
     console.log('req.body in save contacts is:', req.body);
     const queryText = `UPDATE "contacts"
     SET "contact_name" = $1,
@@ -127,7 +127,8 @@ router.put('/save-contacts', rejectUnauthenticated, (req, res) => {
     "contact_email" = $3,
     "position" = $4,
     "is_primary" = $5
-    WHERE "id" = $6;`;
+    WHERE "venue_id" = $6
+    AND "is_primary" = true`;
     const queryValues = [
         req.body.contact_name,
         req.body.contact_phone,
