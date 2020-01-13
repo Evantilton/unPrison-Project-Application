@@ -38,7 +38,7 @@ class EventList extends Component {
     return (
       <div className="eventContainer">
          <Container>
-        <h1 id="eventHeader">Event List</h1>
+        <h1 class="h1-main"id="eventHeader">Event List</h1>
         <div className="listOptions">
         <InputLabel shrink id="venue-event">Select a Venue</InputLabel>
         <Select

@@ -69,10 +69,16 @@
     
 }
 
-h1 {
+.h1-main {
     border-bottom: solid 2px #EA7600;
     padding-bottom: 4px;
-    width: 50vw;
+    width: 15vw;
+}
+
+.h1-other {
+    border-bottom: solid 2px #EA7600;
+    padding-bottom: 4px;
+    width: 35vw;
 }
 
 .tabButtonPosition1 {

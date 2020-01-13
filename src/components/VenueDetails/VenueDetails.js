@@ -79,7 +79,7 @@ class VenueDetails extends Component {
         return (
             <>
                 <div className="venueHeader">
-                    <h1>{this.props.reduxState.venueDetailsReducer.name}</h1>
+                    <h1 class="h1-other">{this.props.reduxState.venueDetailsReducer.name}</h1>
                 </div>
                 <div className="venueMainWindow">
                     <div className="primaryName">

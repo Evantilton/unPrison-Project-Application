@@ -80,7 +80,8 @@ class EventDetails extends Component {
     handleDeleteClick = () => {
         console.log("handleDeleteClick has been clicked, action payload is", { value: this.props.match.params.id });
         this.props.dispatch({ type: 'DELETE_EVENT', payload: this.props.match.params.id })
-        this.props.history.push('/home')
+        this.props.dispatch({ type: 'FETCH_EVENTS'})
+        this.props.history.push('/event-list')
     }
 
     handleDeleteButtonClick = (venueId) => {
@@ -90,7 +91,7 @@ class EventDetails extends Component {
         return (
             <>
                 <div className="header">
-                    <h1>{this.props.reduxState.venueDetailsReducer.name} <br  />Event Details</h1>
+                    <h1 class="h1-other">{this.props.reduxState.venueDetailsReducer.name} <br  />Event Details</h1>
                 </div>
                 <div className="mainWindow">
                     
