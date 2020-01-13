@@ -5,7 +5,23 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     // SQL Query to return all venues
-    const query = `SELECT * FROM "venue"
+    const query = 
+    `SELECT 
+    "venue"."id",
+    "venue"."name",
+    "venue"."street_address",
+    "venue"."city",
+    "venue"."state",
+    "venue"."country",
+    "venue"."zip",
+    "venue"."venue_type",
+    "contacts"."venue_id",
+    "contacts"."contact_name",
+    "contacts"."contact_phone",
+    "contacts"."contact_email",
+    "contacts"."position",
+    "contacts"."is_primary"
+    FROM "venue"
     JOIN "contacts" ON "contacts"."venue_id" = "venue"."id"
     WHERE "contacts"."is_primary" = 'true'`;
     pool.query(query)
@@ -24,7 +40,22 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.get('/one/:id', rejectUnauthenticated, (req, res) => {
     console.log('venue details', req.params);
     const queryText = `
-                SELECT * FROM venue 
+                SELECT 
+                "venue"."id",
+                "venue"."name",
+                "venue"."street_address",
+                "venue"."city",
+                "venue"."state",
+                "venue"."country",
+                "venue"."zip",
+                "venue"."venue_type",
+                "contacts"."venue_id",
+                "contacts"."contact_name",
+                "contacts"."contact_phone",
+                "contacts"."contact_email",
+                "contacts"."position",
+                "contacts"."is_primary"
+                FROM "venue" 
                 JOIN "contacts" ON "contacts"."venue_id" = "venue"."id"
                 WHERE "venue"."id" = $1
                 AND "contacts"."is_primary" = 'true'`;
