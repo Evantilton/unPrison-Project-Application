@@ -14,7 +14,7 @@ function* deleteVenue(action){
         console.log('action.payload in deleteVenue is:', action.payload);
         console.log('action.payload in deleteVenue is:', action.payload);
         console.log('action.payload in deleteVenue is:', action.payload);
-        console.log('action.payload in deleteVenue is:', action.payload);
+        console.log('action.payload in deleteVenue is:', action.payload); 
         console.log('action.payload in deleteVenue is:', action.payload);
         console.log('action.payload in deleteVenue is:', action.payload);
         console.log('action.payload in deleteVenue is:', action.payload);
