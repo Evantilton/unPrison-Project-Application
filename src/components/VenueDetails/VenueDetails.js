@@ -32,14 +32,16 @@ class VenueDetails extends Component {
         this.props.dispatch({ type: 'GET_ONE_VENUE', payload: this.props.match.params.id })
     }
 
+    //this saves the information in the veneue generals tab in the database
     handleSaveChangesButtonClick = () => {
         this.props.dispatch({ type: 'SAVE_VENUES_GENERAL', payload: this.props.reduxState.venueDetailsReducer });
-    }
+    } //end handleSaveChangesButtonClick
     
+    //deletes the venue and connected event and pushes the user to /home
     handleDeleteButtonClick = (venueId) => {
         this.props.dispatch({ type: 'DELETE_VENUE', payload: this.props.match.params.id });
         this.props.history.push('/home');
-    }
+    } //end handleDeleteButtonClick
 
     // Function that takes in two paramaters related to local state properties, called on click of inner window tab
     // Sets the value of the tab that was clicked to true in local state, backgroundColor to 'antiquewhite', and all other booleans and backgroundColors to false and gray respectively
@@ -75,7 +77,6 @@ class VenueDetails extends Component {
     }
 
     render() {
-
         return (
             <>
                 <div className="venueHeader">
@@ -104,7 +105,6 @@ class VenueDetails extends Component {
                         Contacts
                     </Tab>
                     {this.state.events &&
-
                         <div className="venueTabWindow">
                             <VenueEvents savePrimary={this.handleInputChange}/>
                         </div>
@@ -120,7 +120,6 @@ class VenueDetails extends Component {
                         </div>
                     }  <Button startIcon={<Icon>delete</Icon>} variant="contained"color="secondary" size="small" className="tabButtonPosition1" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
                     <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" size="small" className="tabButtonPosition2" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>
-
                 </div>
             </>
         )

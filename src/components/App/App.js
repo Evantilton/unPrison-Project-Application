@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
   Redirect,
   Switch,
 } from 'react-router-dom';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Nav from '../Nav/Nav';
 import VenueDetails from '../VenueDetails/VenueDetails';
 import EventDetails from '../EventDetails/EventDetails';
@@ -16,8 +16,8 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
 
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' })
   }
 
   render() {
@@ -52,19 +52,20 @@ class App extends Component {
               component={Admin}
             />
             <ProtectedRoute
-            path="/event-details/:id"
-            component={EventDetails}
+              path="/event-details/:id"
+              component={EventDetails}
             />
-             <ProtectedRoute
-            path="/venue-details/:id"
-            component={VenueDetails}
+            <ProtectedRoute
+              path="/venue-details/:id"
+              component={VenueDetails}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
         </div>
       </Router>
-  )}
+    )
+  }
 }
 
 export default connect()(App);

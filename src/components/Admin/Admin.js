@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Admin.css';
 import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
-import { TextField, Select, MenuItem, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 class Admin extends Component {
 
@@ -15,18 +15,18 @@ class Admin extends Component {
     this.getUsers();
   }
 
+  //this gets all the non-admin users
   getUsers = () => {
-    console.log("getting users")
     this.props.dispatch({ type: 'GET_USERS' });
-  }
+  } //end getUsers
 
+  //this handles the delete for the specific user
   handleDelete = (id) => {
-    console.log("delete click", "this is id", id)
     this.props.dispatch({ type: 'DELETE_USERS', payload: id });
-  }
+  } //end handleDelete
 
+  //this registers a new non-admin user with a username and password
   registerUser = (event) => {
-    console.log("registering user")
     event.preventDefault();
 
     if (this.state.username && this.state.password) {
@@ -43,19 +43,17 @@ class Admin extends Component {
     }
   } // end registerUser
 
+  //this handles the inputs for the username and password to set the state
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
-  }
-
-
+  } //end handleInputChange
 
   render() {
     return (
 
       <div>
-
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -64,10 +62,8 @@ class Admin extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-
-        {/* 
-        these conditional renders need to be consolidated */}
-
+        {/* conditional renders to show inputs for only admin only for admin */}
+        {/* this the inputs and buttons to register a new user */}
         {this.props.user.is_admin && (
           <p>Register New User</p>
         )}
@@ -99,10 +95,11 @@ class Admin extends Component {
         </div>
         <div>
           {this.props.user.is_admin && (
-            <Button id="material-ui" variant="contained"color="Primary"onClick={this.registerUser}> submit </Button>
+            <Button id="material-ui" variant="contained" color="Primary" onClick={this.registerUser}> submit </Button>
           )}
         </div>
-
+        {/* conditional renders to shows only for admin */}
+        {/* This is the table of users */}
         {this.props.user.is_admin && (
           <Table>
             <TableHead>
@@ -116,7 +113,7 @@ class Admin extends Component {
             <TableBody>
               {this.props.allUsers.map((users) => {
                 return (
-                  <TableRow id="TableRow"key={users.id}>
+                  <TableRow id="TableRow" key={users.id}>
                     <TableCell>{users.id}</TableCell>
                     <TableCell>{users.username}</TableCell>
                     <TableCell><Button key={users.id} onClick={() => { if (window.confirm('Are you sure you wish to delete this user? This cannot be undone.')) this.handleDelete(users.id) }}> delete </Button></TableCell>
@@ -127,16 +124,11 @@ class Admin extends Component {
             </TableBody>
           </Table>
         )}
-
       </div >
-
     );
   }
 }
 
-// Instead of taking everything from state, we just want the error messages.
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({errors}) => ({ errors });
 const mapReduxStateToProps = (reduxState) => {
   return reduxState;
 }
