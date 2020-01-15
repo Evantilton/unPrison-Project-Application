@@ -5,6 +5,10 @@ import TextField from '@material-ui/core/TextField';
 import { Select } from '@material-ui/core';
 class General extends Component {
 
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_GENERAL_TABLE', payload: this.props.eventId});
+    }
+
     //this handles the input and changes the generals reducer on input change
     handleInputChange = (event) => {
         this.props.dispatch({ type: 'SET_EXISTING_GENERAL', payload: { value: event.target.value, property: event.target.name } })
