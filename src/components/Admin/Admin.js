@@ -17,7 +17,7 @@ class Admin extends Component {
 
   //this gets all the non-admin users
   getUsers = () => {
-    this.props.dispatch({ type: 'GET_USERS' });
+    this.props.dispatch({ type: 'GET_USERS' }); 
   } //end getUsers
 
   //this handles the delete for the specific user

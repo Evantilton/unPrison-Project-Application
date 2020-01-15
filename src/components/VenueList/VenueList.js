@@ -7,7 +7,7 @@ import './VenueList.css';
 import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
 import { TextField, Select, MenuItem, Button } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
-import InputLabel from '@material-ui/core/InputLabel';
+
 
 class VenueList extends Component {
 
@@ -74,7 +74,7 @@ class VenueList extends Component {
       }
     });
   } // end handleDropDown
-  
+
   render() {
     return (
       <div className="venueContainer">
