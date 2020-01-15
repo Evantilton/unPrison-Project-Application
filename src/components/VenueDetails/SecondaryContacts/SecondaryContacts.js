@@ -10,25 +10,30 @@ class SecondaryContacts extends Component {
         this.props.dispatch({ type: 'FETCH_CONTACTS', payload: this.props.venueId });
     }
 
+    //this deletes a secondary contact
     handleDeleteContactButtonClick = (contactId) => {
         this.props.dispatch({ type: 'DELETE_SECONDARY_CONTACT', payload: contactId });
-    }
+    } //handleDeleteContactButtonClick
 
+    //this changes the secondary contact reducer on input change
     handleInputChange = (event) => {
         this.props.dispatch({ type: 'SET_EXISTING_SECONDARY_CONTACTS', payload: { value: event.target.value, property: event.target.name } });
-    }
+    } //handleInputChange
 
+    //this adds another secondary contact
     addSecondaryContactButtonClick = () => {
         this.props.dispatch({ type: 'ADD_SECONDARY_CONTACT', payload: this.props.venueId });
-    }
+    } //addSecondContactButtonClick
 
+    //this makes the secondary contact into the primary contact
     handleMakePrimaryContactButtonClick = (contactId) => {
         this.props.dispatch({ type: 'MARK_CONTACT_AS_PRIMARY', payload: { contactId: contactId, venueId: this.props.venueId } });
-    }
+    } //handleMakePrimaryContactButtonClick
 
+    //this saves the secondary contacts
     handleSaveChangesButtonClick = (contactId) => {
         this.props.dispatch({ type: 'SAVE_VENUES_CONTACTS', payload: { newContact: this.props.reduxState.secondaryContactsReducer, id: contactId } });
-    }
+    } //end handleSaveChangesButtonClick
 
     render() {
         if (this.props.reduxState.contactsReducer[0]) {

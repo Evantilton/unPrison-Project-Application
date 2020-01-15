@@ -7,7 +7,7 @@ import './VenueList.css';
 import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
 import { TextField, Select, MenuItem, Button } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
-import InputLabel from '@material-ui/core/InputLabel';
+
 
 class VenueList extends Component {
 
@@ -27,11 +27,10 @@ class VenueList extends Component {
     this.props.dispatch({ type: 'GET_VENUES' })
   }
 
+  // add a new venue
   newVenueAdded = () => {
-    // will add new Venue to database
     console.log('Creating venue');
     this.props.dispatch({ type: 'POST_VENUE', payload: this.state })
-    // this.props.dispatch({ type: 'POST_CONTACT', payload: this.state.contact })
     this.setState({
       venue: {
         name: "",
@@ -42,8 +41,9 @@ class VenueList extends Component {
         is_primary: "",
       }
     });
-  }
+  } //end newVenueAdded
 
+  //this changes the state for the venue input
   handleVenueInput = (event) => {
     // captures user input for venue name in state
     this.setState({
@@ -52,10 +52,10 @@ class VenueList extends Component {
         name: event.target.value,
       }
     });
-  }
+  } // end handleVenueInput
 
+  // captures user input for contact name in state
   handleContactInput = (event) => {
-    // captures user input for contact name in state
     this.setState({
       contact: {
         ...this.state.contact,
@@ -63,28 +63,25 @@ class VenueList extends Component {
         is_primary: true,
       }
     });
-  }
+  }// end handleContactInput
 
+  // captures user input for venue type in state
   handleDropDown = propertyName => (event) => {
-    // captures user input for venue type in state
     this.setState({
       venue: {
         ...this.state.venue,
         [propertyName]: event.target.value,
       }
     });
-  }
+  } // end handleDropDown
 
   render() {
     return (
       <div className="venueContainer">
         <Container>
           <h1 class="h1-main">Venue List</h1>
-
           <div className="listOptions">
-
             <div id="inputlabel">
-            
               <TextField
                 label="Venue Name"
                 id="smallInput1"
@@ -93,7 +90,6 @@ class VenueList extends Component {
                 value={this.state.venue.name}
                 onChange={this.handleVenueInput}
               />
-              
               <span>&nbsp;</span>
               <TextField
                 label="Venue Contact"
@@ -113,7 +109,6 @@ class VenueList extends Component {
                 value={this.state.venue.venue_type}
                 onChange={this.handleDropDown('venue_type')}
               >
-
                 <MenuItem value="prison">Prison</MenuItem>
                 <MenuItem value="conference">Conference</MenuItem>
                 <MenuItem value="school">School</MenuItem>
@@ -122,13 +117,9 @@ class VenueList extends Component {
               <span>&nbsp;</span>
               <span>&nbsp;</span>
               <Button variant="contained" size="normal" color="primary" className="venueButtons" onClick={this.newVenueAdded}>Add Venue</Button>
-        
             </div>
-
           </div>
-
           <div className="listVenues"></div>
-        
           <Table>
             <TableHead>
               <TableRow>

@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import TextField from '@material-ui/core/TextField';
 import { Button, Select } from '@material-ui/core';
-import Icon from '@material-ui/core/Icon';
 class Travel extends Component {
 
-
+    //this handles the input and changes the travel reducer on input change
     handleInputChange = (event) => {
         this.props.dispatch({ type: 'SET_EXISTING_TRAVEL', payload: { value: event.target.value, property: event.target.name } })
-    }
+    } // end handleInputChange
+
     render() {
         return (
             <>
@@ -71,7 +71,7 @@ class Travel extends Component {
                         <li>
                             <label>Travel Notes:</label>
                             <TextField multiline
-          id="material-ui" type="text" name='travel_notes' value={this.props.reduxState.eventsTravelReducer.travel_notes} onChange={(event) => this.handleInputChange(event)}></TextField>
+                                id="material-ui" type="text" name='travel_notes' value={this.props.reduxState.eventsTravelReducer.travel_notes} onChange={(event) => this.handleInputChange(event)}></TextField>
                         </li>
                     </ul>
                 </div>

@@ -8,10 +8,10 @@ import Button from '@material-ui/core/Button';
 
 class EventListItem extends Component {
 
+    //this pushes the user to the correct event
     goToEventDetails = () => {
         this.props.history.push(`/event-details/${this.props.event.id}`);
-    }
-
+    } //end goToEventDetails
     render() {
         return (
             <TableRow id="TableRow">

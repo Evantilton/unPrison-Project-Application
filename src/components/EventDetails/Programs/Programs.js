@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import TextField from '@material-ui/core/TextField';
-import {Button, Select} from '@material-ui/core';
-import Icon from '@material-ui/core/Icon';
+import { Button, Select } from '@material-ui/core';
 class Programs extends Component {
 
+    //this handles the input and changes the programs reducer on input change
     handleInputChange = (event) => {
         this.props.dispatch({ type: 'SET_EXISTING_PROGRAMS', payload: { value: event.target.value, property: event.target.name } })
-    }
-    
+    } //handleInputChange
+
     render() {
         return (
             <div>
@@ -19,8 +19,8 @@ class Programs extends Component {
                     <li >
                         <label>Participating:</label>
                         <Select name='books_participating' value={this.props.reduxState.eventsProgramsReducer.books_participating} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
+                            <option value="false"> No</option>
+                            <option value="true"> Yes</option>
                         </Select>
                     </li>
                     <li >
@@ -32,11 +32,11 @@ class Programs extends Component {
                     <li >
                         <label>Inmate Child Form Sent: </label>
                         <Select name='child_form_sent' value={this.props.reduxState.eventsProgramsReducer.child_form_sent} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
+                            <option value="false"> No</option>
+                            <option value="true"> Yes</option>
                         </Select>
                     </li>
-                    
+
                     <li >
                         <label>Date Emailed: </label>
                         <TextField type="date" name='child_form_date_emailed' value={moment(this.props.reduxState.eventsProgramsReducer.child_form_date_emailed).format('YYYY-MM-DD')} onChange={(event) => this.handleInputChange(event)}></TextField>
@@ -69,8 +69,8 @@ class Programs extends Component {
                     <li >
                         <label>Books Carry-on </label>
                         <Select name='books_carryon' value={this.props.reduxState.eventsProgramsReducer.books_carryon} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
+                            <option value="false"> No</option>
+                            <option value="true"> Yes</option>
                         </Select>
                     </li>
                     <li >
@@ -89,8 +89,8 @@ class Programs extends Component {
                     <li >
                         <label>Participating:  </label>
                         <Select name='glasses_participating' value={this.props.reduxState.eventsProgramsReducer.glasses_participating} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
+                            <option value="false"> No</option>
+                            <option value="true"> Yes</option>
                         </Select>
                     </li>
                     <li >
@@ -124,8 +124,8 @@ class Programs extends Component {
                     <li >
                         <label>Received Form:   </label>
                         <Select name='received_form' value={this.props.reduxState.eventsProgramsReducer.received_form} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
+                            <option value="false"> No</option>
+                            <option value="true"> Yes</option>
                         </Select>
                     </li>
                     <li>Glasses Sizes</li>
@@ -149,8 +149,8 @@ class Programs extends Component {
                     <li >
                         <label>Bio Sent: </label>
                         <Select name='bio_sent' value={this.props.reduxState.eventsProgramsReducer.bio_sent} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
+                            <option value="false"> No</option>
+                            <option value="true"> Yes</option>
                         </Select>
                     </li>
                     <li >
@@ -160,8 +160,8 @@ class Programs extends Component {
                     <li >
                         <label>Public Questionnaire Sent:</label>
                         <Select name='public_questionnaire_sent' value={this.props.reduxState.eventsProgramsReducer.public_questionnaire_sent} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
+                            <option value="false"> No</option>
+                            <option value="true"> Yes</option>
                         </Select>
                     </li>
                     <li >
@@ -180,15 +180,15 @@ class Programs extends Component {
                     <li >
                         <label>Book Signing:</label>
                         <Select name='book_signing' value={this.props.reduxState.eventsProgramsReducer.book_signing} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
+                            <option value="false"> No</option>
+                            <option value="true"> Yes</option>
                         </Select>
                     </li>
                     <li >
                         <label>Book Sales: </label>
                         <Select name='book_sales' value={this.props.reduxState.eventsProgramsReducer.book_sales} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
+                            <option value="false"> No</option>
+                            <option value="true"> Yes</option>
                         </Select>
                     </li>
                     <li >
@@ -202,8 +202,8 @@ class Programs extends Component {
                     <li >
                         <label>Books Carry-On</label>
                         <Select name='books_carryon' value={this.props.reduxState.eventsProgramsReducer.books_carryon} onChange={(event) => this.handleInputChange(event)}>
-                            <option value="false">no</option>
-                            <option value="true">yes</option>
+                            <option value="false"> No</option>
+                            <option value="true"> Yes</option>
                         </Select>
                     </li >
                     <li >

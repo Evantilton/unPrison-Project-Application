@@ -4,23 +4,18 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import {Button, Select} from '@material-ui/core';
-import Icon from '@material-ui/core/Icon';
 // import SaveIcon from '@material-ui/icons/Save';
-
 class VenueGeneral extends Component {
 
     componentDidMount() {
-        console.log('this.props.match.params.id is:', this.props.match.params.id)
-        this.props.dispatch({ type: 'FETCH_VENUES_GENERAL_TABLE', payload: this.props.match.params.id });
-        this.props.dispatch({ type: 'FETCH_CONTACTS', payload: this.props.match.params.id });
+        this.props.dispatch({ type: 'FETCH_VENUES_GENERAL_TABLE', payload: this.props.match.params.id }); //fetches the information for the venue
+        this.props.dispatch({ type: 'FETCH_CONTACTS', payload: this.props.match.params.id }); //fetches all the contacts and updates the reducer
     }
 
+    // this updates the venues general reducer on input change
     handleInputChange = (event) => {
         this.props.dispatch({ type: 'SET_EXISTING_VENUES_GENERAL', payload: { value: event.target.value, property: event.target.name } });
-    }
-
-
-   
+    } //end handleInputChange
 
     render() {
         return (
@@ -76,7 +71,6 @@ class VenueGeneral extends Component {
 const mapStateToProps = reduxState => ({
     reduxState,
 });
-
 
 export default withRouter(connect(mapStateToProps)(VenueGeneral));
 
