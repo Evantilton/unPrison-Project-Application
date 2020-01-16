@@ -34,7 +34,7 @@ If you would like to name your database something else, you will need to change 
 - After users have logged in, they are presented with the Venues List page.
     - An admin creates additional users. Only the admin can do this and has an additional "admin" link in their navigation bar.
 - A navigation bar is displayed at the top of the page. It includes other links to other pages titled `Venues`, `Events`, `Log Out`, and `Admin`.
-- Venues can be added and will display in a list that can be sorted by Venue type(Prisons, Conferences, Etc).
+- Venues can be added and will display in a list.
     - A Venue, once created, can be clicked to see more details about it. Information on the details page can be added and edited by a logged in user.
 - On the Events page, a user can create a new event by selecting a venue from the dropdown menu, which is populated with venues created from the `Venues` page.
     - Note: An event can only be created for a venue that already exists.
