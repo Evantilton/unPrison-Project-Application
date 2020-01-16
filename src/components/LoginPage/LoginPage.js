@@ -60,7 +60,7 @@ class LoginPage extends Component {
                 <br /><br />
                 
                 <TextField
-                  id="userInput"
+                  id="userPass"
                   label="Password"
                   type="password"
                   variant="outlined"

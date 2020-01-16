@@ -8,7 +8,7 @@ import Contacts from './Contacts/Contacts';
 import './VenueDetails.css';
 import TextField from '@material-ui/core/TextField';
 import Tab from '@material-ui/core/Tab';
-import {Button, Select} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
 
 class VenueDetails extends Component {
