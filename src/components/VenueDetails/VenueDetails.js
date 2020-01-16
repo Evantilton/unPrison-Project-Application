@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
 import VenueGeneral from './General/General';
 import VenueEvents from './Events/Events';
-import SecondaryContacts from './SecondaryContacts/SecondaryContacts';
+import Contacts from './Contacts/Contacts';
 import './VenueDetails.css';
 import TextField from '@material-ui/core/TextField';
 import Tab from '@material-ui/core/Tab';
@@ -114,9 +114,15 @@ class VenueDetails extends Component {
                             <VenueGeneral savePrimary={this.handleInputChange}/>
                         </div>
                     }
-                    {this.state.secondaryContacts &&
-                        <div className="venueTabWindow">
+                        {/* <div className="venueTabWindow">
+                            unsuccessful attempt at editing multiple contacts with creating a seperate contacts table in database. 
+                            These lines can be deleted if there are no plans to make contacts table that would allow infinite number of contacts for any given event.
+                            The file SecondaryContacts/SecondaryContacts.js may also be deleted if above situation is true.
                             <SecondaryContacts venueId={this.props.match.params.id} savePrimary={this.handleInputChange}/>
+                        </div> */}
+                        {this.state.secondaryContacts &&
+                        <div className="venueTabWindow">
+                            <Contacts />
                         </div>
                     }  <Button startIcon={<Icon>delete</Icon>} variant="contained"color="secondary" size="small" className="tabButtonPosition1" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
                     <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" size="small" className="tabButtonPosition2" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>

@@ -31,8 +31,8 @@ class SecondaryContacts extends Component {
     } //handleMakePrimaryContactButtonClick
 
     //this saves the secondary contacts
-    handleSaveChangesButtonClick = (contactId) => {
-        this.props.dispatch({ type: 'SAVE_VENUES_CONTACTS', payload: { newContact: this.props.reduxState.secondaryContactsReducer, id: contactId } });
+    handleSaveChangesButtonClick = (contact) => {
+        this.props.dispatch({ type: 'SAVE_VENUES_CONTACTS', payload: contact });
     } //end handleSaveChangesButtonClick
 
     render() {
@@ -46,7 +46,7 @@ class SecondaryContacts extends Component {
                         return (
                             <div key={contact.id}>
                                 <div>
-                                    <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={() => this.handleSaveChangesButtonClick(contact.id)}>Save Changes</Button>
+                                    <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" className="tabButtonPosition" onClick={() => this.handleSaveChangesButtonClick(contact)}>Save Changes</Button>
                                 </div>
                                 <div>
                                     <Button color="primary" variant="outlined" onClick={() => this.handleMakePrimaryContactButtonClick(contact.id)}>Make primary contact</Button>

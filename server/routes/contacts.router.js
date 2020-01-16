@@ -105,12 +105,11 @@ router.put('/save-contacts', rejectUnauthenticated, (req, res) => {
     "contact_email" = $3,
     "position" = $4
     WHERE "id" = $5;`;
-    const updatedContact = req.body.newContact;
     const queryValues = [
-        updatedContact.contact_name,
-        updatedContact.contact_phone,
-        updatedContact.contact_email,
-        updatedContact.position,
+        req.body.contact_name,
+        req.body.contact_phone,
+        req.body.contact_email,
+        req.body.position,
         req.body.id
     ]
     pool.query(queryText, queryValues)
