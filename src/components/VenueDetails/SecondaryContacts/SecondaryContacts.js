@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import { Button, Select } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
 
 class SecondaryContacts extends Component {
@@ -13,22 +13,22 @@ class SecondaryContacts extends Component {
     //this deletes a secondary contact
     handleDeleteContactButtonClick = (contactId) => {
         this.props.dispatch({ type: 'DELETE_SECONDARY_CONTACT', payload: contactId });
-    } //handleDeleteContactButtonClick
+    } // end handleDeleteContactButtonClick
 
     //this changes the secondary contact reducer on input change
     handleInputChange = (event) => {
         this.props.dispatch({ type: 'SET_EXISTING_SECONDARY_CONTACTS', payload: { value: event.target.value, property: event.target.name } });
-    } //handleInputChange
+    } // end handleInputChange
 
     //this adds another secondary contact
     addSecondaryContactButtonClick = () => {
         this.props.dispatch({ type: 'ADD_SECONDARY_CONTACT', payload: this.props.venueId });
-    } //addSecondContactButtonClick
+    } // end addSecondContactButtonClick
 
     //this makes the secondary contact into the primary contact
     handleMakePrimaryContactButtonClick = (contactId) => {
         this.props.dispatch({ type: 'MARK_CONTACT_AS_PRIMARY', payload: { contactId: contactId, venueId: this.props.venueId } });
-    } //handleMakePrimaryContactButtonClick
+    } // end handleMakePrimaryContactButtonClick
 
     //this saves the secondary contacts
     handleSaveChangesButtonClick = (contactId) => {
@@ -77,9 +77,9 @@ class SecondaryContacts extends Component {
                 <div>
                     <Button color="primary" variant="outlined" onClick={this.addSecondaryContactButtonClick}>Add Secondary contact</Button>
                     <h3>
-                    There are currently no secondary contacts for this venue.
+                        There are currently no secondary contacts for this venue.
                     </h3>
-                    </div>
+                </div>
             )
         }
     }
