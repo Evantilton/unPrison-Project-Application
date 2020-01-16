@@ -1,4 +1,4 @@
-import { put, takeLatest, takeEvery } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* venueDetailsSaga() {
@@ -11,15 +11,6 @@ function* venueDetailsSaga() {
 
 function* deleteVenue(action){
     try {
-        console.log('action.payload in deleteVenue is:', action.payload);
-        console.log('action.payload in deleteVenue is:', action.payload);
-        console.log('action.payload in deleteVenue is:', action.payload);
-        console.log('action.payload in deleteVenue is:', action.payload); 
-        console.log('action.payload in deleteVenue is:', action.payload);
-        console.log('action.payload in deleteVenue is:', action.payload);
-        console.log('action.payload in deleteVenue is:', action.payload);
-        console.log('action.payload in deleteVenue is:', action.payload);
-        console.log('action.payload in deleteVenue is:', action.payload);
         yield axios.delete(`/api/venue/delete/${action.payload}`);
         yield put({ type: 'GET_VENUES' });
     } catch (error) {
@@ -40,7 +31,6 @@ function* getDetailsVenue(action){
 }
 
 function* saveVenueDetailsGeneral(action) {
-    console.log('save venue details reducer', action);
     try {
         yield axios.put('/api/venue/save-contacts', action.payload);
         yield axios.put('/api/venue/save-venue', action.payload);

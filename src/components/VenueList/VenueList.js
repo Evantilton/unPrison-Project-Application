@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
 import VenueListItem from './VenueListItem/VenueListItem';
 import './VenueList.css';
-//styling imports
+// styling imports
 import { Table, TableBody, TableHead, TableCell, TableRow } from '@material-ui/core';
 import { TextField, Select, MenuItem, Button } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
@@ -43,7 +43,7 @@ class VenueList extends Component {
     });
   } //end newVenueAdded
 
-  //this changes the state for the venue input
+  
   handleVenueInput = (event) => {
     // captures user input for venue name in state
     this.setState({
@@ -79,7 +79,7 @@ class VenueList extends Component {
     return (
       <div className="venueContainer">
         <Container>
-          <h1 class="h1-main">Venue List</h1>
+          <h1 className="h1-main">Venue List</h1>
           <div className="listOptions">
             <div id="inputlabel">
               <TextField
@@ -116,7 +116,7 @@ class VenueList extends Component {
               </Select>
               <span>&nbsp;</span>
               <span>&nbsp;</span>
-              <Button variant="contained" size="normal" color="primary" className="venueButtons" onClick={this.newVenueAdded}>Add Venue</Button>
+              <Button variant="contained"  color="primary" className="venueButtons" onClick={this.newVenueAdded}>Add Venue</Button>
             </div>
           </div>
           <div className="listVenues"></div>
@@ -126,7 +126,8 @@ class VenueList extends Component {
                 <TableCell>Venue</TableCell>
                 <TableCell>Primary Contact</TableCell>
                 <TableCell>Phone Number</TableCell>
-                <TableCell align="right">Order By: <Select
+                <TableCell></TableCell>
+                {/* <TableCell align="right">Order By: <Select
                 labelId="selectUnlined"
                 id="sortDrop"
                 style={{ width: `140px`, height: `30px` }}
@@ -138,7 +139,7 @@ class VenueList extends Component {
                 <MenuItem value="conference">Conference</MenuItem>
                 <MenuItem value="school">School</MenuItem>
                 <MenuItem value="other">Other</MenuItem>
-              </Select></TableCell>
+              </Select></TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
