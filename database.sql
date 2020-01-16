@@ -13,12 +13,6 @@
 --add the below after all other database tables are created
 
 
---username: admin
---hashed password in database: $2b$10$iYJnw61JpnFPllPvdqRPQOc7iGdrLFBmgGiCAGqwFqdAevlIRlMDC
---isAdmin: true
-
---plain text password: password
-
 
 
 CREATE TABLE "user" (
@@ -202,8 +196,9 @@ ALTER TABLE "public"."travel"
   DROP CONSTRAINT "travel_event_id_fkey",
   ADD CONSTRAINT "travel_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
 
+
+-- The following creates an administrator account which can then add or delete other users.
+--Rename 'admin' to your desired username.
+--The plaintext "password" you will enter on the login screen is password.
 INSERT INTO "user"("username", "password", "is_admin")
 VALUES ('admin', '$2b$10$iYJnw61JpnFPllPvdqRPQOc7iGdrLFBmgGiCAGqwFqdAevlIRlMDC', true);
-
-INSERT INTO "user"("username", "password", "is_admin")
-VALUES ('Deborah', '$2b$10$iYJnw61JpnFPllPvdqRPQOc7iGdrLFBmgGiCAGqwFqdAevlIRlMDC', true);
