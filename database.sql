@@ -32,19 +32,19 @@ CREATE TABLE "venue" (
   "contact_name_one" VARCHAR(255),
   "contact_phone_one" VARCHAR(255),
   "contact_email_one" VARCHAR(255),
-  "position_one" VARCHAR(100),
+  "contact_position_one" VARCHAR(100),
   "contact_name_two" VARCHAR(255),
   "contact_phone_two" VARCHAR(255),
   "contact_email_two" VARCHAR(255),
-  "position_two" VARCHAR(100),
+  "contact_position_two" VARCHAR(100),
   "contact_name_three" VARCHAR(255),
   "contact_phone_three" VARCHAR(255),
   "contact_email_three" VARCHAR(255),
-  "position_three" VARCHAR(100),
+  "contact_position_three" VARCHAR(100),
   "contact_name_four" VARCHAR(255),
   "contact_phone_four" VARCHAR(255),
   "contact_email_four" VARCHAR(255),
-  "position_four" VARCHAR(100)
+  "contact_position_four" VARCHAR(100)
 );
 
 CREATE TABLE "event" (

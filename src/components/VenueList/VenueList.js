@@ -12,14 +12,9 @@ import Container from '@material-ui/core/Container';
 class VenueList extends Component {
 
   state = {
-    venue: {
       name: "",
       venue_type: "",
-    },
-    contact: {
-      contact_name: "",
-      is_primary: "",
-    }
+      contact_name_one: "",
   }
 
   componentDidMount() {
@@ -32,14 +27,9 @@ class VenueList extends Component {
     console.log('Creating venue');
     this.props.dispatch({ type: 'POST_VENUE', payload: this.state })
     this.setState({
-      venue: {
         name: "",
         venue_type: "",
-      },
-      contact: {
-        contact_name: "",
-        is_primary: "",
-      }
+        contact_name_one: "",
     });
   } //end newVenueAdded
 
@@ -47,31 +37,24 @@ class VenueList extends Component {
   handleVenueInput = (event) => {
     // captures user input for venue name in state
     this.setState({
-      venue: {
-        ...this.state.venue,
+        ...this.state,
         name: event.target.value,
-      }
     });
   } // end handleVenueInput
 
   // captures user input for contact name in state
   handleContactInput = (event) => {
     this.setState({
-      contact: {
-        ...this.state.contact,
-        contact_name: event.target.value,
-        is_primary: true,
-      }
+        ...this.state,
+        contact_name_one: event.target.value,
     });
   }// end handleContactInput
 
   // captures user input for venue type in state
   handleDropDown = propertyName => (event) => {
     this.setState({
-      venue: {
-        ...this.state.venue,
+        ...this.state,
         [propertyName]: event.target.value,
-      }
     });
   } // end handleDropDown
 
@@ -87,7 +70,7 @@ class VenueList extends Component {
                 id="smallInput1"
                 variant="outlined"
                 size="small"
-                value={this.state.venue.name}
+                value={this.state.name}
                 onChange={this.handleVenueInput}
               />
               <span>&nbsp;</span>
@@ -96,7 +79,7 @@ class VenueList extends Component {
                 id="smallInput2"
                 variant="outlined"
                 size="small"
-                value={this.state.contact.contact_name}
+                value={this.state.contact_name_one}
                 onChange={this.handleContactInput}
               />
               <span>&nbsp;</span>
@@ -106,7 +89,7 @@ class VenueList extends Component {
                 variant="outlined"
                 displayEmpty
                 style={{ width: `140px`, height: '40px'  }}
-                value={this.state.venue.venue_type}
+                value={this.state.venue_type}
                 onChange={this.handleDropDown('venue_type')}
               >
                 <MenuItem value="prison">Prison</MenuItem>

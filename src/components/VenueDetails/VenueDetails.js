@@ -85,15 +85,15 @@ class VenueDetails extends Component {
                 <div className="venueMainWindow">
                     <div className="primaryName">
                         <h3>Primary Contact:</h3>
-                        <TextField id="textfield" variant="standard" type="text" name='contact_name' value={this.props.reduxState.venueDetailsReducer.contact_name || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="textfield" variant="standard" type="text" name='contact_name_one' value={this.props.reduxState.venueDetailsReducer.contact_name_one || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </div>
                     <div className="primaryPhone">
                         <h3>Phone:</h3>
-                        <TextField id="textfield" type="text" name='contact_phone' value={this.props.reduxState.venueDetailsReducer.contact_phone || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="textfield" type="text" name='contact_phone_one' value={this.props.reduxState.venueDetailsReducer.contact_phone_one || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </div>
                     <div className="primaryEmail">
                         <h3>Primary Email:</h3>
-                        <TextField id="textfield" type="text" name='contact_email' value={this.props.reduxState.venueDetailsReducer.contact_email || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="textfield" type="text" name='contact_email_one' value={this.props.reduxState.venueDetailsReducer.contact_email_one || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </div>
                     <Tab label="General" className="venueGeneralTab" onClick={() => this.handleTabClick('general', 'generalStyle')} style={this.state.generalStyle}>
                         General
@@ -114,12 +114,6 @@ class VenueDetails extends Component {
                             <VenueGeneral savePrimary={this.handleInputChange}/>
                         </div>
                     }
-                        {/* <div className="venueTabWindow">
-                            unsuccessful attempt at editing multiple contacts with creating a seperate contacts table in database. 
-                            These lines can be deleted if there are no plans to make contacts table that would allow infinite number of contacts for any given event.
-                            The file SecondaryContacts/SecondaryContacts.js may also be deleted if above situation is true.
-                            <SecondaryContacts venueId={this.props.match.params.id} savePrimary={this.handleInputChange}/>
-                        </div> */}
                         {this.state.secondaryContacts &&
                         <div className="venueTabWindow">
                             <Contacts />
