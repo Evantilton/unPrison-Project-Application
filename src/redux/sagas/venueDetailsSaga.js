@@ -3,9 +3,7 @@ import axios from 'axios';
 
 function* venueDetailsSaga() {
     yield takeLatest('GET_ONE_VENUE', getDetailsVenue);
-
     yield takeLatest('SAVE_VENUES_GENERAL', saveVenueDetailsGeneral);
-
     yield takeLatest('DELETE_VENUE', deleteVenue);
 }
 
@@ -20,8 +18,6 @@ function* deleteVenue(action){
 
 function* getDetailsVenue(action){
     //sends inputted user value to server side post route
-    console.log('details saga', action);
-    
     try {
         const venueDetailsResponse = yield axios.get(`/api/venue/one/${action.payload}`);
         yield put({type: 'SET_VENUE_DETAILS', payload: venueDetailsResponse.data[0]})
@@ -32,13 +28,10 @@ function* getDetailsVenue(action){
 
 function* saveVenueDetailsGeneral(action) {
     try {
-        yield axios.put('/api/venue/save-contacts', action.payload);
         yield axios.put('/api/venue/save-venue', action.payload);
     } catch (error) {
         console.log('error saving venue details and general tab', error);
-        
     }
-    
 }
 
 export default venueDetailsSaga;

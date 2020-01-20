@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link, withRouter, Switch } from 'react-router-dom';
 import VenueGeneral from './General/General';
 import VenueEvents from './Events/Events';
-import SecondaryContacts from './SecondaryContacts/SecondaryContacts';
+import Contacts from './Contacts/Contacts';
 import './VenueDetails.css';
 import TextField from '@material-ui/core/TextField';
 import Tab from '@material-ui/core/Tab';
@@ -85,15 +85,15 @@ class VenueDetails extends Component {
                 <div className="venueMainWindow">
                     <div className="primaryName">
                         <h3>Primary Contact:</h3>
-                        <TextField id="textfield" variant="standard" type="text" name='contact_name' value={this.props.reduxState.venueDetailsReducer.contact_name || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="textfield" variant="standard" type="text" name='contact_name_one' value={this.props.reduxState.venueDetailsReducer.contact_name_one || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </div>
                     <div className="primaryPhone">
                         <h3>Phone:</h3>
-                        <TextField id="textfield" type="text" name='contact_phone' value={this.props.reduxState.venueDetailsReducer.contact_phone || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="textfield" type="text" name='contact_phone_one' value={this.props.reduxState.venueDetailsReducer.contact_phone_one || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </div>
                     <div className="primaryEmail">
                         <h3>Primary Email:</h3>
-                        <TextField id="textfield" type="text" name='contact_email' value={this.props.reduxState.venueDetailsReducer.contact_email || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
+                        <TextField id="textfield" type="text" name='contact_email_one' value={this.props.reduxState.venueDetailsReducer.contact_email_one || ''} onChange={(event) => this.handleInputChange(event)}></TextField>
                     </div>
                     <Tab label="General" className="venueGeneralTab" onClick={() => this.handleTabClick('general', 'generalStyle')} style={this.state.generalStyle}>
                         General
@@ -114,9 +114,9 @@ class VenueDetails extends Component {
                             <VenueGeneral savePrimary={this.handleInputChange}/>
                         </div>
                     }
-                    {this.state.secondaryContacts &&
+                        {this.state.secondaryContacts &&
                         <div className="venueTabWindow">
-                            <SecondaryContacts venueId={this.props.match.params.id} savePrimary={this.handleInputChange}/>
+                            <Contacts />
                         </div>
                     }  <Button startIcon={<Icon>delete</Icon>} variant="contained"color="secondary" size="small" className="tabButtonPosition1" onClick={() => { if (window.confirm('Are you sure you wish to delete this venue? This cannot be undone and will delete all event information tied to venue as well.')) this.handleDeleteButtonClick(this.props.reduxState.venueDetailsReducer.id) }}>Delete Venue</Button>
                     <Button startIcon={<Icon>save</Icon>} variant="contained" color="primary" size="small" className="tabButtonPosition2" onClick={this.handleSaveChangesButtonClick}>Save Changes</Button>

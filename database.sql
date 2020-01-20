@@ -13,8 +13,6 @@
 --add the below after all other database tables are created
 
 
-
-
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
   "username" VARCHAR(100) UNIQUE NOT NULL,
@@ -30,17 +28,23 @@ CREATE TABLE "venue" (
   "state" VARCHAR(255),
   "country" VARCHAR(255),
   "zip" VARCHAR(255),
-  "venue_type" VARCHAR (100)
-);
-
-CREATE TABLE "contacts" (
-  "id" SERIAL PRIMARY KEY,
-  "venue_id" INT NOT NULL,
-  "contact_name" VARCHAR(255),
-  "contact_phone" VARCHAR(255),
-  "contact_email" VARCHAR(255),
-  "position" VARCHAR(100),
-  "is_primary" BOOLEAN DEFAULT false
+  "venue_type" VARCHAR (100),
+  "contact_name_one" VARCHAR(255),
+  "contact_phone_one" VARCHAR(255),
+  "contact_email_one" VARCHAR(255),
+  "contact_position_one" VARCHAR(100),
+  "contact_name_two" VARCHAR(255),
+  "contact_phone_two" VARCHAR(255),
+  "contact_email_two" VARCHAR(255),
+  "contact_position_two" VARCHAR(100),
+  "contact_name_three" VARCHAR(255),
+  "contact_phone_three" VARCHAR(255),
+  "contact_email_three" VARCHAR(255),
+  "contact_position_three" VARCHAR(100),
+  "contact_name_four" VARCHAR(255),
+  "contact_phone_four" VARCHAR(255),
+  "contact_email_four" VARCHAR(255),
+  "contact_position_four" VARCHAR(100)
 );
 
 CREATE TABLE "event" (
@@ -152,8 +156,6 @@ CREATE TABLE "financials" (
 );
 
 
-ALTER TABLE "contacts" ADD FOREIGN KEY ("venue_id") REFERENCES "venue" ("id");
-
 ALTER TABLE "event" ADD FOREIGN KEY ("venue_id") REFERENCES "venue" ("id");
 
 ALTER TABLE "travel" ADD FOREIGN KEY ("event_id") REFERENCES "event" ("id");
@@ -170,10 +172,6 @@ ALTER TABLE "financials" ADD FOREIGN KEY ("event_id") REFERENCES "event" ("id");
 ALTER TABLE "public"."childrens_books"
   DROP CONSTRAINT "childrens_books_event_id_fkey",
   ADD CONSTRAINT "childrens_books_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "public"."event"("id") ON DELETE CASCADE;
-
-ALTER TABLE "public"."contacts"
-  DROP CONSTRAINT "contacts_venue_id_fkey",
-  ADD CONSTRAINT "contacts_venue_id_fkey" FOREIGN KEY ("venue_id") REFERENCES "public"."venue"("id") ON DELETE CASCADE;
 
 ALTER TABLE "public"."event"
   DROP CONSTRAINT "event_venue_id_fkey",
