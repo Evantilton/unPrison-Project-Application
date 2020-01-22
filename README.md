@@ -55,6 +55,8 @@ If you would like to name your database something else, you will need to change 
 - Passport
 - Moment
 - Material UI
+- Javascript
+- HTML
 - CSS
 
 ## Authors
