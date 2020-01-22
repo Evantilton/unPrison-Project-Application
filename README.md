@@ -10,10 +10,10 @@ unPrison Project staff speak and present at prisons across the U.S teaching life
 This web application is an administrative internal portal to allow staff to record, reference, and edit/add data quickly from one source from anywhere they have a wi-fi signal.
 
 ## Screen Shot
-! [Screen Shot](unPrison1.png "Venue List")
-! [Screen Shot](unPrison2.png "Event List")
-! [Screen Shot](unPrison3.png "Event Details")
-! [Screen Shot](unPrison4.png "Venue Details")
+! [Venue List](unPrison1.png "Venue List")
+! [Event List](unPrison2.png "Event List")
+! [Event Details](unPrison3.png "Event Details")
+! [Venue Details](unPrison4.png "Venue Details")
 
 ## Prerequisites
 Before you get started, make sure you have the following software installed on your computer:
