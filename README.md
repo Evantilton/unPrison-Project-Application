@@ -4,7 +4,7 @@
 https://unprison-project-application.herokuapp.com/#/home
 
 You can log in with
-[Username: test]
+[username: test]
 [password: test1234test]
 
 ## Description
