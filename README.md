@@ -1,6 +1,9 @@
 # unPrison Project
 
-## [Demo] <insert url here>
+## [Demo on Heroku] https://unprison-project-application.herokuapp.com/#/home
+You can log in with
+username: test 
+password: test1234test
 
 ## Description
 Duration: Two Weeks
