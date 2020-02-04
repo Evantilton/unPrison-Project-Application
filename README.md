@@ -1,6 +1,6 @@
 # unPrison Project Application
 
-## [Demo on Heroku] 
+## Demo
 https://unprison-project-application.herokuapp.com/#/home
 
 You can log in with
